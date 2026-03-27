@@ -14,7 +14,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
     $province = $_POST['province'];
 
     $update = $conn->prepare("UPDATE cities SET city_name= ?, province= ? WHERE id= ?");
-    $update ->bind_param();
+    $update ->bind_param("ssi", $city_name, $province, $id);
     $update ->execute();
 }
 ?>
