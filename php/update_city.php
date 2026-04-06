@@ -7,6 +7,7 @@ header("Location: admin.php"); // assuming this is the default page ng admin
 exit(); 
 }
 $id = $_GET['id'];
+
 $read = $conn->query("SELECT city_name, province FROM cities WHERE id = $id")-> fetch_assoc();
 
 if ($_SERVER['REQUEST_METHOD'] == "POST") {
@@ -16,6 +17,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
     $update = $conn->prepare("UPDATE cities SET city_name= ?, province= ? WHERE id= ?");
     $update ->bind_param("ssi", $city_name, $province, $id);
     $update ->execute();
+    header("Location:read_city.php");
 }
 ?>
 <!DOCTYPE html>
@@ -28,9 +30,11 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 <body>
         <header>
         <nav>
+            <ul>
             <li><a href="create_city.php">New City</a><li>
             <li><a href="read_city.php">All Cities</a><li>
             <li><a href="logout.php">Logout</a></li>
+            </ul>
 
         </nav>
     </header>
