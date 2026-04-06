@@ -41,9 +41,11 @@ if (isset($_POST['submit'])) {
 <body>
     <header>
         <nav>
-            <li><a href="read_attraction.php">All Attractions</a></li>
-            <li><a href="create_attraction.php">New Attractions</a></li>
+            <ul>
+            <li><a href="create_attraction.php">Create Attractions</a></li>
+            <li><a href="read_attraction.php">View Attractions</a><li>
             <li><a href="logout.php">Logout</a></li>
+            </ul>
         </nav>
     </header>
 
