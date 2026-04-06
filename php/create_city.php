@@ -34,10 +34,11 @@ if(!empty($city_name) && !empty($province)){
 <body>
     <header>
         <nav>
+            <ul>
             <li><a href="create_city.php">New City</a><li>
             <li><a href="read_city.php">All Cities</a><li>
             <li><a href="logout.php">Logout</a></li>
-
+            </ul>
         </nav>
     </header>
     <h2>Add Cities</h2>
