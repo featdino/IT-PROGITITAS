@@ -1,4 +1,5 @@
 <?php
+//admin side
 session_start(); 
 require 'db.php'; 
 
