@@ -14,6 +14,7 @@ exit();
         $update = $conn->prepare("UPDATE attraction SET name=?, description= ?, street_address=?, total_visits=?, avg_rating=? WHERE attraction_id= ?");
         $update = $conn->bind_param("sssiii", $name, $desciption, $street_address, $total_visits, $avg_rating, $attraction_id);  
         $update = $conn->execute();  
+        header("Location: read_attraction.php");
         }
 
 ?>
@@ -28,9 +29,11 @@ exit();
 <body>
     <header>
         <nav>
+            <ul>
             <li><a href="read_attraction.php">View Attractions</a></li>
             <li><a href="create_attraction.php">Create New</a></li>
             <li><a href="logout.php">Logout</a></li>
+            </ul>
         </nav>
     </header>
         <h2>Update Attractions</h2>
