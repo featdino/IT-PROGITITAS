@@ -44,9 +44,11 @@ if(isset($_POST['submit'])){
 <body>
     <header>
         <nav>
+            <ul>
             <li><a href="create_user.php">New User</a><li>
             <li><a href="read_users.php">All Users</a><li>
             <li><a href="logout.php">Logout</a></li>
+            </ul>
         </nav>
     </header>
     <h2>Update User</h2>
