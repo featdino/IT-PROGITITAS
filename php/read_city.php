@@ -26,6 +26,16 @@ if(isset($_GET['sort']) && $_GET['sort'] == 'letter'){
     <title>View Cities</title>
 </head>
 <body>
+        <header>
+        <nav>
+            <ul>
+            <li><a href="create_city.php">New City</a><li>
+            <li><a href="read_city.php">All Cities</a><li>
+            <li><a href="logout.php">Logout</a></li>
+            </ul>
+
+        </nav>
+    </header>
     <h2>View Cities</h2>
 
     <table>
