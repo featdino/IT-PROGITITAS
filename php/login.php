@@ -8,11 +8,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $password = $_POST['password'];
 
     $result = mysqli_query($conn,
-        "SELECT id, username, password FROM user WHERE username = '$username'");
+        "SELECT user_id, username, password FROM user WHERE username = '$username'");
 
     if ($row = mysqli_fetch_assoc($result)) {
         if (password_verify($password, $row['password'])) {
-            $_SESSION['user_id']  = $row['id'];
+            $_SESSION['user_id']  = $row['user_id'];
             $_SESSION['username'] = $row['username'];
             header("Location: attraction.php");
             exit();
