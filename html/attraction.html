@@ -26,7 +26,6 @@
             </div>
  
             <input id = "toggle" type = "checkbox">
-            
             <label class = "dropdown" for = "toggle">
                 <i class = "fa-solid fa-bars"></i>
             </label>
@@ -40,7 +39,7 @@
         </header>
 
         <!-- image srcs in this section to be replaced by first three ofc pics from db for each attraction -->
-        <section class = "spotlight-pictures">
+        <section class = "atr-spotlight-pictures">
             <div class = "main-pic">
                 <img src = "../images/mop-1.jpg">
                 <button id = "modal-btn" class = "open-modal">
@@ -59,7 +58,6 @@
 
         <!-- refer nalang sa attraction.js for the images -->
         <div id = "gallery-modal" class = "modal">
-
             <div class = "modal-content">
                 <div class = "modal-header">
                     <div class = "title-block">
@@ -80,6 +78,52 @@
                 <div id = "thumbnail-row" class = "row"></div>
             </div>
         </div>
+
+        <section class = "atr-titlebar">
+            <div class = "nameplate">
+                <h1>Manila Ocean Park</h1> <!-- name of attraction ulit -->
+                <p>Ermita, Manila</p> <!-- street address of attraction -->
+            </div>
+            <div class = "actions">
+                <button class = "mark-visited"></button>
+                <button class = "leave-rating"></button>
+            </div>
+        </section>
+
+        <section class = "atr-scorecard">
+            <div class = "local-rating">
+                <h1>4.5</h1>
+                <h4>Local Rating</h4> <!-- avg rating -->
+            </div>
+            <div class = "gem-score">
+                <h1>1.8</h1>
+                <h4>Gem Score</h4> <!-- refer sa gdocs kung paano icalculate yung gem score -->
+            </div>
+            <div class = "tourist-visits">
+                <h1>1M+</h1>
+                <h4>Tourist Visits</h4> <!-- accumulated visists -->
+            </div>
+        </section>
+
+        <section class = "atr-information">
+            <div class = "description">
+                <h3>ABOUT</h3>
+                <p>Manila Ocean Park is a prominent marine-themed park and educational facility 
+                    located behind the Quirino Grandstand in Ermita, Manila. It serves as a major 
+                    tourist destination that combines entertainment with marine life conservation 
+                    and education.
+                </p> <!-- replace w description -->
+            </div>
+            <div class = "category">
+                <h3>CATEGORY</h3>
+                <p>Theme Parks, Nature Reserves, Parks & Gardens, Museums & Galleries</p>
+                <!-- replace ^ w array of strings ng all applicable categories if multiple -->
+            </div>
+        </section>
+
+        <section class = "atr-visitor-gallery">
+
+        </section>
 
         <script src = "../javascript/attraction.js"></script>
     </body>
