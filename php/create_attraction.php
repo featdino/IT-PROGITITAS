@@ -2,9 +2,10 @@
 
 session_start(); 
 require 'db.php'; 
-if (!isset($_SESSION['attraction_id'])) { 
-header("Location: admin.php"); // assuming this is the default page ng admin
-exit(); 
+
+if($_SESSION['role'] != 'admin') {
+    header("Location: login.php");
+    exit();
 }
 
 if (isset($_POST['submit'])) {
@@ -16,12 +17,12 @@ if (isset($_POST['submit'])) {
     $total_visits = $_POST['total_visits'];
     $avg_rating = $_POST['avg_rating'];
 
-    $insert = "INSERT INTO attraction (attraction_id, name, description, street_address ,total_visits, avg_rating) 
+    $insert = "INSERT INTO attraction (attraction_id, name, description, street_address, total_visits, avg_rating) 
     VALUES ('$attraction_id', '$name', '$description', '$street_address', '$total_visits', '$avg_rating')";
 
     if (mysqli_query($conn, $insert)) {
         echo "<p>Entry inserted successfully. </p>";
-        header("Location: read.php");
+        header("Location: read_attraction.php");
     }else{
          echo "<p>Error: " . $insert . "<br>" . mysqli_error($conn) . "</p>";
     }

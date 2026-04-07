@@ -2,9 +2,10 @@
 
 session_start(); 
 require 'db.php'; 
-if (!isset($_SESSION['attraction_id'])) { 
-header("Location: admin.php"); // assuming this is the default page ng admin
-exit(); 
+
+if($_SESSION['role'] != 'admin') {
+    header("Location: login.php");
+    exit();
 }
 
 $attraction_id = $_SESSION['attraction_id'];
@@ -18,7 +19,7 @@ $read = $conn->query("SELECT * FROM attraction");
 $total_attractions = $read->num_rows;
 
     if(isset($_GET['sort']) && $_GET['sort'] == 'desc'){
-        $result = $conn->query("SELECT * FROM attractions DESC");
+        $result = $conn->query("SELECT * FROM attraction DESC");
     }else{
         $result = $conn->query("SELECT * FROM attraction");
     }

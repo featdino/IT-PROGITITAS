@@ -1,11 +1,11 @@
 <?php
 session_start(); 
 require 'db.php'; 
-if (!isset($_SESSION['city_id'])) { 
-header("Location: admin.php"); // assuming this is the default page ng admin
-exit(); 
-}
 
+if($_SESSION['role'] != 'admin') {
+    header("Location: login.php");
+    exit();
+}
 
 if(isset($_POST['submit'])){
 
