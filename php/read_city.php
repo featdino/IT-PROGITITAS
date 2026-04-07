@@ -2,20 +2,17 @@
 
 session_start(); 
 require 'db.php'; 
-if (!isset($_SESSION['city_id'])) { 
-header("Location: admin.php"); // assuming this is the default page ng admin
-exit(); 
-}
 
+//header("Location: admin.php"); // assuming this is the default page ng admin
 
-$city_id = $_SESSION['city_id'];
-$read = $conn->query("SELECT * FROM cities");
+$read = $conn->query("SELECT * FROM city");
 $total_cities = $read->num_rows;
-if(isset($_GET['sort']) && $_GET['sort'] == 'letter'){
-    $result = $conn->query("SELECT * FROM cities ORDER BY ASC ");
-}else{
-    $read = $conn->query("SELECT * FROM cities");
-}
+
+    if(isset($_GET['sort']) && $_GET['sort'] == 'letter'){
+        $result = $conn->query("SELECT * FROM city ORDER BY city_name ASC");
+    }else{
+        $result = $conn->query("SELECT * FROM city");
+    }
 ?>
 
 <!DOCTYPE html>
@@ -29,8 +26,8 @@ if(isset($_GET['sort']) && $_GET['sort'] == 'letter'){
         <header>
         <nav>
             <ul>
-            <li><a href="create_city.php">New City</a><li>
-            <li><a href="read_city.php">All Cities</a><li>
+            <li><a href="create_city.php">New City</a></li>
+            <li><a href="read_city.php">All Cities</a></li>
             <li><a href="logout.php">Logout</a></li>
             </ul>
 
@@ -45,7 +42,7 @@ if(isset($_GET['sort']) && $_GET['sort'] == 'letter'){
             <th>Province</th>
         </tr>
     <?php
-    while($row = $result->fetch_assoc()):
+        while($row = $result->fetch_assoc()):
     ?>
 
         <tr>
@@ -53,8 +50,8 @@ if(isset($_GET['sort']) && $_GET['sort'] == 'letter'){
             <td><?= htmlspecialchars($row['city_name']) ?></td>
             <td><?= htmlspecialchars($row['province']) ?></td>
             <td>
-                <a href="update_city.php=<?= $row['city_id']?>">Update</a>
-                <a href="delete_city.php=<?= $row['city_id']?>"onclick= "return confirm('Are you Sure')">Delete</a>
+                <a href="update_city.php?city_id=<?= $row['city_id']?>">Update</a>
+                <a href="delete_city.php?city_id=<?= $row['city_id']?>"onclick= "return confirm('Are you Sure')">Delete</a>
 
             </td>
         </tr>
@@ -63,7 +60,7 @@ if(isset($_GET['sort']) && $_GET['sort'] == 'letter'){
     ?>
     </table>
     <br>
-    <a href="read_city.php?sort=letter" class="btn">Sort By Alpabetical</a>
+    <a href="read_city.php?sort=letter" class="btn">Sort By Name</a>
     <a href="read_city.php"class="btn">Default View</a>
 </body>
 </html>
