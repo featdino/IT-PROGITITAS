@@ -3,6 +3,7 @@ body, html {
     padding: 0;
     width: 100%;
     overflow-x: hidden;
+    font-family: 'Montserrat';
 }
 
 
@@ -80,7 +81,7 @@ body, html {
     height: 218px;
 }
 
-#toggle:checked + .hamburger {
+#toggle:checked + .dropdown {
     color: #ccc;
 }
 
@@ -104,11 +105,18 @@ body, html {
 
 /* styling for official attraction pictures */
 
-.spotlight-pictures {
+.atr-spotlight-pictures {
     display: flex;
     width: 100vw;
     height: 350px;
     overflow: hidden;
+}
+
+.atr-spotlight-pictures img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; 
+    display: block;    
 }
 
 .main-pic {
@@ -128,13 +136,6 @@ body, html {
 .pic-2, .pic-3 {
     flex: 1; 
     height: 50%;
-}
-
-.spotlight-pictures img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover; 
-    display: block;    
 }
 
 .open-modal {
@@ -226,4 +227,126 @@ body, html {
     cursor: pointer;
     transform: scale(1.05);
     transition: all 0.3s ease-in-out;
+}
+
+
+
+
+
+/* styling for titlebar */
+
+.atr-titlebar {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding-left: 50px;
+    padding-right: 50px;
+}
+
+.nameplate {
+    display: flex;
+    flex-direction: column;
+}
+
+.nameplate h1, .nameplate p {
+    margin-bottom: 0px;
+    color: #1d1e2b;
+}
+
+.nameplate h1 {
+    font-size: 40px;
+}
+
+.nameplate p {
+    font-size: 20px;
+    margin-top: 3px;
+}
+
+.actions {
+    display: flex;
+    flex-direction: row;
+    padding-top: 20px;
+    align-items: center; 
+    gap: 5px;
+}
+
+.mark-visited {
+    border: none;
+    background-color: white;
+    color: #63645f;
+    cursor: pointer;  
+}
+
+.mark-visited i {
+    font-size: 42px;
+}
+
+.leave-rating {
+    padding: 10px 20px;
+    height: 40px;
+    border-radius: 25px;
+    border: none;
+    background-color: #3d405b;
+    font-family: 'Raleway';
+    font-weight: bold;
+    color: white;
+    cursor: pointer;
+}
+
+.leave-rating:hover, .mark-visited:hover {
+    transform: scale(1.05);
+    transition: all 0.3s ease-in-out;
+}
+
+
+
+
+
+/* styling for scorecard */
+
+.atr-scorecard {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    justify-items: center;
+    align-items: center;
+    margin-top: 40px;
+    margin-bottom: 40px;
+    margin-left: 100px;
+    margin-right: 100px;
+    height: 150px;
+    border: none;
+    border-radius: 24px;
+    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.15);
+}
+
+.local-rating, .gem-score, .tourist-visits {
+    text-align: center;
+    color: #2d5a27;
+}
+
+.local-rating h1, .gem-score h1, .tourist-visits h1{
+    font-size: 36px;
+    margin-bottom: 0px;
+}
+
+.local-rating h4, .gem-score h4, .tourist-visits h4{
+    font-size: 20px;
+    margin-top: 3px;
+}
+
+.local-rating h4, .tourist-visits h4 {
+    font-weight: 400;
+}
+
+
+
+
+
+/* styling for information */
+
+.atr-information {
+    display: flex;
+    flex-direction: column;
+    padding-left: 50px;
+    padding-right: 50px;
 }
