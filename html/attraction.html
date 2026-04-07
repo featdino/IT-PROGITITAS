@@ -59,26 +59,39 @@
             </div>
         </section>
 
-        <!-- refer nalang sa attraction.js for the images -->
         <div id = "gallery-modal" class = "modal">
             <div class = "modal-content">
                 <div class = "modal-header">
                     <div class = "title-block">
-                        <h2>Manila Ocean Park</h2> <!-- name of attraction dito -->
-                        <p>Official Gallery</p> <!-- no need palitan -->
+                        <h2>Manila Ocean Park</h2>
+                        <p>Official Gallery</p>
+
+                        <!-- replace yung 6 with kung ilang official images meron -->
+                        <p id = "slide-counter" class = "counter">1 / 6</p> 
                     </div>
-                <button class = "close-btn" onclick = "closeModal()">
-                    <i class = "fa fa-close"></i>
-                </button>
+                    <button class = "close-btn" onclick = "closeModal()">
+                        <i class = "fa fa-close"></i>
+                    </button>
                 </div>
-                <div id = "slides-container"></div>
-                <a class = "prev" onclick = "plusSlides(-1)">
-                    <i class = "fa fa-chevron-left"></i>
-                </a>
-                <a class = "next" onclick = "plusSlides(1)">
-                    <i class = "fa fa-chevron-right"></i>
-                </a>
-                <div id = "thumbnail-row" class = "row"></div>
+
+                <div class = "slideshow-container">
+                    <a class = "prev" onclick = "changeSlide(-1)">
+                        <i class = "fa fa-chevron-left"></i>
+                    </a>
+                    
+                    <div class = "slides-wrapper">  <!-- replace hrefs w official images from db -->
+                        <div class = "mySlides fade"><img src = "../images/mop-1.jpg"></div>
+                        <div class = "mySlides fade"><img src = "../images/mop-2.jpg"></div>
+                        <div class = "mySlides fade"><img src = "../images/mop-3.jpg"></div>
+                        <div class = "mySlides fade"><img src = "../images/mop-4.webp"></div>
+                        <div class = "mySlides fade"><img src = "../images/mop-5.avif"></div>
+                        <div class = "mySlides fade"><img src = "../images/mop-6.jpg"></div>
+                    </div>
+
+                    <a class = "next" onclick = "changeSlide(1)">
+                        <i class = "fa fa-chevron-right"></i>
+                    </a>
+                </div>
             </div>
         </div>
 
