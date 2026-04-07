@@ -2,7 +2,7 @@
 session_start(); 
 require 'db.php'; 
 
-
+//header("Location: admin.php");
 
 $read = $conn->query("SELECT u.user_id, u.name, u.username, u.password, u.email, c.city_name, c.province 
           FROM user u 
@@ -22,8 +22,8 @@ $read = $conn->query("SELECT u.user_id, u.name, u.username, u.password, u.email,
     <header>
         <nav>
             <ul>
-            <li><a href="create_user.php">New User</a><li>
-            <li><a href="read_user.php">All Users</a><li>
+            <li><a href="create_user.php">New User</a></li>
+            <li><a href="read_user.php">All Users</a></li>
             <li><a href="logout.php">Logout</a></li>
             </ul>
         </nav>
@@ -53,8 +53,8 @@ $read = $conn->query("SELECT u.user_id, u.name, u.username, u.password, u.email,
                     <td><?php echo htmlspecialchars($row['city_name']); ?></td>
                     <td><?php echo htmlspecialchars($row['province']); ?></td>
                     <td>
-                        <a href="update_user.php=<?= $row['user_id']?>">Update</a>
-                        <a href="delete_user.php=<?= $row['user_id']?>"onclick= "return confirm('Are you Sure')">Delete</a>
+                        <a href="update_user.php?user_id=<?= $row['user_id']?>">Update</a>
+                        <a href="delete_user.php?user_id=<?= $row['user_id']?>"onclick= "return confirm('Are you Sure')">Delete</a>
                     </td>
                 </tr>
         <?php 

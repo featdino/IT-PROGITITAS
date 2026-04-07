@@ -9,20 +9,24 @@ $cities_result = mysqli_query($conn, $cities_query);
 
 if(isset($_POST['submit'])){
     $name = trim($_POST['name']);
+    $username = trim($_POST['username']);
+    $password = trim($_POST['password']);
+    $email = trim($_POST['email']);
     $city_id = $_POST['city_id'];
 
-    if(!empty($name) && !empty($username) && !empty($password) && !empty($email) && !empty($city_id)){
-        $insert = "INSERT INTO user (name, username, password, email, city_id) VALUES ('$name','username', 'password', 'email', '$city_id')";
+    $insert = "INSERT INTO user (name, username, password, email, city_id) VALUES ('$name','$username', '$password', '$email', '$city_id')";
         
         if(mysqli_query($conn, $insert)){
             echo "<p>User created successfully!</p>";
+            header("Location: read_user.php");
+
         } else {
             echo "<p>Error: " . $insert . "<br>" . mysqli_error($conn) . "</p>";
         }
-    } else{
-        echo "<p>Please fill in all fields</p>";
-    }
+     mysqli_close($conn);
 }
+    
+
 ?>
 
 <!DOCTYPE html>
@@ -36,8 +40,8 @@ if(isset($_POST['submit'])){
     <header>
         <nav>
             <ul>
-            <li><a href="create_user.php">New User</a><li>
-            <li><a href="read_user.php">All Users</a><li>
+            <li><a href="create_user.php">New User</a></li>
+            <li><a href="read_user.php">All Users</a></li>
             <li><a href="logout.php">Logout</a></li>
             </ul>
         </nav>

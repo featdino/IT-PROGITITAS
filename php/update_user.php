@@ -6,31 +6,27 @@ require 'db.php';
 $cities_query = "SELECT city_id, city_name FROM city ORDER BY city_name";
 $cities_result = mysqli_query($conn, $cities_query);
 
-// Get user ID from URL
-$user_id = $_GET['id'];
-
-// Fetch user data
-$user_query = "SELECT user_id, name, city_id FROM user WHERE user_id = $user_id";
-$user_result = mysqli_query($conn, $user_query);
-$user = mysqli_fetch_assoc($user_result);
+$user_id = $_GET['user_id'];
+$read = $conn->query("SELECT name,username, password, email, city_id FROM user WHERE user_id = $user_id")->fetch_assoc();
 
 if(isset($_POST['submit'])){
     $name = trim($_POST['name']);
+    $username = trim($_POST['username']);
+    $password = trim($_POST['password']);
+    $email = trim($_POST['email']);
     $city_id = $_POST['city_id'];
-
-    if(!empty($name) && !empty($city_id)){
-        $update = "UPDATE user SET name='$name', city_id='$city_id' WHERE user_id=$user_id";
         
-        if(mysqli_query($conn, $update)){
-            echo "<p>User updated successfully!</p>";
-            header("Location: read_user.php");
-            exit();
-        } else {
-            echo "<p>Error: " . $update . "<br>" . mysqli_error($conn) . "</p>";
-        }
-    } else{
-        echo "<p>Please fill in all fields</p>";
+    $update= $conn->prepare("UPDATE user SET name=?, username=?, password=?, email=?, city_id= ? WHERE user_id=?");
+    $update->bind_param("ssssii", $name, $username, $password, $email, $city_id, $user_id);
+
+    if($update->execute()){
+        header("Location: read_user.php");
+        exit();
+    }else{
+        echo "Error updating record: " . $conn->error;
     }
+    $update->close();
+
 }
 ?>
 
@@ -45,8 +41,8 @@ if(isset($_POST['submit'])){
     <header>
         <nav>
             <ul>
-            <li><a href="create_user.php">New User</a><li>
-            <li><a href="read_user.php">All Users</a><li>
+            <li><a href="create_user.php">New User</a></li>
+            <li><a href="read_user.php">All Users</a></li>
             <li><a href="logout.php">Logout</a></li>
             </ul>
         </nav>
@@ -54,15 +50,20 @@ if(isset($_POST['submit'])){
     <h2>Update User</h2>
 
     <form method="post" action="">
-        <label for="name">Name</label>
-        <input type="text" id="name" name="name" value="<?php echo htmlspecialchars($user['name']); ?>" required><br>
-        
-        <label for="city_id">City</label>
-        <select id="city_id" name="city_id" required>
-            <option value="">-- Select City --</option>
+        <label>Name:</label>
+            <input name="name" required value="<?= htmlspecialchars($read['name'])?>"><br> 
+        <label>Username:</label>       
+            <input name="username" required value="<?= htmlspecialchars($read['username'])?>"><br> 
+        <label>Password:</label>       
+            <input name="password" required value="<?= htmlspecialchars($read['password'])?>"><br> 
+        <label>Email:</label>       
+            <input name="email" required value="<?= htmlspecialchars($read['email'])?>"><br> 
+        <label>City:</label>
+            <select name="city_id">
+            <option value="">-- Select City (Optional) --</option>
             <?php while($row = mysqli_fetch_assoc($cities_result)): ?>
-                <option value="<?php echo $row['city_id']; ?>" <?php echo ($row['city_id'] == $user['city_id']) ? 'selected' : ''; ?>>
-                    <?php echo $row['city_name']; ?>
+                <option value="<?= $row['city_id'] ?>" <?= ($row['city_id'] == $read['city_id']) ? 'selected' : '' ?>>
+                    <?= htmlspecialchars($row['city_name']) ?>
                 </option>
             <?php endwhile; ?>
         </select><br>
