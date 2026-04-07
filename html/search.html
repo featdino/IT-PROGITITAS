@@ -1,22 +1,49 @@
 <html>
     <head>
-        <title>Off-Radar | Discover Page</title>
+        <title>Off-Radar | Discover Page</title> 
+
+        <link rel = "icon" type = "image/png" href = "../images/logo-icon.png">
 
         <link rel = "stylesheet" href = "https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap">
         <link rel = "stylesheet" href = "https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&display=swap">
         <link rel = "stylesheet" href = "https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap">
+        
+        <link rel = "stylesheet" href = "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
         <link rel = "stylesheet" type = "text/css" href = "../css/search.css">
     </head>
 
     <body>
+        <header class = "header">
+            <div class = "logo">
+                <a href = "home.html"><img src = "../images/logo.png"></a>
+            </div>
+ 
+            <input id = "toggle" type = "checkbox">
+            <label class = "dropdown" for = "toggle">
+                <i class = "fa-solid fa-bars"></i>
+            </label>
+        
+            <div class = "menu">
+                <a class = "link" href = "home.html">Home</a>
+                <a class = "link" href = "search.html">Search Attractions</a>
+                <a class = "link" href = "about.html">About Us</a>
+                <a class = "link" href = "faqs.html">FAQs</a>
+            </div>
+        </header>
+
         <div class = "search-container">
-            <div class = "logo">off-radar.</div>
+            <div class = "logo-page"><img src = "../images/logo-icon.png"></div>
 
             <h1>What's on your itinerary?</h1>
 
-            <div class = "search-bar">
-                <input type = "text" placeholder = "">
-                <span class = "search-icon">🔍</span>
+            <div class = "search-bar-container">
+                <form id = "search-form" class = "search-form">
+                    <input type = "search" class = "search-bar">
+                    <button type = "submit" class = "search-button">
+                        <i class = "fa-solid fa-magnifying-glass"></i>
+                    </button>
+                </form>
             </div>
 
             <p class = "prompt">Not sure what you're looking for? Have a look under these categories:</p>
