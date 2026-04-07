@@ -3,7 +3,14 @@
 session_start(); 
 require 'db.php'; 
 
+<<<<<<< HEAD
 //header("Location: admin.php"); // assuming this is the default page ng admin
+=======
+if($_SESSION['role'] != 'admin') {
+    header("Location: login.php");
+    exit();
+}
+>>>>>>> bb4d477a2c5cff27496f662327de1fc5bf7b2d85
 
 if (isset($_POST['submit'])) {
     
@@ -14,8 +21,13 @@ if (isset($_POST['submit'])) {
     $avg_rating = $_POST['avg_rating'];
     $img_path = $_POST['img_path'];
 
+<<<<<<< HEAD
     $insert = "INSERT INTO attraction (name, description, street_address ,total_visits, avg_rating, img_path) 
     VALUES ('$name', '$description', '$street_address', '$total_visits', '$avg_rating', '$img_path')";
+=======
+    $insert = "INSERT INTO attraction (attraction_id, name, description, street_address, total_visits, avg_rating) 
+    VALUES ('$attraction_id', '$name', '$description', '$street_address', '$total_visits', '$avg_rating')";
+>>>>>>> bb4d477a2c5cff27496f662327de1fc5bf7b2d85
 
     if (mysqli_query($conn, $insert)) {
         echo "<p>Entry inserted successfully. </p>";

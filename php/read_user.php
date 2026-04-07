@@ -2,7 +2,10 @@
 session_start(); 
 require 'db.php'; 
 
-//header("Location: admin.php");
+if($_SESSION['role'] != 'admin') {
+    header("Location: login.php");
+    exit();
+}
 
 $read = $conn->query("SELECT u.user_id, u.name, u.username, u.password, u.email, c.city_name, c.province 
           FROM user u 

@@ -3,6 +3,11 @@
 session_start(); 
 require 'db.php'; 
 
+if($_SESSION['role'] != 'admin') {
+    header("Location: login.php");
+    exit();
+}
+
 // Fetch all cities for dropdown
 $cities_query = "SELECT city_id, city_name FROM city ORDER BY city_name";
 $cities_result = mysqli_query($conn, $cities_query);
@@ -10,11 +15,12 @@ $cities_result = mysqli_query($conn, $cities_query);
 if(isset($_POST['submit'])){
     $name = trim($_POST['name']);
     $username = trim($_POST['username']);
-    $password = trim($_POST['password']);
+    $password = password_hash($_POST['password'], PASSWORD_DEFAULT); // Hash the password
     $email = trim($_POST['email']);
     $city_id = $_POST['city_id'];
 
-    $insert = "INSERT INTO user (name, username, password, email, city_id) VALUES ('$name','$username', '$password', '$email', '$city_id')";
+    if(!empty($name) && !empty($username) && !empty($password) && !empty($email) && !empty($city_id)){
+        $insert = "INSERT INTO user (name, username, password, email, city_id) VALUES ('$name','$username', '$password', '$email', '$city_id')";
         
         if(mysqli_query($conn, $insert)){
             echo "<p>User created successfully!</p>";
@@ -24,6 +30,7 @@ if(isset($_POST['submit'])){
             echo "<p>Error: " . $insert . "<br>" . mysqli_error($conn) . "</p>";
         }
      mysqli_close($conn);
+}
 }
     
 

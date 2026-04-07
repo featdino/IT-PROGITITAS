@@ -2,12 +2,23 @@
 
 session_start(); 
 require 'db.php'; 
-//header("Location: admin.php");
+
+if($_SESSION['role'] != 'admin') {
+    header("Location: login.php");
+    exit();
+}
+
+$attraction_id = $_SESSION['attraction_id'];
+$name = $_POST['name'];
+$description = $_POST['description'];
+$street_address = $_POST['street_address'];
+$total_visits = $_POST['total_vists'];
+$avg_rating = $_POST['avg_rating'];
 
 $read = $conn->query("SELECT * FROM attraction");
 $total_attractions = $read->num_rows;
 
-    if(isset($_GET['sort']) && $_GET['sort'] == 'desc'){
+    if(isset($_GET['sort']) && $_GET['sort'] == 'asc'){
         $result = $conn->query("SELECT * FROM attraction ORDER BY name ASC");
     }else{
         $result = $conn->query("SELECT * FROM attraction");
@@ -63,7 +74,7 @@ $total_attractions = $read->num_rows;
         ?>
         </table>
         <br>
-        <a href="read_attraction.php?sort=desc" class="btn">Sort By Name</a>
+        <a href="read_attraction.php?sort=asc" class="btn">Sort By Name</a>
         <a href="read_attraction.php" class="btn">Default View</a>
 
 

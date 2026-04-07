@@ -3,6 +3,10 @@
 session_start(); 
 require 'db.php'; 
 
+if($_SESSION['role'] != 'admin') {
+    header("Location: login.php");
+    exit();
+}
 
     $attraction_id = $_GET['attraction_id'];
     $read = $conn->query("SELECT name, description, street_address, total_visits, avg_rating, img_path FROM attraction
