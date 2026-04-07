@@ -265,7 +265,6 @@ body, html {
 .actions {
     display: flex;
     flex-direction: row;
-    padding-top: 20px;
     align-items: center; 
     gap: 5px;
 }
