@@ -15,7 +15,7 @@ if (isset($_POST['submit'])) {
     $img_path = $_POST['img_path'];
 
     $insert = "INSERT INTO attraction (name, description, street_address ,total_visits, avg_rating, img_path) 
-    VALUES ('$name', '$description', '$street_address', '$total_visits', '$avg_rating', 'img_path')";
+    VALUES ('$name', '$description', '$street_address', '$total_visits', '$avg_rating', '$img_path')";
 
     if (mysqli_query($conn, $insert)) {
         echo "<p>Entry inserted successfully. </p>";
@@ -58,9 +58,9 @@ if (isset($_POST['submit'])) {
     <label for="total_visits">Total Visits:</label><br>
         <input type="text" name="total_visits" id="total_visits" required><br><br>
     <label for="avg_rating">Average Rating:</label><br>
-        <input type="text" name="avg_rating" id="avg_rating" required><br><br>
+        <input type="number" name="avg_rating" id="avg_rating"  required min="0" max="5"><br><br>
     <label for="img_path">Image Path:</label><br>
-        <input type="text" name="img_path" id="img_path" required><br><br>
+        <input type="text" name="img_path" id="img_path" required ><br><br>
 
     <input type="submit" name="submit" value="Submit">
     </form>

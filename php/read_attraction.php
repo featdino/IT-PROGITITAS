@@ -40,6 +40,7 @@ $total_attractions = $read->num_rows;
                 <th>Street Address</th>
                 <th>Total Visits</th>
                 <th>Average Rating</th>
+                <th>Image Path</th>
             </tr>
             <?php 
                 while ($row = $result->fetch_assoc()):
@@ -51,9 +52,10 @@ $total_attractions = $read->num_rows;
                 <td><?= htmlspecialchars($row['street_address']) ?></td>
                 <td><?= htmlspecialchars($row['total_visits']) ?></td>
                 <td><?= htmlspecialchars($row['avg_rating']) ?></td>
+                <td><?= htmlspecialchars($row['img_path']) ?></td>
                 <td>
-                    <a href="update_attraction.php?id=<?= $row['attraction_id']?>">Update</a>
-                    <a href="delete_attraction.php?id=<?= $row['attraction_id']?>" onclick="return confirm('Are you sure?')">Delete</a>
+                    <a href="update_attraction.php?attraction_id=<?= $row['attraction_id']?>">Update</a>
+                    <a href="delete_attraction.php?attraction_id=<?= $row['attraction_id']?>" onclick="return confirm('Are you sure?')">Delete</a>
                 </td>
             </tr>
         <?php 
