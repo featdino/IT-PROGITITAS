@@ -2,26 +2,24 @@
 
 session_start(); 
 require 'db.php'; 
-if (!isset($_SESSION['attraction_id'])) { 
-header("Location: admin.php"); // assuming this is the default page ng admin
-exit(); 
-}
+
+//header("Location: admin.php"); // assuming this is the default page ng admin
 
 if (isset($_POST['submit'])) {
     
-    $attraction_id = $_SESSION['attraction_id'];
     $name = $_POST['name'];
     $description = $_POST['description'];
     $street_address = $_POST['street_address'];
     $total_visits = $_POST['total_visits'];
     $avg_rating = $_POST['avg_rating'];
+    $img_path = $_POST['img_path'];
 
-    $insert = "INSERT INTO attraction (attraction_id, name, description, street_address ,total_visits, avg_rating) 
-    VALUES ('$attraction_id', '$name', '$description', '$street_address', '$total_visits', '$avg_rating')";
+    $insert = "INSERT INTO attraction (name, description, street_address ,total_visits, avg_rating, img_path) 
+    VALUES ('$name', '$description', '$street_address', '$total_visits', '$avg_rating', 'img_path')";
 
     if (mysqli_query($conn, $insert)) {
         echo "<p>Entry inserted successfully. </p>";
-        header("Location: read.php");
+        header("Location: read_attraction.php");
     }else{
          echo "<p>Error: " . $insert . "<br>" . mysqli_error($conn) . "</p>";
     }
@@ -43,7 +41,7 @@ if (isset($_POST['submit'])) {
         <nav>
             <ul>
             <li><a href="create_attraction.php">Create Attractions</a></li>
-            <li><a href="read_attraction.php">View Attractions</a><li>
+            <li><a href="read_attraction.php">View Attractions</a></li>
             <li><a href="logout.php">Logout</a></li>
             </ul>
         </nav>
@@ -51,16 +49,18 @@ if (isset($_POST['submit'])) {
 
        <h2>New Attractions</h2>
     <form method="POST" action="">    
-    <label for="name">Name</label><br>
+    <label for="name">Name:</label><br>
         <input type="text" name="name" id="name" required><br><br>
-    <label for="description">Description</label><br>
+    <label for="description">Description:</label><br>
         <input type="text" name="description" id="description" required><br><br>
-    <label for="street_address">Street Address</label><br>
+    <label for="street_address">Street Address:</label><br>
         <input type="text" name="street_address" id="street_address" required><br><br>
-    <label for="total_visits">Total Visits</label><br>
+    <label for="total_visits">Total Visits:</label><br>
         <input type="text" name="total_visits" id="total_visits" required><br><br>
-    <label for="avg_rating">Average Rating</label><br>
+    <label for="avg_rating">Average Rating:</label><br>
         <input type="text" name="avg_rating" id="avg_rating" required><br><br>
+    <label for="img_path">Image Path:</label><br>
+        <input type="text" name="img_path" id="img_path" required><br><br>
 
     <input type="submit" name="submit" value="Submit">
     </form>
