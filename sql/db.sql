@@ -2,8 +2,8 @@
 -- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Apr 07, 2026 at 10:31 AM
+-- Host: 127.0.0.1:3308
+-- Generation Time: Apr 07, 2026 at 12:03 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `project title off-radar`
+-- Database: `off-radar`
 --
 
 -- --------------------------------------------------------
