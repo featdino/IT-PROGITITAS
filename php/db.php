@@ -10,8 +10,4 @@ $conn = mysqli_connect($host, $username, $password, $dbname);
 if (!$conn) {
     die("Connection failed: " . mysqli_connect_error());
 }
-// padelete nalang else statement later on, inadd ko lang pang test kung gumagana yung connection
-else {
-    echo "Connected successfully to the database.";
-}
 ?>
