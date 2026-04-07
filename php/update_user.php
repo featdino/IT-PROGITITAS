@@ -10,7 +10,7 @@ $cities_result = mysqli_query($conn, $cities_query);
 $user_id = $_GET['id'];
 
 // Fetch user data
-$user_query = "SELECT user_id, name, city_id FROM users WHERE user_id = $user_id";
+$user_query = "SELECT user_id, name, city_id FROM user WHERE user_id = $user_id";
 $user_result = mysqli_query($conn, $user_query);
 $user = mysqli_fetch_assoc($user_result);
 
@@ -19,11 +19,11 @@ if(isset($_POST['submit'])){
     $city_id = $_POST['city_id'];
 
     if(!empty($name) && !empty($city_id)){
-        $update = "UPDATE users SET name='$name', city_id='$city_id' WHERE user_id=$user_id";
+        $update = "UPDATE user SET name='$name', city_id='$city_id' WHERE user_id=$user_id";
         
         if(mysqli_query($conn, $update)){
             echo "<p>User updated successfully!</p>";
-            header("Location: read_users.php");
+            header("Location: read_user.php");
             exit();
         } else {
             echo "<p>Error: " . $update . "<br>" . mysqli_error($conn) . "</p>";
@@ -46,7 +46,7 @@ if(isset($_POST['submit'])){
         <nav>
             <ul>
             <li><a href="create_user.php">New User</a><li>
-            <li><a href="read_users.php">All Users</a><li>
+            <li><a href="read_user.php">All Users</a><li>
             <li><a href="logout.php">Logout</a></li>
             </ul>
         </nav>

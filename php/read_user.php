@@ -3,13 +3,12 @@ session_start();
 require 'db.php'; 
 
 
-// Fetch all users with their city information using JOIN
-$query = "SELECT u.user_id, u.name, c.city_name, c.province 
-          FROM users u 
-          LEFT JOIN city c ON u.city_id = c.city_id 
-          ORDER BY u.user_id";
 
-$result = mysqli_query($conn, $query);
+$read = $conn->query("SELECT u.user_id, u.name, u.username, u.password, u.email, c.city_name, c.province 
+          FROM user u 
+          LEFT JOIN city c ON u.city_id = c.city_id 
+          ORDER BY u.user_id");
+
 ?>
 
 <!DOCTYPE html>
@@ -24,7 +23,7 @@ $result = mysqli_query($conn, $query);
         <nav>
             <ul>
             <li><a href="create_user.php">New User</a><li>
-            <li><a href="read_users.php">All Users</a><li>
+            <li><a href="read_user.php">All Users</a><li>
             <li><a href="logout.php">Logout</a></li>
             </ul>
         </nav>
@@ -35,18 +34,28 @@ $result = mysqli_query($conn, $query);
             <tr>
                 <th>User ID</th>
                 <th>Name</th>
+                <th>Username</th>
+                <th>Password</th>
+                <th>Email</th>
                 <th>City</th>
                 <th>Province</th>
             </tr>
 
             <?php 
-                while ($row = $result->fetch_assoc()):
+                while ($row = $read->fetch_assoc()):
             ?>
                 <tr>
                     <td><?php echo $row['user_id']; ?></td>
                     <td><?php echo htmlspecialchars($row['name']); ?></td>
+                    <td><?php echo htmlspecialchars($row['username']); ?></td>
+                    <td><?php echo htmlspecialchars($row['password']); ?></td>
+                    <td><?php echo htmlspecialchars($row['email']); ?></td>
                     <td><?php echo htmlspecialchars($row['city_name']); ?></td>
                     <td><?php echo htmlspecialchars($row['province']); ?></td>
+                    <td>
+                        <a href="update_user.php=<?= $row['user_id']?>">Update</a>
+                        <a href="delete_user.php=<?= $row['user_id']?>"onclick= "return confirm('Are you Sure')">Delete</a>
+                    </td>
                 </tr>
         <?php 
             endwhile;
