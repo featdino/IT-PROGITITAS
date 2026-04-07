@@ -14,12 +14,10 @@
         <link rel = "stylesheet" href = "https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&display=swap">
         <link rel = "stylesheet" href = "https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap">
         
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+        <link rel = "stylesheet" href = "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
         <link rel = "stylesheet" type = "text/css" href = "../css/attraction.css">
     </head>
-
-    
 
     <body>
         <header class = "header">
@@ -27,21 +25,106 @@
                 <a href = ""><img src = "../images/logo.png"></a>
             </div>
  
-            <nav id = "navbar" class = "navigation">
-                <input id = "toggle" type = "checkbox">
-                
-                <label class = "dropdown" for = "toggle">
-                    <i class = "fa-solid fa-bars"></i>
-                </label>
-            
-                <div class = "menu"> <!-- supply links sa hrefs dito for navbar -->
-                    <a class = "link" href = "">Home</a>
-                    <a class = "link" href = "">Search Attractions</a>
-                    <a class = "link" href = "">About Us</a>
-                    <a class = "link" href = "">FAQs</a>
-                </div>
-            </nav>
+            <input id = "toggle" type = "checkbox">
+            <label class = "dropdown" for = "toggle">
+                <i class = "fa-solid fa-bars"></i>
+            </label>
+        
+            <div class = "menu"> <!-- supply links sa hrefs dito for navbar -->
+                <a class = "link" href = "">Home</a>
+                <a class = "link" href = "">Search Attractions</a>
+                <a class = "link" href = "">About Us</a>
+                <a class = "link" href = "">FAQs</a>
+            </div>
         </header>
 
+        <!-- image srcs in this section to be replaced by first three ofc pics from db for each attraction -->
+        <section class = "atr-spotlight-pictures">
+            <div class = "main-pic">
+                <img src = "../images/mop-1.jpg">
+                <button id = "modal-btn" class = "open-modal">
+                    <i class = "fas fa-image"></i>
+                </button>
+            </div>
+            <div class = "secondary-pics">
+                <div class = "pic-2">
+                    <img src = "../images/mop-2.jpg">
+                </div>
+                <div class = "pic-3">
+                    <img src = "../images/mop-3.jpg">
+                </div>
+            </div>
+        </section>
+
+        <!-- refer nalang sa attraction.js for the images -->
+        <div id = "gallery-modal" class = "modal">
+            <div class = "modal-content">
+                <div class = "modal-header">
+                    <div class = "title-block">
+                        <h2>Manila Ocean Park</h2> <!-- name of attraction dito -->
+                        <p>Official Gallery</p> <!-- no need palitan -->
+                    </div>
+                <button class = "close-btn" onclick = "closeModal()">
+                    <i class = "fa fa-close"></i>
+                </button>
+                </div>
+                <div id = "slides-container"></div>
+                <a class = "prev" onclick = "plusSlides(-1)">
+                    <i class = "fa fa-chevron-left"></i>
+                </a>
+                <a class = "next" onclick = "plusSlides(1)">
+                    <i class = "fa fa-chevron-right"></i>
+                </a>
+                <div id = "thumbnail-row" class = "row"></div>
+            </div>
+        </div>
+
+        <section class = "atr-titlebar">
+            <div class = "nameplate">
+                <h1>Manila Ocean Park</h1> <!-- name of attraction ulit -->
+                <p>Ermita, Manila</p> <!-- street address of attraction -->
+            </div>
+            <div class = "actions">
+                <button class = "mark-visited"></button>
+                <button class = "leave-rating"></button>
+            </div>
+        </section>
+
+        <section class = "atr-scorecard">
+            <div class = "local-rating">
+                <h1>4.5</h1>
+                <h4>Local Rating</h4> <!-- avg rating -->
+            </div>
+            <div class = "gem-score">
+                <h1>1.8</h1>
+                <h4>Gem Score</h4> <!-- refer sa gdocs kung paano icalculate yung gem score -->
+            </div>
+            <div class = "tourist-visits">
+                <h1>1M+</h1>
+                <h4>Tourist Visits</h4> <!-- accumulated visists -->
+            </div>
+        </section>
+
+        <section class = "atr-information">
+            <div class = "description">
+                <h3>ABOUT</h3>
+                <p>Manila Ocean Park is a prominent marine-themed park and educational facility 
+                    located behind the Quirino Grandstand in Ermita, Manila. It serves as a major 
+                    tourist destination that combines entertainment with marine life conservation 
+                    and education.
+                </p> <!-- replace w description -->
+            </div>
+            <div class = "category">
+                <h3>CATEGORY</h3>
+                <p>Theme Parks, Nature Reserves, Parks & Gardens, Museums & Galleries</p>
+                <!-- replace ^ w array of strings ng all applicable categories if multiple -->
+            </div>
+        </section>
+
+        <section class = "atr-visitor-gallery">
+
+        </section>
+
+        <script src = "../javascript/attraction.js"></script>
     </body>
 </html>
