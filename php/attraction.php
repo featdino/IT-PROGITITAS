@@ -1,0 +1,1 @@
+<!-- this is the page for each attraction's information and views -->

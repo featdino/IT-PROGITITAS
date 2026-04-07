@@ -2,8 +2,8 @@
 -- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1:3308
--- Generation Time: Apr 07, 2026 at 12:03 PM
+-- Host: 127.0.0.1
+-- Generation Time: Apr 07, 2026 at 12:53 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -181,66 +181,68 @@ CREATE TABLE `user` (
   `user_id` int(11) NOT NULL,
   `name` varchar(100) NOT NULL,
   `username` varchar(25) NOT NULL,
-  `password` varchar(20) NOT NULL,
+  `password` varchar(255) NOT NULL,
   `email` varchar(25) NOT NULL,
-  `city_id` int(11) NOT NULL
+  `city_id` int(11) NOT NULL,
+  `role` enum('admin','user') NOT NULL DEFAULT 'user'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `user`
 --
 
-INSERT INTO `user` (`user_id`, `name`, `username`, `password`, `email`, `city_id`) VALUES
-(1, 'Juan Dela Cruz', 'juandelacruz', 'Juan123!', 'juandelacruz@email.com', 1),
-(2, 'Maria Santos', 'mariasantos', 'Maria123!', 'mariasantos@email.com', 1),
-(3, 'Jose Rizal', 'joserizal', 'Rizal123!', 'joserizal@email.com', 1),
-(4, 'Andres Bonifacio', 'andresbonifacio', 'Bonifacio123!', 'andresbonifacio@email.com', 1),
-(5, 'Antonio Luna', 'antonioluna', 'Luna123!', 'antonioluna@email.com', 2),
-(6, 'Gabriela Silang', 'gabrielasilang', 'Silang123!', 'gabrielasilang@email.com', 2),
-(7, 'Emilio Aguinaldo', 'emilioaguinaldo', 'Aguinaldo123!', 'emilioaguinaldo@email.com', 2),
-(8, 'Manny Pacquiao', 'mannypacquiao', 'Pacquiao123!', 'mannypacquiao@email.com', 3),
-(9, 'Lea Salonga', 'leasalonga', 'Salonga123!', 'leasalonga@email.com', 3),
-(10, 'Catriona Gray', 'catrionagray', 'Gray123!', 'catrionagray@email.com', 3),
-(11, 'Grace Poe', 'gracepoe', 'Poe123!', 'gracepoe@email.com', 11),
-(12, 'Bong Go', 'bonggo', 'Go123!', 'bonggo@email.com', 11),
-(13, 'Robin Padilla', 'robinpadilla', 'Padilla123!', 'robinpadilla@email.com', 11),
-(14, 'Lapu-Lapu', 'lapulapu', 'Lapu123!', 'lapulapu@email.com', 36),
-(15, 'Gwen Garcia', 'gwengarcia', 'Garcia123!', 'gwengarcia@email.com', 36),
-(16, 'Michael Rama', 'michaelrama', 'Rama123!', 'michaelrama@email.com', 36),
-(17, 'Rodrigo Duterte', 'rodrigoduterte', 'Duterte123!', 'rodrigoduterte@email.com', 47),
-(18, 'Sara Duterte', 'saraduterte', 'Sara123!', 'saraduterte@email.com', 47),
-(19, 'Paolo Duterte', 'paoloduterte', 'Paolo123!', 'paoloduterte@email.com', 47),
-(20, 'Katherine Bernardo', 'katherinebernardo', 'Kath123!', 'katherinebernardo@email.c', 5),
-(21, 'Alden Richards', 'aldenrichards', 'Alden123!', 'aldenrichards@email.com', 5),
-(22, 'Maine Mendoza', 'mainemendoza', 'Maine123!', 'mainemendoza@email.com', 8),
-(23, 'Vice Ganda', 'viceganda', 'Vice123!', 'viceganda@email.com', 2),
-(24, 'Anne Curtis', 'annecurtis', 'Anne123!', 'annecurtis@email.com', 3),
-(25, 'Marlon Villar', 'marlonvillar', 'Marlon123!', 'marlonvillar@email.com', 15),
-(26, 'Cynthia Villar', 'cynthiavillar', 'Cynthia123!', 'cynthiavillar@email.com', 15),
-(27, 'Chiz Escudero', 'chizescudero', 'Chiz123!', 'chizescudero@email.com', 20),
-(28, 'Pia Cayetano', 'piacayetano', 'Pia123!', 'piacayetano@email.com', 4),
-(29, 'Alan Cayetano', 'alancayetano', 'Alan123!', 'alancayetano@email.com', 4),
-(30, 'Lito Lapid', 'litolapid', 'Lapid123!', 'litolapid@email.com', 19),
-(31, 'Bato dela Rosa', 'batodelarosa', 'Bato123!', 'batodelarosa@email.com', 11),
-(32, 'Christopher Go', 'christophergo', 'Chris123!', 'christophergo@email.com', 11),
-(33, 'Isko Moreno', 'iskomoreno', 'Isko123!', 'iskomoreno@email.com', 1),
-(34, 'Vico Sotto', 'vicosotto', 'Vico123!', 'vicosotto@email.com', 5),
-(35, 'Joy Belmonte', 'joybelmonte', 'Joy123!', 'joybelmonte@email.com', 2),
-(36, 'Honey Lacuna', 'honeylacuna', 'Honey123!', 'honeylacuna@email.com', 1),
-(37, 'Abby Binay', 'abbybinay', 'Abby123!', 'abbybinay@email.com', 3),
-(38, 'Inday Sara', 'indaysara', 'Inday123!', 'indaysara@email.com', 47),
-(39, 'Sebastian Duterte', 'sebastianduterte', 'Baste123!', 'sebastianduterte@email.co', 47),
-(40, 'Ramon Ang', 'ramonang', 'Ang123!', 'ramonang@email.com', 5),
-(41, 'Tony Tan Caktiong', 'tonytan', 'Tony123!', 'tonytan@email.com', 37),
-(42, 'Henry Sy Jr.', 'henrysyjr', 'Henry123!', 'henrysyjr@email.com', 3),
-(43, 'John Gokongwei', 'johngokongwei', 'John123!', 'johngokongwei@email.com', 2),
-(44, 'Lucio Tan', 'luciotan', 'Lucio123!', 'luciotan@email.com', 1),
-(45, 'Andrew Tan', 'andrewtan', 'Andrew123!', 'andrewtan@email.com', 3),
-(46, 'Manuel Pangilinan', 'manuelpangilinan', 'MVP123!', 'manuelpangilinan@email.co', 2),
-(47, 'Jaime Zobel', 'jaimezobel', 'Jaime123!', 'jaimezobel@email.com', 3),
-(48, 'Enrique Razon', 'enriquerazon', 'Razon123!', 'enriquerazon@email.com', 1),
-(49, 'Dennis Uy', 'dennisuy', 'Uy123!', 'dennisuy@email.com', 47),
-(50, 'Manny Villar', 'mannyvillar', 'Villar123!', 'mannyvillar@email.com', 15);
+INSERT INTO `user` (`user_id`, `name`, `username`, `password`, `email`, `city_id`, `role`) VALUES
+(1, 'Juan Dela Cruz', 'juandelacruz', 'Juan123!', 'juandelacruz@email.com', 1, 'user'),
+(2, 'Maria Santos', 'mariasantos', 'Maria123!', 'mariasantos@email.com', 1, 'user'),
+(3, 'Jose Rizal', 'joserizal', 'Rizal123!', 'joserizal@email.com', 1, 'user'),
+(4, 'Andres Bonifacio', 'andresbonifacio', 'Bonifacio123!', 'andresbonifacio@email.com', 1, 'user'),
+(5, 'Antonio Luna', 'antonioluna', 'Luna123!', 'antonioluna@email.com', 2, 'user'),
+(6, 'Gabriela Silang', 'gabrielasilang', 'Silang123!', 'gabrielasilang@email.com', 2, 'user'),
+(7, 'Emilio Aguinaldo', 'emilioaguinaldo', 'Aguinaldo123!', 'emilioaguinaldo@email.com', 2, 'user'),
+(8, 'Manny Pacquiao', 'mannypacquiao', 'Pacquiao123!', 'mannypacquiao@email.com', 3, 'user'),
+(9, 'Lea Salonga', 'leasalonga', 'Salonga123!', 'leasalonga@email.com', 3, 'user'),
+(10, 'Catriona Gray', 'catrionagray', 'Gray123!', 'catrionagray@email.com', 3, 'user'),
+(11, 'Grace Poe', 'gracepoe', 'Poe123!', 'gracepoe@email.com', 11, 'user'),
+(12, 'Bong Go', 'bonggo', 'Go123!', 'bonggo@email.com', 11, 'user'),
+(13, 'Robin Padilla', 'robinpadilla', 'Padilla123!', 'robinpadilla@email.com', 11, 'user'),
+(14, 'Lapu-Lapu', 'lapulapu', 'Lapu123!', 'lapulapu@email.com', 36, 'user'),
+(15, 'Gwen Garcia', 'gwengarcia', 'Garcia123!', 'gwengarcia@email.com', 36, 'user'),
+(16, 'Michael Rama', 'michaelrama', 'Rama123!', 'michaelrama@email.com', 36, 'user'),
+(17, 'Rodrigo Duterte', 'rodrigoduterte', 'Duterte123!', 'rodrigoduterte@email.com', 47, 'user'),
+(18, 'Sara Duterte', 'saraduterte', 'Sara123!', 'saraduterte@email.com', 47, 'user'),
+(19, 'Paolo Duterte', 'paoloduterte', 'Paolo123!', 'paoloduterte@email.com', 47, 'user'),
+(20, 'Katherine Bernardo', 'katherinebernardo', 'Kath123!', 'katherinebernardo@email.c', 5, 'user'),
+(21, 'Alden Richards', 'aldenrichards', 'Alden123!', 'aldenrichards@email.com', 5, 'user'),
+(22, 'Maine Mendoza', 'mainemendoza', 'Maine123!', 'mainemendoza@email.com', 8, 'user'),
+(23, 'Vice Ganda', 'viceganda', 'Vice123!', 'viceganda@email.com', 2, 'user'),
+(24, 'Anne Curtis', 'annecurtis', 'Anne123!', 'annecurtis@email.com', 3, 'user'),
+(25, 'Marlon Villar', 'marlonvillar', 'Marlon123!', 'marlonvillar@email.com', 15, 'user'),
+(26, 'Cynthia Villar', 'cynthiavillar', 'Cynthia123!', 'cynthiavillar@email.com', 15, 'user'),
+(27, 'Chiz Escudero', 'chizescudero', 'Chiz123!', 'chizescudero@email.com', 20, 'user'),
+(28, 'Pia Cayetano', 'piacayetano', 'Pia123!', 'piacayetano@email.com', 4, 'user'),
+(29, 'Alan Cayetano', 'alancayetano', 'Alan123!', 'alancayetano@email.com', 4, 'user'),
+(30, 'Lito Lapid', 'litolapid', 'Lapid123!', 'litolapid@email.com', 19, 'user'),
+(31, 'Bato dela Rosa', 'batodelarosa', 'Bato123!', 'batodelarosa@email.com', 11, 'user'),
+(32, 'Christopher Go', 'christophergo', 'Chris123!', 'christophergo@email.com', 11, 'user'),
+(33, 'Isko Moreno', 'iskomoreno', 'Isko123!', 'iskomoreno@email.com', 1, 'user'),
+(34, 'Vico Sotto', 'vicosotto', 'Vico123!', 'vicosotto@email.com', 5, 'user'),
+(35, 'Joy Belmonte', 'joybelmonte', 'Joy123!', 'joybelmonte@email.com', 2, 'user'),
+(36, 'Honey Lacuna', 'honeylacuna', 'Honey123!', 'honeylacuna@email.com', 1, 'user'),
+(37, 'Abby Binay', 'abbybinay', 'Abby123!', 'abbybinay@email.com', 3, 'user'),
+(38, 'Inday Sara', 'indaysara', 'Inday123!', 'indaysara@email.com', 47, 'user'),
+(39, 'Sebastian Duterte', 'sebastianduterte', 'Baste123!', 'sebastianduterte@email.co', 47, 'user'),
+(40, 'Ramon Ang', 'ramonang', 'Ang123!', 'ramonang@email.com', 5, 'user'),
+(41, 'Tony Tan Caktiong', 'tonytan', 'Tony123!', 'tonytan@email.com', 37, 'user'),
+(42, 'Henry Sy Jr.', 'henrysyjr', 'Henry123!', 'henrysyjr@email.com', 3, 'user'),
+(43, 'John Gokongwei', 'johngokongwei', 'John123!', 'johngokongwei@email.com', 2, 'user'),
+(44, 'Lucio Tan', 'luciotan', 'Lucio123!', 'luciotan@email.com', 1, 'user'),
+(45, 'Andrew Tan', 'andrewtan', 'Andrew123!', 'andrewtan@email.com', 3, 'user'),
+(46, 'Manuel Pangilinan', 'manuelpangilinan', 'MVP123!', 'manuelpangilinan@email.co', 2, 'user'),
+(47, 'Jaime Zobel', 'jaimezobel', 'Jaime123!', 'jaimezobel@email.com', 3, 'user'),
+(48, 'Enrique Razon', 'enriquerazon', 'Razon123!', 'enriquerazon@email.com', 1, 'user'),
+(49, 'Dennis Uy', 'dennisuy', 'Uy123!', 'dennisuy@email.com', 47, 'user'),
+(50, 'Manny Villar', 'mannyvillar', 'Villar123!', 'mannyvillar@email.com', 15, 'user'),
+(51, 'admin', 'admin', 'admin', 'admin@gmail.com', 1, 'admin');
 
 -- --------------------------------------------------------
 
@@ -483,7 +485,7 @@ ALTER TABLE `city`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=51;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=53;
 
 --
 -- Constraints for dumped tables
