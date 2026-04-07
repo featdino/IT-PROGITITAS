@@ -2,7 +2,7 @@
 
 <?php
 $host     = 'localhost:3306';
-$dbname   = 'project title off-radar';
+$dbname   = 'off-radar';
 $username = 'root';
 $password = '';
 
