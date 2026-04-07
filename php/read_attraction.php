@@ -8,12 +8,6 @@ if($_SESSION['role'] != 'admin') {
     exit();
 }
 
-$attraction_id = $_SESSION['attraction_id'];
-$name = $_POST['name'];
-$description = $_POST['description'];
-$street_address = $_POST['street_address'];
-$total_visits = $_POST['total_vists'];
-$avg_rating = $_POST['avg_rating'];
 
 $read = $conn->query("SELECT * FROM attraction");
 $total_attractions = $read->num_rows;
@@ -51,7 +45,6 @@ $total_attractions = $read->num_rows;
                 <th>Street Address</th>
                 <th>Total Visits</th>
                 <th>Average Rating</th>
-                <th>Image Path</th>
             </tr>
             <?php 
                 while ($row = $result->fetch_assoc()):
@@ -63,7 +56,6 @@ $total_attractions = $read->num_rows;
                 <td><?= htmlspecialchars($row['street_address']) ?></td>
                 <td><?= htmlspecialchars($row['total_visits']) ?></td>
                 <td><?= htmlspecialchars($row['avg_rating']) ?></td>
-                <td><?= htmlspecialchars($row['img_path']) ?></td>
                 <td>
                     <a href="update_attraction.php?attraction_id=<?= $row['attraction_id']?>">Update</a>
                     <a href="delete_attraction.php?attraction_id=<?= $row['attraction_id']?>" onclick="return confirm('Are you sure?')">Delete</a>

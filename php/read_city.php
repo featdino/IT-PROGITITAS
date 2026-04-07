@@ -3,14 +3,10 @@
 session_start(); 
 require 'db.php'; 
 
-<<<<<<< HEAD
-//header("Location: admin.php"); // assuming this is the default page ng admin
-=======
 if($_SESSION['role'] != 'admin') {
     header("Location: login.php");
     exit();
 }
->>>>>>> bb4d477a2c5cff27496f662327de1fc5bf7b2d85
 
 $read = $conn->query("SELECT * FROM city");
 $total_cities = $read->num_rows;
