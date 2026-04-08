@@ -55,7 +55,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 </span><br>
                 <input type = "submit" class = "submit-btn" name = "submit" value = "Create account">
             </form>
-            <p class = "ask">Already have an account yet?</p>
+            <p class = "ask">Already have an account?</p>
             <button id = "to-login" class = "change-button">Log In</button>
         </div>
     `;
