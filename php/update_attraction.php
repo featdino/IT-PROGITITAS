@@ -3,10 +3,10 @@
 session_start(); 
 require 'db.php'; 
 
-// if($_SESSION['role'] != 'admin') {
-//     header("Location: login.php");
-//     exit();
-// }
+if($_SESSION['role'] != 'admin') {
+    header("Location: login.php");
+    exit();
+}
 
     // Fetch all cities for dropdown
     $cities_query = "SELECT city_id, city_name FROM city ORDER BY city_name";
@@ -59,15 +59,15 @@ require 'db.php';
 
         <form method="POST">
             <label>Name:</label>
-                <input name="name" required value="<?= htmlspecialchars($read['name']) ?>"> <br>
+                <input name="name" required value="<?= htmlspecialchars($read['name']) ?>"> <br><br>
            <label>Description:</label> 
-                 <input name="description" required value="<?= htmlspecialchars($read['description']) ?>"> <br>
+                 <input name="description" required value="<?= htmlspecialchars($read['description']) ?>"> <br><br>
             <label>Street Address:</label>
-                 <input name="street_address" required value="<?= htmlspecialchars($read['street_address']) ?>"><br>
+                 <input name="street_address" required value="<?= htmlspecialchars($read['street_address']) ?>"><br><br>
             <label>Total Visits:</label>
-                <input name="total_visits" required value="<?= htmlspecialchars($read['total_visits']) ?>"><br>
+                <input name="total_visits" required value="<?= htmlspecialchars($read['total_visits']) ?>"><br><br>
             <label>Average Rating:</label>
-                <input name="avg_rating" required min="0" max="5" value="<?= htmlspecialchars($read['avg_rating']) ?>"><br>
+                <input name="avg_rating" required min="0" max="5" value="<?= htmlspecialchars($read['avg_rating']) ?>"><br><br>
             <label>City:</label>
             <select name="city_id">
             <option value="">-- Select City  --</option>

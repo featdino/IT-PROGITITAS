@@ -12,7 +12,6 @@ if($_SESSION['role'] != 'admin') {
 $cities_query = "SELECT city_id, city_name FROM city ORDER BY city_name";
 $cities_result = mysqli_query($conn, $cities_query);
 
-
 $user_id = $_GET['user_id'];
 $read = $conn->query("SELECT name,username, password, email, city_id FROM user WHERE user_id = $user_id")->fetch_assoc();
 
@@ -58,13 +57,13 @@ if(isset($_POST['submit'])){
 
     <form method="post" action="">
         <label>Name:</label>
-            <input name="name" required value="<?= htmlspecialchars($read['name'])?>"><br> 
+            <input name="name" required value="<?= htmlspecialchars($read['name'])?>"><br> <br> 
         <label>Username:</label>       
-            <input name="username" required value="<?= htmlspecialchars($read['username'])?>"><br> 
+            <input name="username" required value="<?= htmlspecialchars($read['username'])?>"><br> <br> 
         <label>Password:</label>       
-            <input name="password" required value="<?= htmlspecialchars($read['password'])?>"><br> 
+            <input name="password" required value="<?= htmlspecialchars($read['password'])?>"><br> <br> 
         <label>Email:</label>       
-            <input name="email" required value="<?= htmlspecialchars($read['email'])?>"><br> 
+            <input name="email" required value="<?= htmlspecialchars($read['email'])?>"><br> <br> 
         <label>City:</label>
             <select name="city_id">
             <option value="">-- Select City --</option>
@@ -75,6 +74,7 @@ if(isset($_POST['submit'])){
             <?php endwhile; ?>
         </select><br>
 
+        <br>
         <input type="submit" name="submit" value="Update">
     </form>
 </body>
