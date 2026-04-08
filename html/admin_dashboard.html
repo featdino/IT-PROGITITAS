@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Off-Radar Admin Dashboard</title>
+  <link rel="stylesheet" href="admin_dashboard.css" />
+</head>
+<body>
+  <div class="page-overlay"></div>
+
+  <input type="checkbox" id="menu-toggle" class="menu-toggle">
+  <label for="menu-toggle" class="menu-backdrop"></label>
+
+  <header class="topbar">
+    <div class="brand">
+      <div class="logo-circle">
+        <img src="images/logo-icon.png" alt="Off-Radar logo" />
+      </div>
+      <h1>off-radar.</h1>
+    </div>
+  
+    <div class="top-actions">
+      <label for="menu-toggle" class="menu-btn" aria-label="Open menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </label>
+    </div>
+  </header>
+  
+  <nav class="side-menu">
+    <a href="admin_dashboard.html">Dashboard</a>
+    <a href="database_monitor.html">Database Monitor</a>
+    <a href="create_record.html">Create Record</a>
+    <a href="account.html">Logout</a>
+  </nav>
+
+  <div class="dashboard-section">
+    <input type="radio" name="dashboard-tab" id="tab-database" checked>
+    <input type="radio" name="dashboard-tab" id="tab-reports">
+
+    <div class="dashboard-tabs">
+      <label for="tab-database" class="tab">View Database</label>
+      <label for="tab-reports" class="tab">Generate Reports</label>
+    </div>
+
+    <div class="dashboard-shell">
+      <section class="database-view">
+        <input type="checkbox" id="modal-card-1" class="modal-toggle">
+        <div class="card-board">
+          <label for="modal-card-1" class="attraction-card">
+            <div class="card-image">
+              <img src="images/attraction-1.jpg" alt="Attraction 1" />
+            </div>
+            <div class="card-content">
+              <h2>Attraction #1</h2>
+              <p class="id">ID 12341</p>
+            </div>
+            <span class="card-corner-btn" aria-hidden="true">
+              <span></span><span></span><span></span>
+            </span>
+          </label>
+    
+          <article class="attraction-card">
+            <div class="card-image">
+              <img src="images/attraction-2.jpg" alt="Attraction 2" />
+            </div>
+            <div class="card-content">
+              <h2>Attraction #2</h2>
+              <p class="id">ID 12342</p>
+            </div>
+            <button class="card-corner-btn" aria-label="Open attraction details">
+              <span></span><span></span><span></span>
+            </button>
+          </article>
+    
+          <article class="attraction-card">
+            <div class="card-image">
+              <img src="images/attraction-3.jpg" alt="Attraction 3" />
+            </div>
+            <div class="card-content">
+              <h2>Attraction #3</h2>
+              <p class="id">ID 12343</p>
+            </div>
+            <button class="card-corner-btn" aria-label="Open attraction details">
+              <span></span><span></span><span></span>
+            </button>
+          </article>
+    
+          <article class="attraction-card">
+            <div class="card-image">
+              <img src="images/attraction-4.jpg" alt="Attraction 4" />
+            </div>
+            <div class="card-content">
+              <h2>Attraction #4</h2>
+              <p class="id">ID 12344</p>
+            </div>
+            <button class="card-corner-btn" aria-label="Open attraction details">
+              <span></span><span></span><span></span>
+            </button>
+          </article>
+    
+          <article class="attraction-card">
+            <div class="card-image">
+              <img src="images/attraction-5.jpg" alt="Attraction 5" />
+            </div>
+            <div class="card-content">
+              <h2>Attraction #5</h2>
+              <p class="id">ID 12345</p>
+            </div>
+            <button class="card-corner-btn" aria-label="Open attraction details">
+              <span></span><span></span><span></span>
+            </button>
+          </article>
+    
+          <article class="attraction-card">
+            <div class="card-image">
+              <img src="images/attraction-6.jpg" alt="Attraction 6" />
+            </div>
+            <div class="card-content">
+              <h2>Attraction #6</h2>
+              <p class="id">ID 12346</p>
+            </div>
+            <button class="card-corner-btn" aria-label="Open attraction details">
+              <span></span><span></span><span></span>
+            </button>
+          </article>
+        </div>
+
+        <!-- NOTES: only Attraction 1 has a modal view because it's too repetitive and honestly confused na ako sa daming lines ng code AHA
+                    needs fixing once connected to php logic-->
+        <label for="modal-card-1" class="modal-backdrop"></label>
+        <div class="details-modal">
+          <label for="modal-card-1" class="modal-close" aria-label="Close modal">&times;</label>
+
+          <input type="checkbox" id="edit-mode-1" class="edit-toggle">
+
+          <div class="modal-left">
+            <div class="modal-image">
+              <img src="images/attraction 1.jpg" alt="Attraction 1" />
+            </div>
+        
+            <!-- READ MODE - LEFT SIDE -->
+            <div class="read-mode">
+              <h2>Attraction #1</h2>
+            
+              <div class="modal-info-block">
+                <h4>ID</h4>
+                <p>12341</p>
+              </div>
+          
+              <div class="modal-info-block">
+                <h4>Street Address</h4>
+                <p>Cowabunga St., Brgy. Yeehaw</p>
+              </div>
+          
+              <div class="modal-info-block">
+                <h4>City</h4>
+                <p>Manila</p>
+              </div>
+          
+              <div class="modal-actions">
+                <label for="edit-mode-1" class="modal-btn">Update</label>
+                <button type="button">Delete</button>
+              </div>
+            </div>
+        
+            <!-- EDIT MODE - LEFT SIDE -->
+            <div class="edit-mode">
+              <div class="modal-form-group">
+                <label for="attraction-name">Attraction Name</label>
+                <input type="text" id="attraction-name" value="Attraction #1">
+              </div>
+          
+              <div class="modal-form-group">
+                <label for="attraction-id">ID</label>
+                <input type="text" id="attraction-id" value="12341">
+              </div>
+          
+              <div class="modal-form-group">
+                <label for="street-address">Street Address</label>
+                <input type="text" id="street-address" value="Cowabunga St., Brgy. Yeehaw">
+              </div>
+          
+              <div class="modal-form-group">
+                <label for="city">City</label>
+                <input type="text" id="city" value="Manila">
+              </div>
+          
+              <div class="modal-actions">
+                <label for="edit-mode-1" class="modal-btn">Back</label>
+                <button type="button">Save</button>
+              </div>
+            </div>
+          </div>
+      
+          <div class="modal-divider"></div>
+      
+          <div class="modal-right">
+            <!-- READ MODE - RIGHT SIDE -->
+            <div class="read-mode">
+              <div class="modal-info-block">
+                <h3>Description</h3>
+                <p>
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean hendrerit diam sapien,
+                  ut fermentum tortor eleifend a. Morbi finibus magna felis, ac imperdiet lectus porttitor quis.
+                </p>
+              </div>
+          
+              <div class="modal-info-block">
+                <h3>Categories</h3>
+                <p>Category 1, Category 2, Category 3, Category 4, Category 5, Category 6</p>
+              </div>
+          
+              <div class="modal-info-block">
+                <h3>Total Visits</h3>
+                <p>10,000</p>
+              </div>
+          
+              <div class="modal-info-block">
+                <h3>Average Rating</h3>
+                <p>6.7</p>
+              </div>
+            </div>
+        
+            <!-- EDIT MODE - RIGHT SIDE -->
+            <div class="edit-mode">
+              <div class="modal-form-group">
+                <label for="description">Description</label>
+                <textarea id="description" rows="5">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean hendrerit diam sapien, ut fermentum tortor eleifend a. Morbi finibus magna felis, ac imperdiet lectus porttitor quis.</textarea>
+                
+                <p class="form-label">Categories</p>
+                          
+                <div class="checkbox-group">
+                  <label class="checkbox-item">
+                    <span>Category 1</span>
+                    <input type="checkbox" checked>
+                  </label>
+              
+                  <label class="checkbox-item">
+                    <span>Category 2</span>
+                    <input type="checkbox" checked>
+                  </label>
+              
+                  <label class="checkbox-item">
+                    <span>Category 3</span>
+                    <input type="checkbox" checked>
+                  </label>
+              
+                  <label class="checkbox-item">
+                    <span>Category 4</span>
+                    <input type="checkbox">
+                  </label>
+              
+                  <label class="checkbox-item">
+                    <span>Category 5</span>
+                    <input type="checkbox">
+                  </label>
+              
+                  <label class="checkbox-item">
+                    <span>Category 6</span>
+                    <input type="checkbox">
+                  </label>
+                </div>
+              </div>
+          
+              <div class="modal-info-block readonly-block">
+                <h3>Total Visits</h3>
+                <p>10,000</p>
+              </div>
+          
+              <div class="modal-info-block readonly-block">
+                <h3>Average Rating</h3>
+                <p>6.7</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    
+      <section class="reports-view">
+        <div class="reports-panel">
+          <div class="reports-header">
+            <h2>Generate Reports</h2>
+            <p>View the most visited attractions for the selected category.</p>
+          </div>
+      
+          <div class="report-controls">
+            <div class="report-field">
+              <label for="report-category">Select Category</label>
+              <select id="report-category" name="report-category">
+                <option value="" selected disabled>Choose a category</option>
+                <option value="1">Category 1</option>
+                <option value="2">Category 2</option>
+                <option value="3">Category 3</option>
+                <option value="4">Category 4</option>
+                <option value="5">Category 5</option>
+                <option value="6">Category 6</option>
+              </select>
+            </div>
+        
+            <button type="button" class="report-generate-btn">Generate</button>
+          </div>
+      
+          <div class="report-table-wrap">
+            <table class="report-table">
+              <thead>
+                <tr>
+                  <th>Rank</th>
+                  <th>ID</th>
+                  <th>Name</th>
+                  <th>Total Visits</th>
+                  <th>Average Rating</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>1</td>
+                  <td>12341</td>
+                  <td>Attraction #1</td>
+                  <td>10,000</td>
+                  <td>6.7</td>
+                </tr>
+                <tr>
+                  <td>2</td>
+                  <td>12342</td>
+                  <td>Attraction #2</td>
+                  <td>8,950</td>
+                  <td>6.4</td>
+                </tr>
+                <tr>
+                  <td>3</td>
+                  <td>12343</td>
+                  <td>Attraction #3</td>
+                  <td>7,880</td>
+                  <td>6.1</td>
+                </tr>
+                <tr>
+                  <td>4</td>
+                  <td>12344</td>
+                  <td>Attraction #4</td>
+                  <td>6,720</td>
+                  <td>5.9</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
+</body>
+</html>
