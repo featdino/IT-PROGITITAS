@@ -3,12 +3,10 @@
 session_start(); 
 require 'db.php'; 
 
-if($_SESSION['role'] != 'admin') {
-    header("Location: login.php");
-    exit();
-}
-
-$id = $_GET['id'];
+// if($_SESSION['role'] != 'admin') {
+//     header("Location: login.php");
+//     exit();
+// }
 
 $city_id = $_GET['city_id'];
 $read = $conn->query("SELECT city_name, province FROM city WHERE city_id = $city_id")-> fetch_assoc();

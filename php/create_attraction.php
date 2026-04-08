@@ -3,10 +3,10 @@
 session_start(); 
 require 'db.php'; 
 
-if($_SESSION['role'] != 'admin') {
-    header("Location: login.php");
-    exit();
-}
+// if($_SESSION['role'] != 'admin') {
+//     header("Location: login.php");
+//     exit();
+// }
 
 // Fetch all cities for dropdown
 $cities_query = "SELECT city_id, city_name FROM city ORDER BY city_name";
@@ -23,10 +23,12 @@ if (isset($_POST['submit'])) {
     $total_visits = $_POST['total_visits'];
     $avg_rating = $_POST['avg_rating'];
     $city_id = $_POST['city_id'];
+    $local_rating = $_POST['local_rating'];
+    $gem_score = $_POST['gem_score'];
     $categories = isset($_POST['categories']) ? $_POST['categories'] : [];
 
-    $insert = "INSERT INTO attraction (name, description, street_address ,total_visits, avg_rating, city_id) 
-    VALUES ('$name', '$description', '$street_address', '$total_visits', '$avg_rating', '$city_id')";
+    $insert = "INSERT INTO attraction (name, description, street_address ,total_visits, avg_rating, city_id, local_rating, gem_score) 
+    VALUES ('$name', '$description', '$street_address', '$total_visits', '$avg_rating', '$city_id', '$local_rating', '$gem_score')";
 
     if (mysqli_query($conn, $insert)) {
         $attraction_id = mysqli_insert_id($conn);
@@ -67,26 +69,32 @@ if (isset($_POST['submit'])) {
 
        <h2>New Attractions</h2>
     <form method="POST" action="">    
-    <label for="name">Name:</label><br>
+    <label for="name"><strong>Name:</strong></label><br>
         <input type="text" name="name" id="name" required><br><br>
-    <label for="description">Description:</label><br>
+    <label for="description"><strong>Description:</strong></label><br>
         <input type="text" name="description" id="description" required><br><br>
-    <label for="street_address">Street Address:</label><br>
+    <label for="street_address"><strong>Street Address:</strong></label><br>
         <input type="text" name="street_address" id="street_address" required><br><br>
-    <label for="total_visits">Total Visits:</label><br>
+    <label for="total_visits"><strong>Total Visits:</strong></label><br>
         <input type="text" name="total_visits" id="total_visits" required><br><br>
-    <label for="avg_rating">Average Rating:</label><br>
+    <label for="avg_rating"><strong>Average Rating:</strong></label><br>
         <input type="number" step="0.01" name="avg_rating" id="avg_rating" ><br><br>
+
     
-    <label for="city_id">City</label>
+    <label for="city_id"><strong>City:</strong></label><br>
         <select id="city_id" name="city_id" required>
             <option value="">-- Select City --</option>
             <?php while($row = mysqli_fetch_assoc($cities_result)): ?>
                 <option value="<?php echo $row['city_id']; ?>"><?php echo $row['city_name']; ?></option>
             <?php endwhile; ?>
-        </select><br>
+        </select><br><br>
 
-    <label>Categories:</label><br>
+    <label for="local_rating"><strong>Local Rating:</strong></label><br>
+        <input type="number" step="0.01" name="local_rating" id="local_rating" ><br><br>
+    <label for="gem_score"><strong>Gem Score:</strong></label><br>
+        <input type="number" step="0.01" name="gem_score" id="gem_score" ><br><br>
+
+    <label>Categories:</strong></label><br>
         <?php 
         $current_main_class = '';
         mysqli_data_seek($categories_result, 0);

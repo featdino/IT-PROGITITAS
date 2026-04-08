@@ -9,13 +9,7 @@ if($_SESSION['role'] != 'admin') {
 }
 
 $read = $conn->query("SELECT * FROM city");
-$total_cities = $read->num_rows;
 
-    if(isset($_GET['sort']) && $_GET['sort'] == 'letter'){
-        $result = $conn->query("SELECT * FROM city ORDER BY city_name ASC");
-    }else{
-        $result = $conn->query("SELECT * FROM city");
-    }
 ?>
 
 <!DOCTYPE html>
@@ -45,7 +39,7 @@ $total_cities = $read->num_rows;
             <th>Province</th>
         </tr>
     <?php
-        while($row = $result->fetch_assoc()):
+        while($row = $read->fetch_assoc()):
     ?>
 
         <tr>
@@ -63,7 +57,6 @@ $total_cities = $read->num_rows;
     ?>
     </table>
     <br>
-    <a href="read_city.php?sort=letter" class="btn">Sort By Name</a>
-    <a href="read_city.php"class="btn">Default View</a>
+
 </body>
 </html>

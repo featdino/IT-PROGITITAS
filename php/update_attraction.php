@@ -3,10 +3,10 @@
 session_start(); 
 require 'db.php'; 
 
-if($_SESSION['role'] != 'admin') {
-    header("Location: login.php");
-    exit();
-}
+// if($_SESSION['role'] != 'admin') {
+//     header("Location: login.php");
+//     exit();
+// }
 
     // Fetch all cities for dropdown
     $cities_query = "SELECT city_id, city_name FROM city ORDER BY city_name";
@@ -32,11 +32,13 @@ if($_SESSION['role'] != 'admin') {
         $total_visits = $_POST['total_visits'];
         $avg_rating = $_POST['avg_rating'];
         $city_id = $_POST['city_id'];
+        $local_rating = $_POST['local_rating'];
+        $gem_score = $_POST['gem_score'];
         $categories = isset($_POST['categories']) ? $_POST['categories'] : [];
 
 
-        $update = $conn->prepare("UPDATE attraction SET name=?, description= ?, street_address=?, total_visits=?, avg_rating=?, city_id=? WHERE attraction_id= ?");
-        $update->bind_param("sssidsi", $name, $desciption, $street_address, $total_visits, $avg_rating, $city_id, $attraction_id);  
+        $update = $conn->prepare("UPDATE attraction SET name=?, description= ?, street_address=?, total_visits=?, avg_rating=?, city_id=?, local_rating=?, gem_score=? WHERE attraction_id= ?");
+        $update->bind_param("sssididdi", $name, $desciption, $street_address, $total_visits, $avg_rating, $city_id, $local_rating, $gem_score, $attraction_id);  
         
        if ($update->execute()) {
             $conn->query("DELETE FROM attraction_category WHERE attraction_id='$attraction_id'");
@@ -77,17 +79,17 @@ if($_SESSION['role'] != 'admin') {
         <h2>Update Attractions</h2>
 
         <form method="POST">
-            <label>Name:</label>
+            <label><strong>Name:</strong></label>
                 <input name="name" required value="<?= htmlspecialchars($read['name']) ?>"> <br><br>
-           <label>Description:</label> 
+           <label><strong>Description:</strong></label> 
                  <input name="description" required value="<?= htmlspecialchars($read['description']) ?>"> <br><br>
-            <label>Street Address:</label>
+            <label><strong>Street Address:</strong></label>
                  <input name="street_address" required value="<?= htmlspecialchars($read['street_address']) ?>"><br><br>
-            <label>Total Visits:</label>
+            <label><strong>Total Visits:</strong></label>
                 <input name="total_visits" required value="<?= htmlspecialchars($read['total_visits']) ?>"><br><br>
-            <label>Average Rating:</label>
+            <label><strong>Average Rating:</strong></label>
                 <input name="avg_rating" required min="0" max="5" value="<?= htmlspecialchars($read['avg_rating']) ?>"><br><br>
-            <label>City:</label>
+            <label><strong>City:</strong></label>
             <select name="city_id">
             <option value="">-- Select City  --</option>
             <?php while($row = mysqli_fetch_assoc($cities_result)): ?>
@@ -97,7 +99,7 @@ if($_SESSION['role'] != 'admin') {
             <?php endwhile; ?>
         </select><br><br>
 
-        <label>Categories:</label><br>
+        <label><strong>Categories:</strong></label><br>
             <?php 
             $current_main_class = '';
             mysqli_data_seek($categories_result, 0);
