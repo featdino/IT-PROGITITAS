@@ -1,29 +1,45 @@
-let slideIndex = 1;
-let modal; 
+let slideIndex = 1; 
+let gallery;
+let rating;
+let upload;
 
 document.addEventListener("DOMContentLoaded", () => 
 { 
-    modal = document.getElementById("gallery-modal");
-    const modalBtn = document.getElementById("modal-btn");
+    gallery = document.getElementById("gallery-modal");
+    rating = document.getElementById("rating-modal");
+    upload = document.getElementById("upload-modal");
 
-    modalBtn.addEventListener('click', () => 
+    const galleryBtn = document.getElementById("gallery-modal-btn");
+    const ratingBtn = document.getElementById("rating-modal-btn");
+    const uploadBtn = document.getElementById("upload-modal-btn");
+
+    galleryBtn.addEventListener('click', () => 
     {
-        modal.classList.add("show");
+        gallery.classList.add("show");
         showSlides(slideIndex);
     });
 
+    ratingBtn.addEventListener('click', () => 
+    {
+        rating.classList.add("show");
+    });
+
+    uploadBtn.addEventListener('click', () =>
+    {
+        upload.classList.add("show");
+    })
+
     window.addEventListener('click', (event) => 
     {
-        if (event.target === modal) 
-        {
-            closeModal();
-        }
-    });
+        if (event.target === gallery) closeGalleryModal();
+        if (event.target === rating) closeRatingModal();
+        if (event.target === upload) closeUploadModal(); 
+    })
 });
 
-function closeModal() 
+function closeGalleryModal() 
 {
-    modal.classList.remove("show");
+    gallery.classList.remove("show");
 }
 
 function changeSlide(n) 
@@ -58,4 +74,14 @@ function showSlides(n)
     {
         counter.innerHTML = `${slideIndex} / ${slides.length}`;
     }
+}
+
+function closeRatingModal() 
+{
+    rating.classList.remove("show");
+}
+
+function closeUploadModal() 
+{
+    upload.classList.remove("show");
 }
