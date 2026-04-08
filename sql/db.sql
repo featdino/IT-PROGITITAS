@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 07, 2026 at 04:48 PM
+-- Generation Time: Apr 08, 2026 at 07:49 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -33,34 +33,35 @@ CREATE TABLE `attraction` (
   `description` varchar(100) NOT NULL,
   `street_address` varchar(100) NOT NULL,
   `total_visits` int(11) NOT NULL,
-  `avg_rating` double NOT NULL
+  `avg_rating` double NOT NULL,
+  `city_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `attraction`
 --
 
-INSERT INTO `attraction` (`attraction_id`, `name`, `description`, `street_address`, `total_visits`, `avg_rating`) VALUES
-(1, 'Rizal Park', 'Historic park with monuments and gardens', 'Ermita, Manila', 12500, 4.5),
-(2, 'Intramuros', 'Historic walled city from Spanish era', 'Intramuros, Manila', 9800, 4.7),
-(3, 'National Museum of Fine Arts', 'Classical and modern Filipino art', 'Padre Burgos Ave, Ermita, Manila', 7200, 4.6),
-(4, 'San Agustin Church', 'Baroque UNESCO world heritage church', 'Gen Luna St, Intramuros, Manila', 5600, 4.8),
-(5, 'Manila Ocean Park', 'Marine park with oceanarium and shows', 'Ermita, Manila', 8900, 4.3),
-(6, 'Fort Santiago', 'Citadel inside Intramuros', 'Santa Clara St, Intramuros, Manila', 6700, 4.6),
-(7, 'Binondo Church', 'Historic church in Chinatown', 'Binondo, Manila', 4300, 4.4),
-(8, 'Manila Baywalk', 'Scenic baywalk with sunset views', 'Roxas Blvd, Manila', 10400, 4.2),
-(9, 'Casa Manila', 'Colonial lifestyle museum', 'Plaza San Luis Complex, Intramuros', 3900, 4.5),
-(10, 'San Sebastian Church', 'All-steel Gothic church', 'Pasaje del Carmen, Manila', 3100, 4.5),
-(11, 'Burnham Park', 'Central park with lake and gardens', 'Burnham Park, Baguio', 11000, 4.6),
-(12, 'Mines View Park', 'Scenic overlook of former gold mines', 'Dominican Hill, Baguio', 9300, 4.5),
-(13, 'Baguio Cathedral', 'Iconic church with twin spires', 'Cathedral Loop, Baguio', 6700, 4.7),
-(14, 'Camp John Hay', 'Former US base turned recreation area', 'Camp John Hay, Baguio', 7800, 4.4),
-(15, 'Session Road', 'Famous commercial and cultural hub', 'Session Road, Baguio', 5400, 4.2),
-(16, 'Botanical Garden', 'Gardens with indigenous huts', 'Leonard Wood Rd, Baguio', 6200, 4.5),
-(17, 'The Mansion', 'Official summer palace of Philippine president', 'Leonard Wood Rd, Baguio', 4900, 4.6),
-(18, 'Wright Park', 'Park with horseback riding', 'Wright Park, Baguio', 4400, 4.3),
-(19, 'Bell Church', 'Taoist temple with dragon gate', 'Bell Church Rd, Baguio', 3700, 4.5),
-(20, 'Tam-Awan Village', 'Artist village with native huts', 'Tam-Awan, Baguio', 2900, 4.6);
+INSERT INTO `attraction` (`attraction_id`, `name`, `description`, `street_address`, `total_visits`, `avg_rating`, `city_id`) VALUES
+(1, 'Rizal Park', 'Historic park with monuments and gardens', 'Ermita, Manila', 12500, 4.5, 1),
+(2, 'Intramuros', 'Historic walled city from Spanish era', 'Intramuros, Manila', 9800, 4.7, 1),
+(3, 'National Museum of Fine Arts', 'Classical and modern Filipino art', 'Padre Burgos Ave, Ermita, Manila', 7200, 4.6, 1),
+(4, 'San Agustin Church', 'Baroque UNESCO world heritage church', 'Gen Luna St, Intramuros, Manila', 5600, 4.8, 1),
+(5, 'Manila Ocean Park', 'Marine park with oceanarium and shows', 'Ermita, Manila', 8900, 4.3, 1),
+(6, 'Fort Santiago', 'Citadel inside Intramuros', 'Santa Clara St, Intramuros, Manila', 6700, 4.6, 1),
+(7, 'Binondo Church', 'Historic church in Chinatown', 'Binondo, Manila', 4300, 4.4, 1),
+(8, 'Manila Baywalk', 'Scenic baywalk with sunset views', 'Roxas Blvd, Manila', 10400, 4.2, 1),
+(9, 'Casa Manila', 'Colonial lifestyle museum', 'Plaza San Luis Complex, Intramuros', 3900, 4.5, 1),
+(10, 'San Sebastian Church', 'All-steel Gothic church', 'Pasaje del Carmen, Manila', 3100, 4.5, 1),
+(11, 'Burnham Park', 'Central park with lake and gardens', 'Burnham Park, Baguio', 11000, 4.6, 11),
+(12, 'Mines View Park', 'Scenic overlook of former gold mines', 'Dominican Hill, Baguio', 9300, 4.5, 11),
+(13, 'Baguio Cathedral', 'Iconic church with twin spires', 'Cathedral Loop, Baguio', 6700, 4.7, 11),
+(14, 'Camp John Hay', 'Former US base turned recreation area', 'Camp John Hay, Baguio', 7800, 4.4, 11),
+(15, 'Session Road', 'Famous commercial and cultural hub', 'Session Road, Baguio', 5400, 4.2, 11),
+(16, 'Botanical Garden', 'Gardens with indigenous huts', 'Leonard Wood Rd, Baguio', 6200, 4.5, 11),
+(17, 'The Mansion', 'Official summer palace of Philippine president', 'Leonard Wood Rd, Baguio', 4900, 4.6, 11),
+(18, 'Wright Park', 'Park with horseback riding', 'Wright Park, Baguio', 4400, 4.3, 11),
+(19, 'Bell Church', 'Taoist temple with dragon gate', 'Bell Church Rd, Baguio', 3700, 4.5, 11),
+(20, 'Tam-Awan Village', 'Artist village with native huts', 'Tam-Awan, Baguio', 2900, 4.6, 11);
 
 -- --------------------------------------------------------
 
@@ -183,6 +184,20 @@ CREATE TABLE `gallery` (
   `upload_date` timestamp NOT NULL DEFAULT current_timestamp(),
   `attraction_id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `ratings`
+--
+
+CREATE TABLE `ratings` (
+  `rating_id` int(11) NOT NULL,
+  `user_id` int(11) DEFAULT NULL,
+  `attraction_id` int(11) DEFAULT NULL,
+  `rating` int(11) DEFAULT NULL CHECK (`rating` between 1 and 5),
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -445,7 +460,8 @@ INSERT INTO `visits` (`user_id`, `attraction_id`) VALUES
 -- Indexes for table `attraction`
 --
 ALTER TABLE `attraction`
-  ADD PRIMARY KEY (`attraction_id`);
+  ADD PRIMARY KEY (`attraction_id`),
+  ADD KEY `attraction_fk1` (`city_id`);
 
 --
 -- Indexes for table `category`
@@ -466,6 +482,14 @@ ALTER TABLE `gallery`
   ADD PRIMARY KEY (`image_id`),
   ADD KEY `gallery_fk1` (`attraction_id`),
   ADD KEY `gallery_fk2` (`user_id`);
+
+--
+-- Indexes for table `ratings`
+--
+ALTER TABLE `ratings`
+  ADD PRIMARY KEY (`rating_id`),
+  ADD UNIQUE KEY `user_id` (`user_id`,`attraction_id`),
+  ADD KEY `attraction_id` (`attraction_id`);
 
 --
 -- Indexes for table `user`
@@ -510,6 +534,12 @@ ALTER TABLE `gallery`
   MODIFY `image_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT for table `ratings`
+--
+ALTER TABLE `ratings`
+  MODIFY `rating_id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
@@ -520,11 +550,24 @@ ALTER TABLE `user`
 --
 
 --
+-- Constraints for table `attraction`
+--
+ALTER TABLE `attraction`
+  ADD CONSTRAINT `attraction_fk1` FOREIGN KEY (`city_id`) REFERENCES `city` (`city_id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
 -- Constraints for table `gallery`
 --
 ALTER TABLE `gallery`
   ADD CONSTRAINT `gallery_fk1` FOREIGN KEY (`attraction_id`) REFERENCES `attraction` (`attraction_id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `gallery_fk2` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `ratings`
+--
+ALTER TABLE `ratings`
+  ADD CONSTRAINT `ratings_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `ratings_ibfk_2` FOREIGN KEY (`attraction_id`) REFERENCES `attraction` (`attraction_id`) ON DELETE CASCADE;
 
 --
 -- Constraints for table `user`
