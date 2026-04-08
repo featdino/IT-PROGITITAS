@@ -45,7 +45,7 @@
         <section class = "atr-spotlight-pictures">
             <div class = "main-pic">
                 <img src = "../images/mop-1.jpg">
-                <button id = "modal-btn" class = "open-modal">
+                <button id = "gallery-modal-btn" class = "open-modal">
                     <i class = "fas fa-image"></i>
                 </button>
             </div>
@@ -59,41 +59,6 @@
             </div>
         </section>
 
-        <div id = "gallery-modal" class = "modal">
-            <div class = "modal-content">
-                <div class = "modal-header">
-                    <div class = "title-block">
-                        <h2>Manila Ocean Park</h2>
-                        <p>Official Gallery</p>
-
-                        <!-- replace yung 6 with kung ilang official images meron -->
-                        <p id = "slide-counter" class = "counter">1 / 6</p> 
-                    </div>
-                    <button class = "close-btn" onclick = "closeModal()">
-                        <i class = "fa fa-close"></i>
-                    </button>
-                </div>
-
-                <div class = "slideshow-container">
-                    <a class = "prev" onclick = "changeSlide(-1)">
-                        <i class = "fa fa-chevron-left"></i>
-                    </a>
-                    
-                    <div class = "slides-wrapper">  <!-- replace hrefs w official images from db -->
-                        <div class = "ofc-image fade"><img src = "../images/mop-1.jpg"></div>
-                        <div class = "ofc-image fade"><img src = "../images/mop-2.jpg"></div>
-                        <div class = "ofc-image fade"><img src = "../images/mop-3.jpg"></div>
-                        <div class = "ofc-image fade"><img src = "../images/mop-4.webp"></div>
-                        <div class = "ofc-image fade"><img src = "../images/mop-5.avif"></div>
-                        <div class = "ofc-image fade"><img src = "../images/mop-6.jpg"></div>
-                    </div>
-
-                    <a class = "next" onclick = "changeSlide(1)">
-                        <i class = "fa fa-chevron-right"></i>
-                    </a>
-                </div>
-            </div>
-        </div>
 
         <section class = "atr-titlebar">
             <div class = "nameplate">
@@ -101,10 +66,15 @@
                 <p>Ermita, Manila</p> <!-- street address of attraction -->
             </div>
             <div class = "actions">
+
                 <button class = "mark-visited">
-                    <i class = "fa fa-check-circle"></i>
+                    <!-- pa insert logic here to check if user has visited or not pls ty -->
+                    <i class = "fa fa-check-circle"></i> <!-- eto pag visited -->
+                    <!-- eto pag hindi pa <i class = "fa fa-check-circle-o"></i> -->
                 </button>
-                <button class = "leave-rating">Leave Rating</button>
+
+                <button id = "rating-modal-btn" class = "leave-rating">Leave Rating</button>
+
             </div>
         </section>
 
@@ -156,8 +126,101 @@
                 <div class = "gallery-item"><img src = "../images/mop-vg-12.jpg"></div>
             </div>
             <p>Want to contribute to the collection?</p>
-            <button class = "upload-image">Upload Your Image</button>
+            <button id = "upload-modal-btn" class = "upload-image">Upload Your Image</button>
         </section>
+
+        <!-- MODALS (mga nagppop-up when some buttons are triggered) -->
+
+        <!-- attaction official pictures: pag cinlick yung gallery button on top section -->
+        <div id = "gallery-modal" class = "modal">
+            <div class = "modal-content official-gallery">
+                <div class = "modal-header gallery-header">
+                    <div class = "title-block">
+                        <h2>Manila Ocean Park</h2>
+                        <p>Official Gallery</p>
+
+                        <!-- replace yung 6 with kung ilang official images meron -->
+                        <p id = "slide-counter" class = "counter">1 / 6</p> 
+                    </div>
+                    <button class = "close-btn" onclick = "closeGalleryModal()">
+                        <i class = "fa fa-close"></i>
+                    </button>
+                </div>
+
+                <div class = "slideshow-container">
+                    <a class = "prev" onclick = "changeSlide(-1)">
+                        <i class = "fa fa-chevron-left"></i>
+                    </a>
+                    
+                    <div class = "slides-wrapper">  <!-- replace hrefs w official images from db -->
+                        <div class = "ofc-image fade"><img src = "../images/mop-1.jpg"></div>
+                        <div class = "ofc-image fade"><img src = "../images/mop-2.jpg"></div>
+                        <div class = "ofc-image fade"><img src = "../images/mop-3.jpg"></div>
+                        <div class = "ofc-image fade"><img src = "../images/mop-4.webp"></div>
+                        <div class = "ofc-image fade"><img src = "../images/mop-5.avif"></div>
+                        <div class = "ofc-image fade"><img src = "../images/mop-6.jpg"></div>
+                    </div>
+
+                    <a class = "next" onclick = "changeSlide(1)">
+                        <i class = "fa fa-chevron-right"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- leave rating form: pag cinlick yung rightmost action button tas local yung user -->
+        <div id = "rating-modal" class = "modal">
+            <div class = "modal-content rating-content">
+                <div class = "modal-header">
+                    <div class = "title-block">
+                        <h2 class = "modal-h2">Leave a Rating</h2>
+                        <p class = "modal-p">Rate Your Experience at <b>Manila Ocean Park</b></p> 
+                        <!-- replace content of b tag with attraction name -->
+                    </div>
+                </div>
+                <form id = "rating-form" class = "modal-form">
+                    <div class="star-rating">
+                        <input type = "radio" name = "stars" id = "star-5" value = "5">
+                        <label for = "star-5" class = "fas fa-star"></label>
+                        <input type = "radio" name = "stars" id = "star-4" value = "4">
+                        <label for = "star-4" class = "fas fa-star"></label>
+                        <input type = "radio" name = "stars" id = "star-3" value = "3">
+                        <label for = "star-3" class = "fas fa-star"></label>
+                        <input type = "radio" name = "stars" id = "star-2" value = "2">
+                        <label for = "star-2" class = "fas fa-star"></label>
+                        <input type = "radio" name = "stars" id = "star-1" value = "1">
+                        <label for = "star-1" class = "fas fa-star"></label>
+                    </div>
+                    <div class = "modal-actions">
+                        <button type = "reset" class = "cancel-btn" onclick = "closeRatingModal()">Cancel</button>
+                        <button type = "submit" class = "submit-btn">Post Rating</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- upload visitor image form: pag cinlick yung upload your image button -->
+        <div id = "upload-modal" class = "modal">
+            <div class = "modal-content rating-content">
+                <div class = "modal-header">
+                    <div class = "title-block">
+                        <h2 class = "modal-h2">Share Your Memories</h2>
+                        <p class = "modal-p">Upload a photo from your visit to <b>Manila Ocean Park</b></p>
+                    </div>
+                </div>
+                <form id = "upload-form" class = "modal-form">
+                    <div class = "upload-group">
+                        <label for = "visitor-photo" class = "modal-label">Select Image:</label>
+                        <input type = "file" id = "visitor-photo" name = "visitor_image" accept = "image/*" required>
+                    </div><br>
+                    <input type = "hidden" name = "attraction_id" value = "">
+                    <div class = "modal-actions">
+                        <button type = "reset" class = "cancel-btn" onclick = "closeUploadModal()">Cancel</button>
+                        <button type = "submit" class = "submit-btn">Upload to Gallery</button>
+                    </div>
+                </form>
+            </div>
+        </div>
 
         <script src = "../javascript/attraction.js"></script>
     </body>
