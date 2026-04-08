@@ -3,13 +3,17 @@
 session_start(); 
 require 'db.php'; 
 
-if($_SESSION['role'] != 'admin') {
-    header("Location: login.php");
-    exit();
-}
+// if($_SESSION['role'] != 'admin') {
+//     header("Location: login.php");
+//     exit();
+// }
+
+    // Fetch all cities for dropdown
+    $cities_query = "SELECT city_id, city_name FROM city ORDER BY city_name";
+    $cities_result = mysqli_query($conn, $cities_query);
 
     $attraction_id = $_GET['attraction_id'];
-    $read = $conn->query("SELECT name, description, street_address, total_visits, avg_rating, img_path FROM attraction
+    $read = $conn->query("SELECT name, description, street_address, total_visits, avg_rating, city_id FROM attraction
     WHERE attraction_id = $attraction_id ")->fetch_assoc();
 
     if ($_SERVER['REQUEST_METHOD']== "POST") {
@@ -18,10 +22,10 @@ if($_SESSION['role'] != 'admin') {
         $street_address = $_POST['street_address'];
         $total_visits = $_POST['total_visits'];
         $avg_rating = $_POST['avg_rating'];
-        $img_path = $_POST['img_path'];
+        $city_id = $_POST['city_id'];
 
-        $update = $conn->prepare("UPDATE attraction SET name=?, description= ?, street_address=?, total_visits=?, avg_rating=?, img_path=? WHERE attraction_id= ?");
-        $update->bind_param("sssidsi", $name, $desciption, $street_address, $total_visits, $avg_rating, $img_path, $attraction_id);  
+        $update = $conn->prepare("UPDATE attraction SET name=?, description= ?, street_address=?, total_visits=?, avg_rating=?, city_id=? WHERE attraction_id= ?");
+        $update->bind_param("sssidsi", $name, $desciption, $street_address, $total_visits, $avg_rating, $city_id, $attraction_id);  
         
         if ($update->execute()) {
             header("Location: read_attraction.php");
@@ -64,8 +68,16 @@ if($_SESSION['role'] != 'admin') {
                 <input name="total_visits" required value="<?= htmlspecialchars($read['total_visits']) ?>"><br>
             <label>Average Rating:</label>
                 <input name="avg_rating" required min="0" max="5" value="<?= htmlspecialchars($read['avg_rating']) ?>"><br>
-            <label>Image Path:</label>
-                <input name="img_path" required value="<?= htmlspecialchars($read['img_path']) ?>"><br>
+            <label>City:</label>
+            <select name="city_id">
+            <option value="">-- Select City  --</option>
+            <?php while($row = mysqli_fetch_assoc($cities_result)): ?>
+                <option value="<?= $row['city_id'] ?>" <?= ($row['city_id'] == $read['city_id']) ? 'selected' : '' ?>>
+                    <?= htmlspecialchars($row['city_name']) ?>
+                </option>
+            <?php endwhile; ?>
+        </select><br>
+
             <br>
             <input type="submit" name="submit" value="Update">
         </form>

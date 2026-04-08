@@ -8,6 +8,10 @@ if($_SESSION['role'] != 'admin') {
     exit();
 }
 
+// Fetch all cities for dropdown
+$cities_query = "SELECT city_id, city_name FROM city ORDER BY city_name";
+$cities_result = mysqli_query($conn, $cities_query);
+
 if (isset($_POST['submit'])) {
     
     $name = $_POST['name'];
@@ -15,9 +19,10 @@ if (isset($_POST['submit'])) {
     $street_address = $_POST['street_address'];
     $total_visits = $_POST['total_visits'];
     $avg_rating = $_POST['avg_rating'];
+    $city_id = $_POST['city_id'];
 
-    $insert = "INSERT INTO attraction (name, description, street_address ,total_visits, avg_rating) 
-    VALUES ('$name', '$description', '$street_address', '$total_visits', '$avg_rating')";
+    $insert = "INSERT INTO attraction (name, description, street_address ,total_visits, avg_rating, city_id) 
+    VALUES ('$name', '$description', '$street_address', '$total_visits', '$avg_rating', '$city_id')";
 
     if (mysqli_query($conn, $insert)) {
         echo "<p>Entry inserted successfully. </p>";
@@ -61,6 +66,14 @@ if (isset($_POST['submit'])) {
         <input type="text" name="total_visits" id="total_visits" required><br><br>
     <label for="avg_rating">Average Rating:</label><br>
         <input type="number" step="0.01" name="avg_rating" id="avg_rating" ><br><br>
+    
+    <label for="city_id">City</label>
+        <select id="city_id" name="city_id" required>
+            <option value="">-- Select City --</option>
+            <?php while($row = mysqli_fetch_assoc($cities_result)): ?>
+                <option value="<?php echo $row['city_id']; ?>"><?php echo $row['city_name']; ?></option>
+            <?php endwhile; ?>
+        </select><br>
 
     <input type="submit" name="submit" value="Submit">
     </form>

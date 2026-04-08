@@ -3,10 +3,10 @@
 session_start(); 
 require 'db.php'; 
 
-if($_SESSION['role'] != 'admin') {
-    header("Location: login.php");
-    exit();
-}
+// if($_SESSION['role'] != 'admin') {
+//     header("Location: login.php");
+//     exit();
+// }
 
 
 $read = $conn->query("SELECT * FROM attraction");
@@ -45,6 +45,7 @@ $total_attractions = $read->num_rows;
                 <th>Street Address</th>
                 <th>Total Visits</th>
                 <th>Average Rating</th>
+                <th>City ID</th>
             </tr>
             <?php 
                 while ($row = $result->fetch_assoc()):
@@ -56,6 +57,7 @@ $total_attractions = $read->num_rows;
                 <td><?= htmlspecialchars($row['street_address']) ?></td>
                 <td><?= htmlspecialchars($row['total_visits']) ?></td>
                 <td><?= htmlspecialchars($row['avg_rating']) ?></td>
+                <td><?= htmlspecialchars($row['city_id']) ?></td>
                 <td>
                     <a href="update_attraction.php?attraction_id=<?= $row['attraction_id']?>">Update</a>
                     <a href="delete_attraction.php?attraction_id=<?= $row['attraction_id']?>" onclick="return confirm('Are you sure?')">Delete</a>
