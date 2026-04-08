@@ -1,0 +1,248 @@
+body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    background-color: #fefbf8; 
+    font-family: 'Raleway';
+    font-weight: '300';
+    color: #3d405b;
+}
+
+
+
+
+
+/* styling for header + navigation dropdown */
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    align-items: center;
+    padding-top: 5px;
+    background-color: white;
+    color: #2d5a27;
+    min-height: 60px; 
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.logo {
+    height: 50px; 
+    padding-left: 20px;
+    padding-bottom: 10px;
+    display: flex;
+    align-items: center;
+}
+
+.logo img {
+    height: 80%; 
+    height: 40px;
+    width: auto;      
+    display: block;
+    padding-top: 5px;
+}
+
+.logo:hover {
+    transform: scale(1.05);
+    transition: all 0.3s ease-in-out;
+}
+
+.dropdown {
+    font-size: 30px;
+    line-height: 50px;
+    padding-top: 5px;
+    padding-right: 20px;
+    padding-bottom: 10px;
+    cursor: pointer;
+    color: #2d5a27;
+    display: block;
+    z-index: 130;
+}
+
+#toggle {
+    display: none;
+}
+
+.menu {
+    position: relative; 
+    width: 100%;
+    background-color: #2d5a27;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    height: 0;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    z-index: 120;
+}
+
+#toggle:checked ~ .menu {
+    height: 218px;
+}
+
+#toggle:checked + .dropdown {
+    color: #ccc;
+}
+
+.link {
+    padding: 15px 0;
+    text-decoration: none;
+    color: white;
+    font: 20px 'Montserrat', sans-serif;
+    font-weight: normal;
+    transition: 0.3s;
+}
+
+.link:hover {
+    background-color: #789f72;
+    color: white;
+}
+
+
+
+
+
+/* styling for hero section */
+
+.hero-section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    width: 100%;
+    min-height: calc(100vh - 60px);
+    background: repeating-radial-gradient(#6a6a6a 0 0.00001%, #999 0 0.00002%) 50% 50% / 130px 130px, 
+                linear-gradient(rgba(41, 47, 52, 0.8)),
+                url("../images/home-hero.jpg");
+    background-size: cover;
+    background-blend-mode: overlay, normal, normal;
+    background-position: fixed;
+    background-attachment: fixed;
+    background-repeat: repeat, no-repeat, no-repeat;
+    color: white;
+}
+
+.home-title {
+    font-family: 'Montserrat';
+    font-size: 55px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    padding-top: 40px;
+}
+
+.home-subtitle {
+    font-family: 'Lora';
+    font-size: 25px;
+    font-style: oblique;
+    font-weight: 300;
+    margin-top: 5px;
+}
+
+.search-redirect {
+    width: 250px;
+    height: 40px;
+    border: none;
+    border-radius: 50px;
+    margin-top: 30px;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: #fefbf8;
+    color: #3d405b;
+    font-family: 'Raleway';
+    font-size: 16px;
+    font-weight: 400;
+}
+
+.search-redirect:hover {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+    box-shadow: 0 10px 10px -10px rgba(0, 0, 0, 0.5);
+    transform: scale(1.1);
+    transition: all 0.3s ease-in-out;
+}
+
+.home-below {
+    font-family: 'Raleway';
+    font-size: 16px;
+    font-weight: 400;
+    margin-top: 20px;
+}
+
+
+
+
+
+/* styling for intro */
+
+.intro {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    width: 100%;
+}
+
+.logo-page {
+    height: 50px;
+    margin: auto;
+    margin-top: 50px;
+}
+
+.logo-page img {
+    object-fit: contain;
+    height: 100%;
+}
+
+.intro h3 {
+    margin: 20px auto;
+}
+
+.intro p {
+    margin: 0 auto;
+    line-height: 30px;
+    max-width: 80ch;
+    text-align: center;
+}
+
+
+
+
+
+/* styling for masonry grid */
+
+
+
+
+
+/* styling for footer */
+
+.footer {
+    background-color: #2d5a27;
+    min-height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.footer p {
+    color: #fefbf8;
+    font-size: 12px;
+}
+
+.footer a {
+    color: #789f72;
+    text-decoration: none;
+}
+
+.footer a:hover {
+    color: #fefbf8;
+    text-decoration: underline;
+    cursor: pointer;
+    transition: all 0.1s ease-in-out;
+}
