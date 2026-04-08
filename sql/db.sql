@@ -2,8 +2,8 @@
 -- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1:3308
--- Generation Time: Apr 08, 2026 at 10:20 AM
+-- Host: 127.0.0.1
+-- Generation Time: Apr 08, 2026 at 06:39 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -33,37 +33,37 @@ CREATE TABLE `attraction` (
   `description` varchar(100) NOT NULL,
   `street_address` varchar(100) NOT NULL,
   `total_visits` int(11) NOT NULL,
-  `avg_rating` double NOT NULL,
-  `city_id` int(11) NOT NULL
+  `avg_rating` decimal(10,2) NOT NULL DEFAULT 0.00,
+  `city_id` int(11) NOT NULL,
+  `local_rating` decimal(3,2) DEFAULT 0.00,
+  `gem_score` decimal(10,2) DEFAULT 0.00
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `attraction`
 --
 
-INSERT INTO `attraction` (`attraction_id`, `name`, `description`, `street_address`, `total_visits`, `avg_rating`, `city_id`) VALUES
-(1, 'Rizal Park', 'Historic park with monuments and gardens', 'Ermita, Manila', 12500, 4.5, 1),
-(2, 'Intramuros', 'Historic walled city from Spanish era', 'Intramuros, Manila', 9800, 4.7, 1),
-(3, 'National Museum of Fine Arts', 'Classical and modern Filipino art', 'Padre Burgos Ave, Ermita, Manila', 7200, 4.6, 1),
-(4, 'San Agustin Church', 'Baroque UNESCO world heritage church', 'Gen Luna St, Intramuros, Manila', 5600, 4.8, 1),
-(5, 'Manila Ocean Park', 'Marine park with oceanarium and shows', 'Ermita, Manila', 8900, 4.3, 1),
-(6, 'Fort Santiago', 'Citadel inside Intramuros', 'Santa Clara St, Intramuros, Manila', 6700, 4.6, 1),
-(7, 'Binondo Church', 'Historic church in Chinatown', 'Binondo, Manila', 4300, 4.4, 1),
-(8, 'Manila Baywalk', 'Scenic baywalk with sunset views', 'Roxas Blvd, Manila', 10400, 4.2, 1),
-(9, 'Casa Manila', 'Colonial lifestyle museum', 'Plaza San Luis Complex, Intramuros', 3900, 4.5, 1),
-(10, 'San Sebastian Church', 'All-steel Gothic church', 'Pasaje del Carmen, Manila', 3100, 4.5, 1),
-(11, 'Burnham Park', 'Central park with lake and gardens', 'Burnham Park, Baguio', 11000, 4.6, 11),
-(12, 'Mines View Park', 'Scenic overlook of former gold mines', 'Dominican Hill, Baguio', 9300, 4.5, 11),
-(13, 'Baguio Cathedral', 'Iconic church with twin spires', 'Cathedral Loop, Baguio', 6700, 4.7, 11),
-(14, 'Camp John Hay', 'Former US base turned recreation area', 'Camp John Hay, Baguio', 7800, 4.4, 11),
-(15, 'Session Road', 'Famous commercial and cultural hub', 'Session Road, Baguio', 5400, 4.2, 11),
-(16, 'Botanical Garden', 'Gardens with indigenous huts', 'Leonard Wood Rd, Baguio', 6200, 4.5, 11),
-(17, 'The Mansion', 'Official summer palace of Philippine president', 'Leonard Wood Rd, Baguio', 4900, 4.6, 11),
-(18, 'Wright Park', 'Park with horseback riding', 'Wright Park, Baguio', 4400, 4.3, 11),
-(19, 'Bell Church', 'Taoist temple with dragon gate', 'Bell Church Rd, Baguio', 3700, 4.5, 11),
-(20, 'Tam-Awan Village', 'Artist village with native huts', 'Tam-Awan, Baguio', 2900, 4.6, 11),
-(21, 'bahay ni theo', 'may pogi', 'pogi street', 67, 4.6, 14),
-(22, 'theoland', 'may pogi', 'pogi street2', 2900, 4.6, 12);
+INSERT INTO `attraction` (`attraction_id`, `name`, `description`, `street_address`, `total_visits`, `avg_rating`, `city_id`, `local_rating`, `gem_score`) VALUES
+(1, 'Rizal Park', 'Historic park with monuments and gardens', 'Ermita, Manila', 12500, 5.00, 1, 0.00, 0.00),
+(2, 'Intramuros', 'Historic walled city from Spanish era', 'Intramuros, Manila', 9800, 5.00, 1, 0.00, 0.00),
+(3, 'National Museum of Fine Arts', 'Classical and modern Filipino art', 'Padre Burgos Ave, Ermita, Manila', 7200, 5.00, 1, 0.00, 0.00),
+(4, 'San Agustin Church', 'Baroque UNESCO world heritage church', 'Gen Luna St, Intramuros, Manila', 5600, 5.00, 1, 0.00, 0.00),
+(5, 'Manila Ocean Park', 'Marine park with oceanarium and shows', 'Ermita, Manila', 8900, 4.00, 1, 0.00, 0.00),
+(6, 'Fort Santiago', 'Citadel inside Intramuros', 'Santa Clara St, Intramuros, Manila', 6700, 5.00, 1, 0.00, 0.00),
+(7, 'Binondo Church', 'Historic church in Chinatown', 'Binondo, Manila', 4300, 4.00, 1, 0.00, 0.00),
+(8, 'Manila Baywalk', 'Scenic baywalk with sunset views', 'Roxas Blvd, Manila', 10400, 4.00, 1, 0.00, 0.00),
+(9, 'Casa Manila', 'Colonial lifestyle museum', 'Plaza San Luis Complex, Intramuros', 3900, 5.00, 1, 0.00, 0.00),
+(10, 'San Sebastian Church', 'All-steel Gothic church', 'Pasaje del Carmen, Manila', 3100, 5.00, 1, 0.00, 0.00),
+(11, 'Burnham Park', 'Central park with lake and gardens', 'Burnham Park, Baguio', 11000, 5.00, 11, 0.00, 0.00),
+(12, 'Mines View Park', 'Scenic overlook of former gold mines', 'Dominican Hill, Baguio', 9300, 5.00, 11, 0.00, 0.00),
+(13, 'Baguio Cathedral', 'Iconic church with twin spires', 'Cathedral Loop, Baguio', 6700, 5.00, 11, 0.00, 0.00),
+(14, 'Camp John Hay', 'Former US base turned recreation area', 'Camp John Hay, Baguio', 7800, 4.00, 11, 0.00, 0.00),
+(15, 'Session Road', 'Famous commercial and cultural hub', 'Session Road, Baguio', 5400, 4.00, 11, 0.00, 0.00),
+(16, 'Botanical Garden', 'Gardens with indigenous huts', 'Leonard Wood Rd, Baguio', 6200, 5.00, 11, 0.00, 0.00),
+(17, 'The Mansion', 'Official summer palace of Philippine president', 'Leonard Wood Rd, Baguio', 4900, 5.00, 11, 0.00, 0.00),
+(18, 'Wright Park', 'Park with horseback riding', 'Wright Park, Baguio', 4400, 4.00, 11, 0.00, 0.00),
+(19, 'Bell Church', 'Taoist temple with dragon gate', 'Bell Church Rd, Baguio', 3700, 5.00, 11, 0.00, 0.00),
+(20, 'Tam-Awan Village', 'Artist village with native huts', 'Tam-Awan, Baguio', 2900, 5.00, 11, 0.00, 0.00);
 
 -- --------------------------------------------------------
 
@@ -320,8 +320,7 @@ INSERT INTO `user` (`user_id`, `name`, `username`, `password`, `email`, `city_id
 (48, 'Enrique Razon', 'enriquerazon', 'Razon123!', 'enriquerazon@email.com', 1, 'user'),
 (49, 'Dennis Uy', 'dennisuy', 'Uy123!', 'dennisuy@email.com', 47, 'user'),
 (50, 'Manny Villar', 'mannyvillar', 'Villar123!', 'mannyvillar@email.com', 15, 'user'),
-(51, 'admin', 'admin', 'admin', 'admin@gmail.com', 1, 'admin'),
-(53, 'Jairus Theo Villafranca', 'Theut0916', '$2y$10$92h.BLwadd1vkUhJCMh05uggDjW.YLb6/S5O5cE8BoWeuXWenPV2i', 'theoukz321@gmail.com', 14, 'user');
+(51, 'admin', 'admin', 'admin', 'admin@gmail.com', 1, 'admin');
 
 -- --------------------------------------------------------
 
@@ -570,7 +569,7 @@ ALTER TABLE `visits`
 -- AUTO_INCREMENT for table `attraction`
 --
 ALTER TABLE `attraction`
-  MODIFY `attraction_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `attraction_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT for table `category`
@@ -600,7 +599,7 @@ ALTER TABLE `ratings`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=54;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=53;
 
 --
 -- Constraints for dumped tables
