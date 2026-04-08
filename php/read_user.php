@@ -7,7 +7,9 @@ if($_SESSION['role'] != 'admin') {
     exit();
 }
 
-$read = $conn->query("SELECT u.user_id, u.name, u.username, u.password, u.email, c.city_name, c.province 
+
+
+$read = $conn->query("SELECT u.user_id, u.name, u.username, u.password, u.email, c.city_name, c.province, u.role
           FROM user u 
           LEFT JOIN city c ON u.city_id = c.city_id 
           ORDER BY u.user_id");
@@ -42,6 +44,7 @@ $read = $conn->query("SELECT u.user_id, u.name, u.username, u.password, u.email,
                 <th>Email</th>
                 <th>City</th>
                 <th>Province</th>
+                <th>Role</th>
             </tr>
 
             <?php 
@@ -55,6 +58,7 @@ $read = $conn->query("SELECT u.user_id, u.name, u.username, u.password, u.email,
                     <td><?php echo htmlspecialchars($row['email']); ?></td>
                     <td><?php echo htmlspecialchars($row['city_name']); ?></td>
                     <td><?php echo htmlspecialchars($row['province']); ?></td>
+                    <td><?php echo htmlspecialchars($row['role']); ?></td>
                     <td>
                         <a href="update_user.php?user_id=<?= $row['user_id']?>">Update</a>
                         <a href="delete_user.php?user_id=<?= $row['user_id']?>"onclick= "return confirm('Are you Sure')">Delete</a>

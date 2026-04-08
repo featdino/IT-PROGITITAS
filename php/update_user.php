@@ -7,9 +7,11 @@ if($_SESSION['role'] != 'admin') {
     exit();
 }
 
+
 // Fetch all cities for dropdown
 $cities_query = "SELECT city_id, city_name FROM city ORDER BY city_name";
 $cities_result = mysqli_query($conn, $cities_query);
+
 
 $user_id = $_GET['user_id'];
 $read = $conn->query("SELECT name,username, password, email, city_id FROM user WHERE user_id = $user_id")->fetch_assoc();
@@ -65,14 +67,14 @@ if(isset($_POST['submit'])){
             <input name="email" required value="<?= htmlspecialchars($read['email'])?>"><br> 
         <label>City:</label>
             <select name="city_id">
-            <option value="">-- Select City (Optional) --</option>
+            <option value="">-- Select City --</option>
             <?php while($row = mysqli_fetch_assoc($cities_result)): ?>
                 <option value="<?= $row['city_id'] ?>" <?= ($row['city_id'] == $read['city_id']) ? 'selected' : '' ?>>
                     <?= htmlspecialchars($row['city_name']) ?>
                 </option>
             <?php endwhile; ?>
         </select><br>
-        
+
         <input type="submit" name="submit" value="Update">
     </form>
 </body>
