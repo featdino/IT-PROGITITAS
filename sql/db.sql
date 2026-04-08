@@ -2,8 +2,8 @@
 -- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Apr 08, 2026 at 07:49 AM
+-- Host: 127.0.0.1:3308
+-- Generation Time: Apr 08, 2026 at 10:20 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -61,7 +61,56 @@ INSERT INTO `attraction` (`attraction_id`, `name`, `description`, `street_addres
 (17, 'The Mansion', 'Official summer palace of Philippine president', 'Leonard Wood Rd, Baguio', 4900, 4.6, 11),
 (18, 'Wright Park', 'Park with horseback riding', 'Wright Park, Baguio', 4400, 4.3, 11),
 (19, 'Bell Church', 'Taoist temple with dragon gate', 'Bell Church Rd, Baguio', 3700, 4.5, 11),
-(20, 'Tam-Awan Village', 'Artist village with native huts', 'Tam-Awan, Baguio', 2900, 4.6, 11);
+(20, 'Tam-Awan Village', 'Artist village with native huts', 'Tam-Awan, Baguio', 2900, 4.6, 11),
+(21, 'bahay ni theo', 'may pogi', 'pogi street', 67, 4.6, 14),
+(22, 'theoland', 'may pogi', 'pogi street2', 2900, 4.6, 12);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `attraction_category`
+--
+
+CREATE TABLE `attraction_category` (
+  `attraction_id` int(11) NOT NULL,
+  `category_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `attraction_category`
+--
+
+INSERT INTO `attraction_category` (`attraction_id`, `category_id`) VALUES
+(1, 10),
+(1, 13),
+(2, 2),
+(2, 4),
+(3, 1),
+(4, 2),
+(4, 3),
+(5, 12),
+(5, 14),
+(6, 2),
+(7, 3),
+(8, 13),
+(9, 1),
+(10, 3),
+(11, 10),
+(11, 13),
+(11, 14),
+(12, 13),
+(13, 3),
+(14, 10),
+(14, 11),
+(15, 7),
+(15, 15),
+(16, 10),
+(16, 13),
+(17, 2),
+(18, 10),
+(19, 3),
+(20, 1),
+(20, 16);
 
 -- --------------------------------------------------------
 
@@ -271,7 +320,8 @@ INSERT INTO `user` (`user_id`, `name`, `username`, `password`, `email`, `city_id
 (48, 'Enrique Razon', 'enriquerazon', 'Razon123!', 'enriquerazon@email.com', 1, 'user'),
 (49, 'Dennis Uy', 'dennisuy', 'Uy123!', 'dennisuy@email.com', 47, 'user'),
 (50, 'Manny Villar', 'mannyvillar', 'Villar123!', 'mannyvillar@email.com', 15, 'user'),
-(51, 'admin', 'admin', 'admin', 'admin@gmail.com', 1, 'admin');
+(51, 'admin', 'admin', 'admin', 'admin@gmail.com', 1, 'admin'),
+(53, 'Jairus Theo Villafranca', 'Theut0916', '$2y$10$92h.BLwadd1vkUhJCMh05uggDjW.YLb6/S5O5cE8BoWeuXWenPV2i', 'theoukz321@gmail.com', 14, 'user');
 
 -- --------------------------------------------------------
 
@@ -464,6 +514,13 @@ ALTER TABLE `attraction`
   ADD KEY `attraction_fk1` (`city_id`);
 
 --
+-- Indexes for table `attraction_category`
+--
+ALTER TABLE `attraction_category`
+  ADD PRIMARY KEY (`attraction_id`,`category_id`),
+  ADD KEY `category_id` (`category_id`);
+
+--
 -- Indexes for table `category`
 --
 ALTER TABLE `category`
@@ -513,7 +570,7 @@ ALTER TABLE `visits`
 -- AUTO_INCREMENT for table `attraction`
 --
 ALTER TABLE `attraction`
-  MODIFY `attraction_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `attraction_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- AUTO_INCREMENT for table `category`
@@ -543,7 +600,7 @@ ALTER TABLE `ratings`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=53;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=54;
 
 --
 -- Constraints for dumped tables
@@ -554,6 +611,13 @@ ALTER TABLE `user`
 --
 ALTER TABLE `attraction`
   ADD CONSTRAINT `attraction_fk1` FOREIGN KEY (`city_id`) REFERENCES `city` (`city_id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `attraction_category`
+--
+ALTER TABLE `attraction_category`
+  ADD CONSTRAINT `attraction_category_ibfk_1` FOREIGN KEY (`attraction_id`) REFERENCES `attraction` (`attraction_id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `attraction_category_ibfk_2` FOREIGN KEY (`category_id`) REFERENCES `category` (`category_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `gallery`
