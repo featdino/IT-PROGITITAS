@@ -1,0 +1,217 @@
+body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    background-color: #fefbf8; 
+}
+
+
+
+
+
+/* styling for header + navigation dropdown */
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    align-items: center;
+    padding-top: 5px;
+    background-color: white;
+    color: #2d5a27;
+    min-height: 60px; 
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.logo {
+    height: 50px; 
+    padding-left: 20px;
+    padding-bottom: 10px;
+    display: flex;
+    align-items: center;
+}
+
+.logo img {
+    height: 80%; 
+    height: 40px;
+    width: auto;      
+    display: block;
+    padding-top: 5px;
+}
+
+.logo:hover {
+    transform: scale(1.05);
+    transition: all 0.3s ease-in-out;
+}
+
+.dropdown {
+    font-size: 30px;
+    line-height: 50px;
+    padding-top: 5px;
+    padding-right: 20px;
+    padding-bottom: 10px;
+    cursor: pointer;
+    color: #2d5a27;
+    display: block;
+    z-index: 130;
+}
+
+#toggle {
+    display: none;
+}
+
+.menu {
+    position: relative; 
+    width: 100%;
+    background-color: #2d5a27;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    height: 0;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    z-index: 120;
+}
+
+#toggle:checked ~ .menu {
+    height: 218px;
+}
+
+#toggle:checked + .dropdown {
+    color: #ccc;
+}
+
+.link {
+    padding: 15px 0;
+    text-decoration: none;
+    color: white;
+    font: 20px 'Montserrat', sans-serif;
+    font-weight: normal;
+    transition: 0.3s;
+}
+
+.link:hover {
+    background-color: #789f72;
+    color: white;
+}
+
+
+
+
+
+/* styling for actual sarch page */
+
+.search-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    width: 100%;
+}
+
+h1 {
+    font-size: 3rem;
+    font-family: 'Montserrat';
+    font-weight: 700;
+    color: #3d405b;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.logo-page {
+    height: 50px;
+    margin: auto;
+    margin-top: 50px;
+}
+
+.logo-page img {
+    object-fit: contain;
+    height: 100%;
+}
+
+.search-bar-container {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    width: 100%;
+}
+
+.search-form {
+    display: flex;
+    flex-direction: row;
+}
+
+.search-bar {
+    flex: 1;
+    width: 700px;
+    height: 67px;
+    border: 0.1px solid #63645f;
+    border-top-left-radius: 50px;
+    border-bottom-left-radius: 50px;
+    padding-left: 30px;
+    font-family: 'Raleway', sans-serif;
+    font-size: 20px;
+}
+
+.search-button {
+    width: 67px;
+    height: 67px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #63645f;
+    color: white;
+    border: none;
+    border-top-right-radius: 50px;
+    border-bottom-right-radius: 50px;
+    cursor: pointer;
+}
+
+.search-button i {
+    font-size: 16px; 
+}
+
+.search-button:hover {
+    background-color: #3d405b;
+    transition: 0.3s;
+}
+
+.prompt {
+    font-family: 'Lora';
+    font-weight: 600;
+    font-style: oblique;
+    color: #3d405b;
+}
+
+.upper-tags, .lower-tags {
+    display: flex;
+    flex-wrap: wrap; 
+    justify-content: center;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.tag {
+    padding: 10px 20px;
+    border-radius: 25px;
+    border: none;
+    font-family: 'Raleway';
+    font-weight: bold;
+    color: white;
+    cursor: pointer;
+}
+
+.tag:hover {
+    transform: scale(1.05);
+    transition: all 0.3s ease-in-out;
+}
+
+.green { background-color: #3a5a3a; }
+.dark-green { background-color: #2d5a27; }
+.gray { background-color: #63645f; }
+.navy { background-color: #3d405b; }
