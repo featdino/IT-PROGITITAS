@@ -251,25 +251,25 @@ body, html {
     box-shadow: 0 5px 25px rgba(0, 0, 0, 0.15);
 }
 
-.local-rating, .gem-score, .tourist-visits {
+.local-rating, .gem-score, .total-visits {
     text-align: center;
     color: #2d5a27;
 }
 
-.local-rating h1, .gem-score h1, .tourist-visits h1{
+.local-rating h1, .gem-score h1, .total-visits h1{
     font-family: 'Montserrat';
     font-weight: 600;
     font-size: 36px;
     margin-bottom: 0px;
 }
 
-.local-rating h4, .gem-score h4, .tourist-visits h4{
+.local-rating h4, .gem-score h4, .total-visits h4{
     font-family: 'Montserrat';
     font-size: 20px;
     margin-top: 3px;
 }
 
-.local-rating h4, .tourist-visits h4 {
+.local-rating h4, .total-visits h4 {
     font-weight: 400;
 }
 
