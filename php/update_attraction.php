@@ -3,10 +3,10 @@
 session_start(); 
 require 'db.php'; 
 
-if($_SESSION['role'] != 'admin') {
-    header("Location: login.php");
-    exit();
-}
+// if($_SESSION['role'] != 'admin') {
+//     header("Location: login.php");
+//     exit();
+// }
 
     // Fetch all cities for dropdown
     $cities_query = "SELECT city_id, city_name FROM city ORDER BY city_name";
@@ -16,6 +16,15 @@ if($_SESSION['role'] != 'admin') {
     $read = $conn->query("SELECT name, description, street_address, total_visits, avg_rating, city_id FROM attraction
     WHERE attraction_id = $attraction_id ")->fetch_assoc();
 
+    
+    $categories_query = "SELECT category_id, category, main_class FROM category ORDER BY main_class, category";
+    $categories_result = mysqli_query($conn, $categories_query);
+    $current_categories = [];
+    $cat_result = $conn->query("SELECT category_id FROM attraction_category WHERE attraction_id = $attraction_id");
+    while($cat_row = $cat_result->fetch_assoc()) {
+        $current_categories[] = $cat_row['category_id'];
+}
+
     if ($_SERVER['REQUEST_METHOD']== "POST") {
         $name = $_POST['name'];
         $desciption = $_POST['description'];
@@ -23,11 +32,21 @@ if($_SESSION['role'] != 'admin') {
         $total_visits = $_POST['total_visits'];
         $avg_rating = $_POST['avg_rating'];
         $city_id = $_POST['city_id'];
+        $categories = isset($_POST['categories']) ? $_POST['categories'] : [];
+
 
         $update = $conn->prepare("UPDATE attraction SET name=?, description= ?, street_address=?, total_visits=?, avg_rating=?, city_id=? WHERE attraction_id= ?");
         $update->bind_param("sssidsi", $name, $desciption, $street_address, $total_visits, $avg_rating, $city_id, $attraction_id);  
         
-        if ($update->execute()) {
+       if ($update->execute()) {
+            $conn->query("DELETE FROM attraction_category WHERE attraction_id='$attraction_id'");
+            
+            if (!empty($categories)) {
+                foreach ($categories as $category_id) {
+                    $conn->query("INSERT INTO attraction_category (attraction_id, category_id) VALUES ('$attraction_id', '$category_id')");
+                }
+            }
+            
             header("Location: read_attraction.php");
             exit();
         }else{
@@ -76,9 +95,24 @@ if($_SESSION['role'] != 'admin') {
                     <?= htmlspecialchars($row['city_name']) ?>
                 </option>
             <?php endwhile; ?>
-        </select><br>
+        </select><br><br>
 
-            <br>
+        <label>Categories:</label><br>
+            <?php 
+            $current_main_class = '';
+            mysqli_data_seek($categories_result, 0);
+            while($category = mysqli_fetch_assoc($categories_result)): 
+                if ($current_main_class != $category['main_class']):
+                    $current_main_class = $category['main_class'];
+                    echo "<strong>" . htmlspecialchars($current_main_class) . "</strong><br>";
+                endif;
+                $checked = in_array($category['category_id'], $current_categories) ? 'checked' : '';
+            ?>
+                <input type="checkbox" name="categories[]" value="<?= $category['category_id'] ?>" <?= $checked ?>>
+                <label><?= htmlspecialchars($category['category']) ?></label><br>
+            <?php endwhile; ?>
+
+            <br>            
             <input type="submit" name="submit" value="Update">
         </form>
 </body>

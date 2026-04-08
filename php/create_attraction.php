@@ -3,14 +3,17 @@
 session_start(); 
 require 'db.php'; 
 
-if($_SESSION['role'] != 'admin') {
-    header("Location: login.php");
-    exit();
-}
+// if($_SESSION['role'] != 'admin') {
+//     header("Location: login.php");
+//     exit();
+// }
 
 // Fetch all cities for dropdown
 $cities_query = "SELECT city_id, city_name FROM city ORDER BY city_name";
 $cities_result = mysqli_query($conn, $cities_query);
+
+$categories_query = "SELECT category_id, category, main_class FROM category ORDER BY main_class, category";
+$categories_result = mysqli_query($conn, $categories_query);
 
 if (isset($_POST['submit'])) {
     
@@ -20,17 +23,25 @@ if (isset($_POST['submit'])) {
     $total_visits = $_POST['total_visits'];
     $avg_rating = $_POST['avg_rating'];
     $city_id = $_POST['city_id'];
+    $categories = isset($_POST['categories']) ? $_POST['categories'] : [];
 
     $insert = "INSERT INTO attraction (name, description, street_address ,total_visits, avg_rating, city_id) 
     VALUES ('$name', '$description', '$street_address', '$total_visits', '$avg_rating', '$city_id')";
 
     if (mysqli_query($conn, $insert)) {
-        echo "<p>Entry inserted successfully. </p>";
+        $attraction_id = mysqli_insert_id($conn);
+
+        if(!empty($categories)){
+            foreach($categories as $category_id){
+                $insert_cat = "INSERT INTO attraction_category (attraction_id, category_id) VALUES ('$attraction_id', '$category_id')";
+                mysqli_query($conn, $insert_cat);
+            }
+          }
         header("Location: read_attraction.php");
     }else{
-         echo "<p>Error: " . $insert . "<br>" . mysqli_error($conn) . "</p>";
+        echo "<p>Error: " . $insert . "<br>" . mysqli_error($conn) . "</p>";       
     }
-   mysqli_close($conn);
+    mysqli_close($conn);
 }
 ?>
 
@@ -74,6 +85,22 @@ if (isset($_POST['submit'])) {
                 <option value="<?php echo $row['city_id']; ?>"><?php echo $row['city_name']; ?></option>
             <?php endwhile; ?>
         </select><br>
+
+    <label>Categories:</label><br>
+        <?php 
+        $current_main_class = '';
+        mysqli_data_seek($categories_result, 0);
+        while($category = mysqli_fetch_assoc($categories_result)): 
+            if ($current_main_class != $category['main_class']):
+                $current_main_class = $category['main_class'];
+                echo "<strong>" . htmlspecialchars($current_main_class) . "</strong><br>";
+            endif;
+        ?>
+            <input type="checkbox" name="categories[]" value="<?= $category['category_id'] ?>">
+            <label><?= htmlspecialchars($category['category']) ?></label><br>
+        <?php endwhile; ?>
+
+        <br>
 
     <input type="submit" name="submit" value="Submit">
     </form>

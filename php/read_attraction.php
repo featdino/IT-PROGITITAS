@@ -3,10 +3,10 @@
 session_start(); 
 require 'db.php'; 
 
-if($_SESSION['role'] != 'admin') {
-    header("Location: login.php");
-    exit();
-}
+// if($_SESSION['role'] != 'admin') {
+//     header("Location: login.php");
+//     exit();
+// }
 
 
 $read = $conn->query("SELECT * FROM attraction");
