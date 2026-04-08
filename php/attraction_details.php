@@ -65,6 +65,8 @@ $official_image = $img_result->fetch_assoc();
     <p><strong>City:</strong> <?= htmlspecialchars($attraction['city_name']) ?> (<?= htmlspecialchars($attraction['province']) ?>)</p>
     <p><strong>Total Visits:</strong> <?= $attraction['total_visits'] ?></p>
     <p><strong>Average Rating:</strong> <?= $attraction['avg_rating'] ?></p>
+    <p><strong>Local Rating:</strong> <?= $attraction['local_rating'] ?></p>
+    <p><strong>Gem Score:</strong> <?= $attraction['gem_score'] ?></p>
     
     <p><strong>Categories:</strong><br>
     <?php 
