@@ -24,20 +24,21 @@
             </div>
         </header>
 
-        <section class = "login-container">
-            <h3>Welcome back</h3>
-            <p>Please enter your details</p>
-            <form class = "login-form">
-                <label for = "" class = "form-label"></label>
-                <input type = "text" placeholder = "Username"><br>
-                <label for = "" class = "form-label"></label>
-                <input type = "password" id = "password" placeholder = "Password">
-                <span id = "toggle-password" class = "toggle-icon">
-                    <i class = "fas fa-eye-slash" id = "toggle-password-icon"></i>
-                </span>
-            </form>
-            <p>Don't have an account yet?</p>
-            <button id = "to-register" class = "change-button">Sign Up</button>
+        <section class = "details-container">
+            <div class = "login">
+                <h3>Welcome back</h3>
+                <p>Please enter your details</p>
+                <form class = "login-form">
+                    <input type = "text" name = "username" placeholder = "Username"  autocomplete = "off"><br>
+                    <input type = "password" name = "password" id = "password" placeholder = "Password">
+                    <span id = "toggle-password" class = "toggle-icon">
+                        <i class = "fas fa-eye-slash" id = "toggle-password-icon"></i>
+                    </span><br>
+                    <input type = "submit" class = "submit-btn" name = "submit" value = "Log In">
+                </form>
+                <p class = "ask">Don't have an account yet?</p>
+                <button id = "to-register" class = "change-button">Sign Up</button>
+            </div>
         </section>
 
         <script src = "../javascript/account.js"></script>
