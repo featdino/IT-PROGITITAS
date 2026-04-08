@@ -1,5 +1,5 @@
 <?php
-
+//eto yung page before clicking the attraction
 session_start(); 
 require 'db.php'; 
 
@@ -8,15 +8,9 @@ if($_SESSION['role'] != 'admin') {
     exit();
 }
 
-
 $read = $conn->query("SELECT * FROM attraction");
-$total_attractions = $read->num_rows;
 
-    if(isset($_GET['sort']) && $_GET['sort'] == 'asc'){
-        $result = $conn->query("SELECT * FROM attraction ORDER BY name ASC");
-    }else{
-        $result = $conn->query("SELECT * FROM attraction");
-    }
+
 ?>
 
 <!DOCTYPE html>
@@ -37,43 +31,37 @@ $total_attractions = $read->num_rows;
         </nav>
     </header>
     <h2>View Attractions</h2>
-        <table>
-            <tr>
-                <th>Attraction ID</th>
-                <th>Name</th>
-                <th>Description</th>
-                <th>Street Address</th>
-                <th>Total Visits</th>
-                <th>Average Rating</th>
-                <th>City ID</th>
-            </tr>
-            <?php 
-                while ($row = $result->fetch_assoc()):
-            ?>
-            <tr>
-                <td><?= htmlspecialchars($row['attraction_id']) ?></td>
-                <td><?= htmlspecialchars($row['name']) ?></td>
-                <td><?= htmlspecialchars($row['description']) ?></td>
-                <td><?= htmlspecialchars($row['street_address']) ?></td>
-                <td><?= htmlspecialchars($row['total_visits']) ?></td>
-                <td><?= htmlspecialchars($row['avg_rating']) ?></td>
-                <td><?= htmlspecialchars($row['city_id']) ?></td>
-                <td>
-                    <a href="update_attraction.php?attraction_id=<?= $row['attraction_id']?>">Update</a>
-                    <a href="delete_attraction.php?attraction_id=<?= $row['attraction_id']?>" onclick="return confirm('Are you sure?')">Delete</a>
-                </td>
-            </tr>
+    
+    <table>
+        <tr>
+            <th>Attraction ID</th>
+            <th>Name</th>
+            <th>Image</th>
+        </tr>
+        <?php 
+            while ($row = $read->fetch_assoc()):
+                
+                $img_query = "SELECT image_url FROM gallery WHERE attraction_id = '{$row['attraction_id']}' LIMIT 1";
+                $img_result = $conn->query($img_query);
+                $image = $img_result->fetch_assoc();
+        ?>
+        <tr>
+            <td><?= htmlspecialchars($row['attraction_id']) ?></td>
+            <td><a href="attraction_details.php?attraction_id=<?= $row['attraction_id'] ?>"><?= htmlspecialchars($row['name']) ?></a></td>
+            <td>
+                <?php if($image && $image['image_url']): ?>
+                    <img src="<?= htmlspecialchars($image['image_url']) ?>" width="50" height="50">
+                <?php else: ?>
+                    No image
+                <?php endif; ?>
+            </td>
+        </tr>
         <?php 
             endwhile;
         ?>
-        </table>
-        <br>
-        <a href="read_attraction.php?sort=asc" class="btn">Sort By Name</a>
-        <a href="read_attraction.php" class="btn">Default View</a>
+    </table>
+    
+    <br>
 
-
-    <?php 
-        echo "<p>Total Attractions: " . $total_attractions . "</p>";
-    ?>
 </body>
 </html>
