@@ -71,10 +71,6 @@ if ($is_logged_in) {
 
 <!DOCTYPE html>
 
-<!-- template palang 'to so i'll be adding hardcoded info to be able to see lang muna
- how it would look visually.. indicate ko nalang which parts yung need machange into
- values retrieved from the database para madali + padelete nalang ng comments once done -->
-
 <html>
 
     <head>
