@@ -49,9 +49,9 @@ $province = trim($_POST['province']);
 
     <form method="post" action="">
 
-    <label for="name">Name:</label><br>
+    <label for="name"><strong>Name:</strong></label><br>
         <input type="text" id="city_name" name="city_name" required><br><br>
-    <label for="province">Province:</label><br>
+    <label for="province"><strong>Province:</strong></label><br>
         <input type="text" id="province" name="province" required><br><br>
     <input type="submit" name="submit" value="Submit">
     </form>

@@ -22,9 +22,7 @@ if(isset($_POST['submit'])){
     $email = trim($_POST['email']);
     $city_id = $_POST['city_id'];
 
-    if(empty($city_id)){
-        $city_id = NULL;
-    }
+    
         
     $update= $conn->prepare("UPDATE user SET name=?, username=?, password=?, email=?, city_id= ? WHERE user_id=?");
     $update->bind_param("ssssii", $name, $username, $password, $email, $city_id, $user_id);
@@ -60,17 +58,17 @@ if(isset($_POST['submit'])){
     <h2>Update User</h2>
 
     <form method="post" action="">
-        <label>Name:</label>
+        <label><strong>Name:</strong></label>
             <input name="name" required value="<?= htmlspecialchars($read['name'])?>"><br> <br> 
-        <label>Username:</label>       
+        <label><strong>Username:</strong></label>       
             <input name="username" required value="<?= htmlspecialchars($read['username'])?>"><br> <br> 
-        <label>Password:</label>       
+        <label><strong>Password:</strong></label>       
             <input name="password" required value="<?= htmlspecialchars($read['password'])?>"><br> <br> 
-        <label>Email:</label>       
+        <label><strong>Email:</strong></label>       
             <input name="email" required value="<?= htmlspecialchars($read['email'])?>"><br> <br> 
-        <label>City:</label>
+        <label><strong>City:</strong></label>
             <select name="city_id">
-            <option value="">-- Select City (Optional)--</option>
+            <option value="">-- Select City --</option>
             <?php while($row = mysqli_fetch_assoc($cities_result)): ?>
                 <option value="<?= $row['city_id'] ?>" <?= ($row['city_id'] == $read['city_id']) ? 'selected' : '' ?>>
                     <?= htmlspecialchars($row['city_name']) ?>
