@@ -50,7 +50,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <p>Please enter your details</p>
 
             <?php if ($error): ?>
-                <p class="error"><?= htmlspecialchars($error) ?></p>
+                <p class="error"><?php echo htmlspecialchars($error) ?></p>
             <?php endif; ?>
 
             <form class="login-form" method="POST" action="login.php">
