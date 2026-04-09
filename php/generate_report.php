@@ -1,7 +1,11 @@
 <?php
     session_start();
     require 'db.php';
-
+    
+if($_SESSION['role'] != 'admin') {
+    header("Location: login.php");
+    exit();
+}
     
 $categories_query = "SELECT category_id, category, main_class FROM category ORDER BY main_class, category";
 $categories_result = mysqli_query($conn, $categories_query);

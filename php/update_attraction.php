@@ -3,10 +3,10 @@
 session_start(); 
 require 'db.php'; 
 
-// if($_SESSION['role'] != 'admin') {
-//     header("Location: login.php");
-//     exit();
-// }
+if($_SESSION['role'] != 'admin') {
+    header("Location: login.php");
+    exit();
+}
 
     // Fetch all cities for dropdown
     $cities_query = "SELECT city_id, city_name FROM city ORDER BY city_name";
