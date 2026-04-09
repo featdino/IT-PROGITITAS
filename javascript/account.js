@@ -41,15 +41,80 @@ document.addEventListener("DOMContentLoaded", () => {
         </div>
     `;
 
+    // for options in city input select, paconvert nalang into retrieval from db para pag nag-add/delete city
     const registerHTML = `
         <div class = "register">
             <h3>Register an account</h3>
             <p>Please enter your details</p>
             <form class = "register-form" autocomplete = "off">
-                <input type = "text" name = "name" placeholder = "Enter name"><br>
-                <input type = "text" name = "email" placeholder = "Enter email address"><br>
-                <input type = "text" name = "username" placeholder = "Create username"  autocomplete = "off"><br>
-                <input type = "password" name = "password" id = "password" placeholder = "Create password">
+                <input type = "text" name = "name" placeholder = "Enter name" required><br>
+                <input type = "text" name = "email" placeholder = "Enter email address" required><br>
+
+                <select name = "city" required>
+
+                    <option value = "" disabled selected hidden>Select city</option>
+
+                    <option value = "Manila">Manila</option>
+                    <option value = "Angeles City">Angeles City</option>
+                    <option value = "Antipolo">Antipolo</option>
+                    <option value = "Bacolod">Bacolod</option>
+                    <option value = "Baguio">Baguio</option>
+                    <option value = "Batangas City">Batangas City</option>
+                    <option value = "Biñan">Biñan</option>
+                    <option value = "Butuan">Butuan</option>
+                    <option value = "Cabuyao">Cabuyao</option>
+                    <option value = "Cagayan de Oro">Cagayan de Oro</option>
+                    <option value = "Cainta">Cainta</option>
+                    <option value = "Calamba">Calamba</option>
+                    <option value = "Calapan">Calapan</option>
+                    <option value = "Cebu City">Cebu City</option>
+                    <option value = "Clark Freeport Zone">Clark Freeport Zone</option>
+                    <option value = "Cotabato City">Cotabato City</option>
+                    <option value = "Daet">Daet</option>
+                    <option value = "Davao City">Davao City</option>
+                    <option value = "Dumaguete">Dumaguete</option>
+                    <option value = "General Santos">General Santos</option>
+                    <option value = "Iloilo City">Iloilo City</option>
+                    <option value = "Kalibo">Kalibo</option>
+                    <option value = "Laoag">Laoag</option>
+                    <option value = "Lapu-Lapu City">Lapu-Lapu City</option>
+                    <option value = "Legazpi">Legazpi</option>
+                    <option value = "Lipa">Lipa</option>
+                    <option value = "Lucena">Lucena</option>
+                    <option value = "Makati">Makati</option>
+                    <option value = "Mandaluyong">Mandaluyong</option>
+                    <option value = "Mandaue">Mandaue</option>
+                    <option value = "Marawi">Marawi</option>
+                    <option value = "Marikina">Marikina</option>
+                    <option value = "Muntinlupa">Muntinlupa</option>
+                    <option value = "Naga">Naga</option>
+                    <option value = "Olongapo">Olongapo</option>
+                    <option value = "Ormoc">Ormoc</option>
+                    <option value = "Pagadian">Pagadian</option>
+                    <option value = "Parañaque">Parañaque</option>
+                    <option value = "Pasay">Pasay</option>
+                    <option value = "Pasig">Pasig</option>
+                    <option value = "Puerto Princesa">Puerto Princesa</option>
+                    <option value = "Roxas City">Roxas City</option>
+                    <option value = "San Fernando">San Fernando</option>
+                    <option value = "San Jose">San Jose</option>
+                    <option value = "San Pablo">San Pablo</option>
+                    <option value = "Santa Rosa">Santa Rosa</option>
+                    <option value = "Surigao City">Surigao City</option>
+                    <option value = "Tacloban">Tacloban</option>
+                    <option value = "Tagbilaran">Tagbilaran</option>
+                    <option value = "Taguig">Taguig</option>
+                    <option value = "Tagum">Tagum</option>
+                    <option value = "Tarlac City">Tarlac City</option>
+                    <option value = "Quezon City">Quezon City</option>
+                    <option value = "Vigan">Vigan</option>
+                    <option value = "Zamboanga City">Zamboanga City</option>
+                    <option value = "Outside Philippines">Outside Philippines</option>
+
+                </select><br>
+
+                <input type = "text" name = "username" placeholder = "Create username"  autocomplete = "off" required><br>
+                <input type = "password" name = "password" id = "password" placeholder = "Create password" required>
                 <span id = "toggle-password" class = "toggle-icon">
                     <i class = "fas fa-eye-slash" id = "toggle-password-icon"></i>
                 </span><br>
