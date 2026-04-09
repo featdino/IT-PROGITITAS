@@ -646,6 +646,9 @@ ALTER TABLE `visits`
   ADD CONSTRAINT `visits_ibfk_2` FOREIGN KEY (`attraction_id`) REFERENCES `attraction` (`attraction_id`);
 COMMIT;
 
+-- allow user table to accept NULL city value
+ALTER TABLE `user` CHANGE `city_id` `city_id` INT(11) NULL;
+
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

@@ -19,8 +19,12 @@ if(isset($_POST['submit'])){
     $email = trim($_POST['email']);
     $city_id = $_POST['city_id'];
 
-    if(!empty($name) && !empty($username) && !empty($password) && !empty($email) && !empty($city_id)){
-        $insert = "INSERT INTO user (name, username, password, email, city_id) VALUES ('$name','$username', '$password', '$email', '$city_id')";
+    if(empty($city_id)){
+        $city_id = NULL;
+    }
+
+    if(!empty($name) && !empty($username) && !empty($password) && !empty($email)){
+        $insert = "INSERT INTO user (name, username, password, email, city_id) VALUES ('$name','$username', '$password', '$email', NULL)";
         
         if(mysqli_query($conn, $insert)){
             echo "<p>User created successfully!</p>";
@@ -63,14 +67,14 @@ if(isset($_POST['submit'])){
         <input type="text" id="username" name="username" required><br>
         
         <label for="password">Password:</label>
-        <input type="text" id="password" name="password" required><br>
+        <input type="password" id="password" name="password" required><br>
 
         <label for="email">Email:</label>
-        <input type="text" id="email" name="email" required><br>
+        <input type="email" id="email" name="email" required><br>
         
-        <label for="city_id">City</label>
-        <select id="city_id" name="city_id" required>
-            <option value="">-- Select City --</option>
+        <label for="city_id">City (Optional):</label>
+        <select id="city_id" name="city_id">
+            <option value="">-- Select City (Optional)--</option>
             <?php while($row = mysqli_fetch_assoc($cities_result)): ?>
                 <option value="<?php echo $row['city_id']; ?>"><?php echo $row['city_name']; ?></option>
             <?php endwhile; ?>
