@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Off-Radar Database Monitor</title>
+  <link rel="stylesheet" href="database_monitor.css" />
+</head>
+<body>
+  <div class="page-overlay"></div>
+
+  <input type="checkbox" id="menu-toggle" class="menu-toggle">
+  <label for="menu-toggle" class="menu-backdrop"></label>
+
+  <header class="topbar">
+    <div class="brand">
+      <div class="logo-circle">
+        <img src="images/logo-icon.png" alt="Off-Radar logo" />
+      </div>
+      <h1>off-radar.</h1>
+    </div>
+
+    <div class="top-actions">
+      <label for="menu-toggle" class="menu-btn" aria-label="Open menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </label>
+    </div>
+  </header>
+
+  <nav class="side-menu">
+    <a href="admin_dashboard.html">Dashboard</a>
+    <a href="database_monitor.html">Database Monitor</a>
+    <a href="create_record.html">Create Record</a>
+    <a href="account.html">Logout</a>
+  </nav>
+
+  <main class="monitor-section">
+    <div class="monitor-shell">
+      <div class="monitor-header">
+        <div>
+          <h2>Database Monitor</h2>
+          <p>Manage existing records across the database.</p>
+        </div>
+
+        <div class="monitor-controls">
+          <div class="search-group">
+            <input type="text" class="search-input" placeholder="Search records">
+            <button class="search-btn" type="button">Search</button>
+          </div>
+          
+          <a href="create_record.html" class="create-btn">Create Record</a>
+        </div>
+      </div>
+
+      <div class="monitor-switcher">
+        <input type="radio" name="monitor-table" id="show-attractions" checked>
+        <input type="radio" name="monitor-table" id="show-users">
+
+        <div class="monitor-switch-tabs">
+          <label for="show-attractions" class="switch-tab">Attractions</label>
+          <label for="show-users" class="switch-tab">Users</label>
+        </div>
+
+        <div class="monitor-table-panels">
+          <section class="table-panel attractions-panel">
+            <input type="checkbox" id="edit-attraction-1" class="edit-modal-toggle">
+            <div class="monitor-table-wrap">
+              <table class="monitor-table">
+                <thead>
+                  <tr>
+                    <th>ID</th>
+                    <th>Attraction Name</th>
+                    <th>Street Address</th>
+                    <th>City</th>
+                    <th>Categories</th>
+                    <th>Total Visits</th>
+                    <th>Avg. Rating</th>
+                    <th>Local Rating</th>
+                    <th>Gem Score</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>1</td>
+                    <td>Burnham Park</td>
+                    <td>Jose Abad Santos Dr.</td>
+                    <td>Baguio</td>
+                    <td>Parks, Leisure</td>
+                    <td>10,000</td>
+                    <td>6.7</td>
+                    <td>6.5</td>
+                    <td>8.2</td>
+                    <td class="actions-cell">
+                      <label for="edit-attraction-1" class="action-btn edit-btn">Edit</label>
+                      <button class="action-btn delete-btn" type="button">Delete</button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>2</td>
+                    <td>Mines View Park</td>
+                    <td>Mines View Observation Deck</td>
+                    <td>Baguio</td>
+                    <td>Scenic, Leisure</td>
+                    <td>8,950</td>
+                    <td>6.4</td>
+                    <td>6.2</td>
+                    <td>7.8</td>
+                    <td class="actions-cell">
+                      <button class="action-btn edit-btn" type="button">Edit</button>
+                      <button class="action-btn delete-btn" type="button">Delete</button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>3</td>
+                    <td>Manila Ocean Park</td>
+                    <td>Luneta, Ermita</td>
+                    <td>Manila</td>
+                    <td>Family, Entertainment</td>
+                    <td>7,880</td>
+                    <td>6.1</td>
+                    <td>5.9</td>
+                    <td>7.1</td>
+                    <td class="actions-cell">
+                      <button class="action-btn edit-btn" type="button">Edit</button>
+                      <button class="action-btn delete-btn" type="button">Delete</button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <label for="edit-attraction-1" class="edit-modal-backdrop"></label>
+            <div class="edit-modal">
+              <label for="edit-attraction-1" class="edit-modal-close" aria-label="Close modal">&times;</label>
+              <div class="edit-modal-header">
+                <h3>Edit Attraction</h3>
+                <p>Update the selected attraction record.</p>
+              </div>
+          
+              <form class="edit-record-form">
+                <div class="edit-form-grid">
+                  <div class="edit-form-group">
+                    <label for="edit-attraction-name">Attraction Name</label>
+                    <input type="text" id="edit-attraction-name" value="Burnham Park">
+                  </div>
+              
+                  <div class="edit-form-group">
+                    <label for="edit-attraction-city">City</label>
+                    <input type="text" id="edit-attraction-city" value="Baguio">
+                  </div>
+              
+                  <div class="edit-form-group full-width">
+                    <label for="edit-attraction-address">Street Address</label>
+                    <input type="text" id="edit-attraction-address" value="Jose Abad Santos Dr.">
+                  </div>
+              
+                  <div class="edit-form-group full-width">
+                    <label for="edit-attraction-description">Description</label>
+                    <textarea id="edit-attraction-description" rows="5">A popular urban park in Baguio known for its gardens, open spaces, and recreational activities.</textarea>
+                  </div>
+              
+                  <div class="edit-form-group full-width">
+                    <p class="edit-form-label">Categories</p>
+                    <div class="edit-checkbox-group">
+                      <label class="edit-checkbox-item">
+                        <span>Parks</span>
+                        <input type="checkbox" checked>
+                      </label>
+                      <label class="edit-checkbox-item">
+                        <span>Leisure</span>
+                        <input type="checkbox" checked>
+                      </label>
+                      <label class="edit-checkbox-item">
+                        <span>Culture</span>
+                        <input type="checkbox">
+                      </label>
+                      <label class="edit-checkbox-item">
+                        <span>Dining</span>
+                        <input type="checkbox">
+                      </label>
+                    </div>
+                  </div>
+              
+                  <div class="edit-form-group">
+                    <label>Total Visits</label>
+                    <input type="text" value="10,000" readonly>
+                  </div>
+              
+                  <div class="edit-form-group">
+                    <label>Average Rating</label>
+                    <input type="text" value="6.7" readonly>
+                  </div>
+              
+                  <div class="edit-form-group">
+                    <label>Local Rating</label>
+                    <input type="text" value="6.5" readonly>
+                  </div>
+              
+                  <div class="edit-form-group">
+                    <label>Gem Score</label>
+                    <input type="text" value="8.2" readonly>
+                  </div>
+                </div>
+              
+                <div class="edit-form-actions">
+                  <label for="edit-attraction-1" class="secondary-btn">Back</label>
+                  <button type="button" class="primary-btn">Save</button>
+                </div>
+              </form>
+            </div>
+          </section>
+
+          <section class="table-panel users-panel">
+            <input type="checkbox" id="edit-user-1" class="edit-modal-toggle">
+            <div class="monitor-table-wrap">
+              <table class="monitor-table">
+                <thead>
+                  <tr>
+                    <th>User ID</th>
+                    <th>Name</th>
+                    <th>Username</th>
+                    <th>Email</th>
+                    <th>City</th>
+                    <th>Role</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>1</td>
+                    <td>Juan Dela Cruz</td>
+                    <td>juandc</td>
+                    <td>juan@email.com</td>
+                    <td></td>
+                    <td>User</td>
+                    <td class="actions-cell">
+                      <label for="edit-user-1" class="action-btn edit-btn">Edit</label>
+                      <button class="action-btn delete-btn" type="button">Delete</button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>2</td>
+                    <td>Karen Diaz</td>
+                    <td>karend</td>
+                    <td>karen@email.com</td>
+                    <td>Baguio</td>
+                    <td>Admin</td>
+                    <td class="actions-cell">
+                      <button class="action-btn edit-btn" type="button">Edit</button>
+                      <button class="action-btn delete-btn" type="button">Delete</button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>3</td>
+                    <td>Pedro Gil</td>
+                    <td>pedrog</td>
+                    <td>pedro@email.com</td>
+                    <td>Manila</td>
+                    <td>User</td>
+                    <td class="actions-cell">
+                      <button class="action-btn edit-btn" type="button">Edit</button>
+                      <button class="action-btn delete-btn" type="button">Delete</button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <label for="edit-user-1" class="edit-modal-backdrop"></label>
+
+            <div class="edit-modal">
+              <label for="edit-user-1" class="edit-modal-close" aria-label="Close modal">&times;</label>
+              <div class="edit-modal-header">
+                <h3>Edit User</h3>
+                <p>Update the selected user record.</p>
+              </div>
+          
+              <form class="edit-record-form">
+                <div class="edit-form-grid">
+                  <div class="edit-form-group">
+                    <label for="edit-user-name">Full Name</label>
+                    <input type="text" id="edit-user-name" value="Juan Dela Cruz">
+                  </div>
+              
+                  <div class="edit-form-group">
+                    <label for="edit-user-username">Username</label>
+                    <input type="text" id="edit-user-username" value="juandc">
+                  </div>
+              
+                  <div class="edit-form-group">
+                    <label for="edit-user-email">Email</label>
+                    <input type="email" id="edit-user-email" value="juan@email.com">
+                  </div>
+              
+                  <div class="edit-form-group">
+                    <label for="edit-user-city">City</label>
+                    <input type="text" id="edit-user-city" placeholder="Optional">
+                  </div>
+              
+                  <div class="edit-form-group">
+                    <label for="edit-user-role">Role</label>
+                    <select id="edit-user-role">
+                      <option selected>User</option>
+                      <option>Admin</option>
+                    </select>
+                  </div>
+              
+                  <div class="edit-form-group">
+                    <label for="edit-user-password">Password</label>
+                    <input type="password" id="edit-user-password" value="password123">
+                  </div>
+                </div>
+            
+                <div class="edit-form-actions">
+                  <label for="edit-user-1" class="secondary-btn">Back</label>
+                  <button type="button" class="primary-btn">Save</button>
+                </div>
+              </form>
+            </div>
+          </section>
+        </div>
+      </div>
+    </div>
+  </main>
+</body>
+</html>
