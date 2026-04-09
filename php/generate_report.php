@@ -48,8 +48,43 @@ if (!empty($selected_category)) {
 
     <form method="GET" action="">
         <label>Select Category:</label>
-            <select name="category_id">
-                <option value="">Choose a category</option>
+        <select name="category_id">
+            <option value="">Choose a category</option>
+            <?php while($cat = mysqli_fetch_assoc($categories_result)): ?>
+                <option value="<?= $cat['category_id'] ?>" <?= ($selected_category == $cat['category_id']) ? 'selected' : '' ?>>
+                    <?= htmlspecialchars($cat['category']) ?> (<?= htmlspecialchars($cat['main_class']) ?>)
+                </option>
+            <?php endwhile; ?>
+        </select>
+
+        <button type="submit">Generate</button>
     </form>
-</body>
+    <br>
+
+    <?php if(!empty($selected_category)): ?>
+        <?php if(empty($report_data)): ?>
+            <p>No attraction found under this category</p>
+        <?php else: ?>
+            <h3>Top 10 Most Visited Attractions - <?= htmlspecialchars($category_name) ?></h3>
+            <table>
+                <tr>
+                    <th>Rank</th>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Total Visits</th>
+                    <th>Average Rating</th>
+                </tr>
+                <?php foreach($report_data as $item): ?>
+                <tr>
+                    <td><?= $item['rank'] ?></td>
+                    <td><?= $item['attraction_id'] ?></td>
+                    <td><?= htmlspecialchars($item['name']) ?></td>
+                    <td><?= htmlspecialchars($item['total_visits']) ?></td>
+                    <td><?= $item['avg_rating'] ?></td>
+                </tr>
+            <?php endforeach; ?>
+            </table>
+        <?php endif; ?>
+    <?php endif; ?>
+    </body>
 </html>
