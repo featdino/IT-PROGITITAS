@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Off-Radar Create Record</title>
+  <link rel="stylesheet" href="create_record.css" />
+</head>
+<body>
+  <div class="page-overlay"></div>
+
+  <input type="checkbox" id="menu-toggle" class="menu-toggle">
+  <label for="menu-toggle" class="menu-backdrop"></label>
+
+  <header class="topbar">
+    <div class="brand">
+      <div class="logo-circle">
+        <img src="images/logo-icon.png" alt="Off-Radar logo" />
+      </div>
+      <h1>off-radar.</h1>
+    </div>
+
+    <div class="top-actions">
+      <label for="menu-toggle" class="menu-btn" aria-label="Open menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </label>
+    </div>
+  </header>
+
+  <nav class="side-menu">
+    <a href="admin_dashboard.html">Dashboard</a>
+    <a href="database_monitor.html">Database Monitor</a>
+    <a href="create_record.html">Create Record</a>
+    <a href="account.html">Logout</a>
+  </nav>
+
+  <main class="create-section">
+    <div class="create-shell">
+      <div class="create-header">
+        <h2>Create Record</h2>
+        <p>Add a new record to the database.</p>
+      </div>
+
+      <div class="record-switcher">
+        <input type="radio" name="record-type" id="create-attraction" checked>
+        <input type="radio" name="record-type" id="create-user">
+
+        <div class="record-switch-tabs">
+          <label for="create-attraction" class="switch-tab">Attraction</label>
+          <label for="create-user" class="switch-tab">User</label>
+        </div>
+
+        <div class="record-panels">
+          <section class="record-panel attraction-panel">
+            <form class="record-form">
+              <div class="form-grid">
+                <div class="form-group">
+                  <label for="attraction-name">Attraction Name</label>
+                  <input type="text" id="attraction-name" placeholder="Enter attraction name">
+                </div>
+
+                <div class="form-group">
+                  <label for="attraction-city">City</label>
+                  <input type="text" id="attraction-city" placeholder="Enter city" required>
+                </div>
+
+                <div class="form-group full-width">
+                  <label for="attraction-address">Street Address</label>
+                  <input type="text" id="attraction-address" placeholder="Enter street address">
+                </div>
+
+                <div class="form-group full-width">
+                  <label for="attraction-description">Description</label>
+                  <textarea id="attraction-description" rows="5" placeholder="Enter attraction description"></textarea>
+                </div>
+
+                <div class="form-group full-width">
+                  <p class="form-label">Categories</p>
+                  <div class="checkbox-group">
+                    <label class="checkbox-item">
+                      <span>Parks</span>
+                      <input type="checkbox">
+                    </label>
+                    <label class="checkbox-item">
+                      <span>Leisure</span>
+                      <input type="checkbox">
+                    </label>
+                    <label class="checkbox-item">
+                      <span>Culture</span>
+                      <input type="checkbox">
+                    </label>
+                    <label class="checkbox-item">
+                      <span>Dining</span>
+                      <input type="checkbox">
+                    </label>
+                    <label class="checkbox-item">
+                      <span>Family</span>
+                      <input type="checkbox">
+                    </label>
+                    <label class="checkbox-item">
+                      <span>Entertainment</span>
+                      <input type="checkbox">
+                    </label>
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-actions">
+                <button type="submit" class="primary-btn">Create Attraction</button>
+              </div>
+            </form>
+          </section>
+
+          <section class="record-panel user-panel">
+            <form class="record-form">
+              <div class="form-grid">
+                <div class="form-group">
+                  <label for="user-name">Full Name</label>
+                  <input type="text" id="user-name" placeholder="Enter full name">
+                </div>
+
+                <div class="form-group">
+                  <label for="user-username">Username</label>
+                  <input type="text" id="user-username" placeholder="Enter username">
+                </div>
+
+                <div class="form-group">
+                  <label for="user-email">Email</label>
+                  <input type="email" id="user-email" placeholder="Enter email">
+                </div>
+
+                <div class="form-group">
+                  <label for="user-city">City</label>
+                  <select id="user-city">
+                    <option value="" selected>Select city</option>
+                    <option value="Manila">Manila</option>
+                    <option value="Baguio">Baguio</option>
+                    <option value="Outside Philippines">Outside Philippines / Others</option>
+                  </select>
+                </div>
+
+                <div class="form-group">
+                  <label for="user-role">Role</label>
+                  <select id="user-role">
+                    <option selected disabled>Select role</option>
+                    <option>User</option>
+                    <option>Admin</option>
+                  </select>
+                </div>
+
+                <div class="form-group">
+                  <label for="user-password">Password</label>
+                  <input type="password" id="user-password" placeholder="Enter password">
+                </div>
+              </div>
+
+              <div class="form-actions">
+                <button type="submit" class="primary-btn">Create User</button>
+              </div>
+            </form>
+          </section>
+        </div>
+      </div>
+    </div>
+  </main>
+</body>
+</html>
