@@ -294,17 +294,36 @@ if ($is_logged_in) {
                         <p class = "modal-p">Upload a photo from your visit to <b><?php echo $attraction['name']; ?></b></p>
                     </div>
                 </div>
-                <form id = "upload-form" class = "modal-form">
-                    <div class = "upload-group">
-                        <label for = "visitor-photo" class = "modal-label">Select Image:</label>
-                        <input type = "file" id = "visitor-photo" name = "visitor_image" accept = "image/*" required>
-                    </div><br>
-                    <input type = "hidden" name = "attraction_id" value = "<?php echo $attraction['attraction_id']; ?>">
-                    <div class = "modal-actions">
-                        <button type = "reset" class = "cancel-btn" onclick = "closeUploadModal()">Cancel</button>
-                        <button type = "submit" class = "submit-btn">Upload to Gallery</button>
-                    </div>
-                </form>
+
+                <!-- pakiapply nalang yung styling  -->
+                <!-- users can only upload images IF they are logged in and have marked as visited -->
+                <?php if (!$is_logged_in): ?>
+                    <p style="text-align:center;">
+                        <a href="login.php">Login</a> to upload images.
+                    </p>
+
+                <?php elseif (!$has_visited): ?>
+                    <p style="text-align:center;">
+                        You must mark this attraction as visited before uploading.
+                    </p>
+
+                <?php else: ?>
+                    <form action="upload.php" method="POST" enctype="multipart/form-data" class="modal-form">
+                        <div class="upload-group">
+                            <label class="modal-label">Select Image:</label>
+                            <input type="file" name="visitor_image[]" multiple accept="image/*"> <!-- up to 5 uploads -->
+                        </div><br>
+
+                        <input type="hidden" name="attraction_id" value="<?php echo $attraction_id; ?>">
+
+                        <div class="modal-actions">
+                            <button type="reset" class="cancel-btn" onclick="closeUploadModal()">Cancel</button>
+                            <button type="submit" class="submit-btn">Upload to Gallery</button>
+                        </div>
+                    </form>
+
+                <?php endif; ?>
+
             </div>
         </div>
 
