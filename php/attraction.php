@@ -151,6 +151,7 @@ if ($is_logged_in) {
                             <?php endif; ?>
                         </button>
                     <?php else: ?>
+                        <!-- do styling here so that there's a prompt or modal that tells user to login -->
                         <!-- redirect user to login -->
                         <button type="button" class="mark-visited" onclick="window.location.href='login.php'">
                             <i class="fa fa-check-circle-o"></i> <!-- always show as not visited -->
@@ -275,9 +276,7 @@ if ($is_logged_in) {
 
                         <div class = "modal-actions">
                             <button type="reset" class="cancel-btn" onclick="closeRatingModal()">Cancel</button>
-                            <button type="submit" class="submit-btn">
-                                <?php echo ($user_rating > 0) ? "Update Rating" : "Post Rating"; ?>
-                            </button>
+                            <button type="submit" class="submit-btn">Submit Rating</button>
                         </div>
                     </form>
 
