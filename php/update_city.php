@@ -3,10 +3,10 @@
 session_start(); 
 require 'db.php'; 
 
-// if($_SESSION['role'] != 'admin') {
-//     header("Location: login.php");
-//     exit();
-// }
+if($_SESSION['role'] != 'admin') {
+    header("Location: login.php");
+    exit();
+}
 
 $city_id = $_GET['city_id'];
 $read = $conn->query("SELECT city_name, province FROM city WHERE city_id = $city_id")-> fetch_assoc();
@@ -46,9 +46,9 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
     </header>
     <h2>Update City Information</h2>
         <form method="POST">
-            <label>City Name:</label>
-                 <input name="city_name" required value="<?=  htmlspecialchars($read['city_name']) ?>"><br>
-            <label>Province:</label> <input name="province" required value="<?= htmlspecialchars($read['province']) ?>"><br><br>
+            <label><strong>City Name:</strong></label>
+                 <input name="city_name" required value="<?=  htmlspecialchars($read['city_name']) ?>"><br><br>
+            <label><strong>Province:</strong></label> <input name="province" required value="<?= htmlspecialchars($read['province']) ?>"><br><br>
 
         <input type="submit" name="submit" value="Update">
          </form>
