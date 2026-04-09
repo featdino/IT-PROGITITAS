@@ -73,7 +73,7 @@ body {
     margin-bottom: 40px;
     margin-left: auto;
     margin-right: auto;
-    min-height: 350px;
+    min-height: 375px;
     width: 450px;
     padding-bottom: 40px;
     border: none;
@@ -98,16 +98,31 @@ p {
     margin-bottom: 30px;
 }
 
-input {
+input, select {
     margin: 5px 0;
     height: 25px;
-    width: 230px;
     border-radius: 8px;
     border-style: solid;
     border-color: #cecbc7;
     border-width: 1px;
     padding-left: 10px;
     font-family: 'Raleway';
+}
+
+input {
+    width: 230px;
+}
+
+select {
+    width: 242px;
+}
+
+select:invalid {
+    color: #757575; 
+}
+
+select option[value=""][disabled] {
+    display: none;
 }
 
 i {
