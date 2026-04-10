@@ -5,7 +5,7 @@ require 'db.php';
 
 $query       = isset($_GET['query']) ? trim($_GET['query']) : '';
 $category_id = isset($_GET['category_id']) ? $_GET['category_id'] : 0;
-$city        = isset($_GET['city_id']) ? $_GET['city_id'] : 0;
+$city_id        = isset($_GET['city_id']) ? $_GET['city_id'] : 0;
 $topRated    = isset($_GET['top_rated']) ? true : false;
 
 $conditions = [];
@@ -20,35 +20,42 @@ if ($query !== '') {
     }
 }
 
-$sql = "SELECT a.* FROM attraction a";
+// base query with joins
+$sql = "
+	SELECT DISTINCT a.attraction_id, a.name, a.description, a.gem_score,
+       ci.city_name,
+       (SELECT c.category 
+        FROM category c 
+        JOIN attraction_category ac ON c.category_id = ac.category_id 
+        WHERE ac.attraction_id = a.attraction_id LIMIT 1) AS category,
+       (SELECT g.image_url 
+        FROM gallery g 
+        WHERE g.attraction_id = a.attraction_id AND g.is_official = 1 LIMIT 1) AS image_url
+	FROM attraction a
+	LEFT JOIN city ci ON a.city_id = ci.city_id
+";
 
 // add conditions based on search, category, city, and top rated filters
 
+// apply filters
 if ($category_id > 0) {
-    $sql .= " JOIN attraction_category ac ON a.attraction_id = ac.attraction_id
-              WHERE ac.category_id = $category_id";
-    if (!empty($conditions)) {
-        $sql .= " AND " . implode(" AND ", $conditions);
-    }
-} 
-else if (!empty($conditions)) {
-    $sql .= " WHERE " . implode(" AND ", $conditions); // apply the conditions from search query
-} 
-else {
-    $sql .= " WHERE 1=1"; // this is if no conditions were provided via search keywords/category filters
+    $conditions[] = "ac.category_id = $category_id";
 }
-
 if ($city_id > 0) {
-    $sql .= " AND a.city_id = $city_id";
+    $conditions[] = "a.city_id = $city_id";
+}
+if ($topRated) {
+    $conditions[] = "a.gem_score >= 4.0";
 }
 
-if ($topRated) {
-    $sql .= " AND a.gem_score >= 4.0"; // threshold for "hidden gems"
+if (!empty($conditions)) {
+    $sql .= " WHERE " . implode(" AND ", $conditions);
 }
 
 $sql .= " ORDER BY a.gem_score DESC";
 
 $result = mysqli_query($conn, $sql);
+$num_attractions = mysqli_num_rows($result);
 
 $pageTitle = "Discover";
 $pageStyle = "listings.css";
@@ -60,12 +67,36 @@ include('header.php');
 				<h1>Explore Attractions</h1>
 				<p>Browse hidden gems, local favorites, and must-visit places.</p>
 			</div>
-
 			
 			<div class = "search-summary">
 				<div class = "left-text">
-					Showing 6 attractions under <!-- number of returned results -->
-					<span class = "filter-tag">Baguio City</span> <!-- the applied filter -->
+					Showing <?php echo $num_attractions; ?> attractions under <!-- number of returned results -->
+					<?php if ($city_id > 0): ?>
+						<?php
+						$city_query = mysqli_query($conn, "SELECT city_name FROM city WHERE city_id = $city_id");
+						if ($city_row = mysqli_fetch_assoc($city_query)):
+						?>
+							under <span class="filter-tag"><?php echo htmlspecialchars($city_row['city_name']); ?></span>
+						<?php endif; ?>
+					<?php endif; ?>
+
+					<?php if ($query !== ''): ?>
+						for <span class="filter-tag"><?php echo htmlspecialchars($query); ?></span>
+					<?php endif; ?>
+
+					<?php if ($category_id > 0): ?>
+						<?php
+						$cat_query = mysqli_query($conn, "SELECT category FROM category WHERE category_id = $category_id");
+						if ($cat_row = mysqli_fetch_assoc($cat_query)):
+						?>
+							in <span class="filter-tag"><?php echo htmlspecialchars($cat_row['category']); ?></span>
+						<?php endif; ?>
+					<?php endif; ?>
+
+					<?php if ($topRated): ?>
+						filtered by <span class="filter-tag">Top Rated Hidden Gems</span>
+					<?php endif; ?>
+					<!-- <span class = "filter-tag">Baguio City</span> the applied filter -->
 					<!-- if search: 
 					<span class = "filter-tag">yung sinearch na</span> 
 					-->
@@ -74,60 +105,33 @@ include('header.php');
 
 			<div class = "results-grid"> <!-- container for all attractions -->
 
-				<div class = "listing-card"> <!-- indiv attraction -->
-					<img src = "../images/sample1.jpg" class = "listing-image">
-					<div class = "listing-content">
-						<div class = "listing-top">
-							<h2 class = "listing-title">Mirador Heritage Park</h2> <!-- name -->
-							<span class = "listing-rating">4.8 ★</span> <!-- gem score -->
+				<?php if ($result && mysqli_num_rows($result) > 0): ?>
+					<?php while ($row = mysqli_fetch_assoc($result)): ?>
+						<?php
+						$image_url = $row['image_url'] ? $row['image_url'] : "../images/default.jpg";
+						$category_name = $row['category'] ? $row['category'] : "Uncategorized";
+						$city_name = $row['city_name'] ? $row['city_name'] : "Unknown City";
+						?>
+						<div class="listing-card">
+							<img src="<?php echo htmlspecialchars($image_url); ?>" class="listing-image">
+							<div class="listing-content">
+								<div class="listing-top">
+									<h2 class="listing-title"><?php echo htmlspecialchars($row['name']); ?></h2>
+									<span class="listing-rating"><?php echo number_format($row['gem_score'], 1); ?> ★</span>
+								</div>
+								<p class="listing-location"><?php echo htmlspecialchars($city_name); ?></p>
+								<p class="listing-description"><?php echo htmlspecialchars($row['description']); ?></p>
+								<div class="listing-footer">
+									<span class="category-tag"><?php echo htmlspecialchars($category_name); ?></span>
+									<a href="attraction.php?id=<?php echo $row['attraction_id']; ?>" class="view-btn">View Details</a>
+								</div>
+							</div>
 						</div>
-						<p class = "listing-location">Baguio City</p> <!-- city -->
-						<p class = "listing-description"> 
-							A peaceful cultural and nature destination with scenic paths, gardens, and beautiful mountain views.
-						</p>
-						<div class = "listing-footer">
-							<span class = "category-tag">Culture</span>  <!-- FIRST category -->
-							<a href = "#" class = "view-btn">View Details</a>
-						</div>
-					</div>
-				</div>
+					<?php endwhile; ?>
+				<?php else: ?>
+					<p>No attractions found matching your filters.</p>
+				<?php endif; ?>
 
-				<div class = "listing-card"> <!-- indiv attraction -->
-					<img src = "../images/sample1.jpg" class = "listing-image">
-					<div class = "listing-content">
-						<div class = "listing-top">
-							<h2 class = "listing-title">Mirador Heritage Park</h2> <!-- name -->
-							<span class = "listing-rating">4.8 ★</span> <!-- gem score -->
-						</div>
-						<p class = "listing-location">Baguio City</p> <!-- city -->
-						<p class = "listing-description"> 
-							A peaceful cultural and nature destination with scenic paths, gardens, and beautiful mountain views.
-						</p>
-						<div class = "listing-footer">
-							<span class = "category-tag">Culture</span>  <!-- FIRST category -->
-							<a href = "#" class = "view-btn">View Details</a>
-						</div>
-					</div>
-				</div>
-
-				<div class = "listing-card"> <!-- indiv attraction -->
-					<img src = "../images/sample1.jpg" class = "listing-image">
-					<div class = "listing-content">
-						<div class = "listing-top">
-							<h2 class = "listing-title">Mirador Heritage Park</h2> <!-- name -->
-							<span class = "listing-rating">4.8 ★</span> <!-- gem score -->
-						</div>
-						<p class = "listing-location">Baguio City</p> <!-- city -->
-						<p class = "listing-description"> 
-							A peaceful cultural and nature destination with scenic paths, gardens, and beautiful mountain views.
-						</p>
-						<div class = "listing-footer">
-							<span class = "category-tag">Culture</span>  <!-- FIRST category -->
-							<a href = "#" class = "view-btn">View Details</a>
-						</div>
-					</div>
-				</div>
-      
 			</div>
 
 		</div>

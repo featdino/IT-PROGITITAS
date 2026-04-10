@@ -12,7 +12,7 @@ include('header.php');
         <h1>What's on your itinerary?</h1>
 
         <div class="search-bar-container">
-            <form id="search-form" class="search-form" method="GET" action="search.php">
+            <form id="search-form" class="search-form" method="GET" action="listings.php">
                 <input type="search" class="search-bar" name="query" placeholder="Search attractions..." required>
                 <button type="submit" class="search-button">
                     <i class="fa-solid fa-magnifying-glass"></i>
