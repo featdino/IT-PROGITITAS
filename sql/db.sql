@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3308
--- Generation Time: Apr 10, 2026 at 12:31 PM
+-- Generation Time: Apr 10, 2026 at 03:48 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -283,7 +283,8 @@ INSERT INTO `gallery` (`image_id`, `image_url`, `is_official`, `upload_date`, `a
 (40, 'images/san-sebastian-church-1.jpg', 1, '2026-04-10 10:30:44', 10, 51),
 (41, 'images/session-road-1.jpg', 1, '2026-04-10 10:30:44', 15, 51),
 (42, 'images/the-mansion-1.jpeg', 1, '2026-04-10 10:30:44', 17, 51),
-(43, 'images/wright-park-1.jpg', 1, '2026-04-10 10:30:44', 18, 51);
+(43, 'images/wright-park-1.jpg', 1, '2026-04-10 10:30:44', 18, 51),
+(44, 'images/san-agustin-1.jpg', 1, '2026-04-10 13:31:29', 4, 51);
 
 -- --------------------------------------------------------
 
@@ -539,7 +540,8 @@ INSERT INTO `user` (`user_id`, `name`, `username`, `password`, `email`, `city_id
 (49, 'Dennis Uy', 'dennisuy', '$2y$10$CHWmeXH6.kNYM5MsO6q4ku3pJI0fo1EehTAfX1NDvge2MA1qAYN/2', 'dennisuy@email.com', 47, 'user'),
 (50, 'Manny Villar', 'mannyvillar', '$2y$10$tpDifVztzBCVP20kGYFcQuEqDCqisqEE48wnMZJj7JeITVrw7Y.bq', 'mannyvillar@email.com', 15, 'user'),
 (51, 'admin', 'admin', '$2y$10$cywT2Ndy1ERy.rA..ty3XuaWy9513XP4tLrhJCzUW0hB6pr5EJblG', 'admin@gmail.com', 1, 'admin'),
-(53, 'Faith Francisco', 'faithtravels', '$2y$10$qe5vDIA9N.CF75zHwGukU.uQUKOrnu51P4JSogzofleqIsw4BsQQS', 'faith.francisco2006@gmail', 1, 'user');
+(53, 'Faith Francisco', 'faithtravels', '$2y$10$qe5vDIA9N.CF75zHwGukU.uQUKOrnu51P4JSogzofleqIsw4BsQQS', 'faith.francisco2006@gmail', 1, 'user'),
+(54, 'Jairus Theo Villafranca', 'pogi123', '$2y$10$C8/Zw3I3UuxVBchyvegrJeiMGNXW8liuUnGJXQt.AEUvUn5DVdlyC', 'theoukz321@gmail.com', 12, 'user');
 
 -- --------------------------------------------------------
 
@@ -806,7 +808,7 @@ ALTER TABLE `city`
 -- AUTO_INCREMENT for table `gallery`
 --
 ALTER TABLE `gallery`
-  MODIFY `image_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=76;
+  MODIFY `image_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=77;
 
 --
 -- AUTO_INCREMENT for table `ratings`
@@ -818,7 +820,7 @@ ALTER TABLE `ratings`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=54;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=55;
 
 --
 -- Constraints for dumped tables
