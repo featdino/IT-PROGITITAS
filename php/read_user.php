@@ -7,13 +7,12 @@ if($_SESSION['role'] != 'admin') {
     exit();
 }
 
-
-
 $read = $conn->query("SELECT u.user_id, u.name, u.username, u.password, u.email, c.city_name, c.province, u.role
           FROM user u 
           LEFT JOIN city c ON u.city_id = c.city_id 
           ORDER BY u.user_id");
 
+$result = mysqli_query($conn, $read);
 ?>
 
 <!DOCTYPE html>
