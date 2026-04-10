@@ -3,10 +3,10 @@
 session_start(); 
 require 'db.php'; 
 
-if($_SESSION['role'] != 'admin') {
-    header("Location: login.php");
-    exit();
-}
+// if($_SESSION['role'] != 'admin') {
+//     header("Location: login.php");
+//     exit();
+// }
 
 $attraction_id = $_GET['attraction_id'];
 
@@ -54,7 +54,7 @@ $official_image = $img_result->fetch_assoc();
     <h2><?= htmlspecialchars($attraction['name']) ?></h2>
     
     <?php if($official_image && $official_image['image_url']): ?>
-        <img src="../<?= htmlspecialchars($image['image_url']) ?>" width="300" height="200">
+        <img src="../<?= htmlspecialchars($official_image['image_url']) ?>" width="300" height="200">
     <?php else: ?>
         <p>No official image available.</p>
     <?php endif; ?>
