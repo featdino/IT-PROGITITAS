@@ -2,8 +2,8 @@
 -- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1:3308
--- Generation Time: Apr 10, 2026 at 03:48 PM
+-- Host: 127.0.0.1
+-- Generation Time: Apr 10, 2026 at 06:02 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -44,26 +44,26 @@ CREATE TABLE `attraction` (
 --
 
 INSERT INTO `attraction` (`attraction_id`, `name`, `description`, `street_address`, `total_visits`, `avg_rating`, `city_id`, `local_rating`, `gem_score`) VALUES
-(1, 'Rizal Park', 'Historic park with monuments and gardens', 'Ermita, Manila', 12500, 5.00, 1, 0.00, 0.00),
-(2, 'Intramuros', 'Historic walled city from Spanish era', 'Intramuros, Manila', 9800, 5.00, 1, 0.00, 0.00),
-(3, 'National Museum of Fine Arts', 'Classical and modern Filipino art', 'Padre Burgos Ave, Ermita, Manila', 7200, 5.00, 1, 0.00, 0.00),
-(4, 'San Agustin Church', 'Baroque UNESCO world heritage church', 'Gen Luna St, Intramuros, Manila', 5600, 5.00, 1, 0.00, 0.00),
-(5, 'Manila Ocean Park', 'Marine park with oceanarium and shows', 'Ermita, Manila', 8900, 4.00, 1, 0.00, 0.00),
-(6, 'Fort Santiago', 'Citadel inside Intramuros', 'Santa Clara St, Intramuros, Manila', 6700, 5.00, 1, 0.00, 0.00),
-(7, 'Binondo Church', 'Historic church in Chinatown', 'Binondo, Manila', 4300, 4.00, 1, 0.00, 0.00),
-(8, 'Manila Baywalk', 'Scenic baywalk with sunset views', 'Roxas Blvd, Manila', 10400, 4.00, 1, 0.00, 0.00),
-(9, 'Casa Manila', 'Colonial lifestyle museum', 'Plaza San Luis Complex, Intramuros', 3900, 5.00, 1, 0.00, 0.00),
-(10, 'San Sebastian Church', 'All-steel Gothic church', 'Pasaje del Carmen, Manila', 3100, 5.00, 1, 0.00, 0.00),
-(11, 'Burnham Park', 'Central park with lake and gardens', 'Burnham Park, Baguio', 11000, 5.00, 11, 0.00, 0.00),
-(12, 'Mines View Park', 'Scenic overlook of former gold mines', 'Dominican Hill, Baguio', 9300, 5.00, 11, 0.00, 0.00),
-(13, 'Baguio Cathedral', 'Iconic church with twin spires', 'Cathedral Loop, Baguio', 6700, 5.00, 11, 0.00, 0.00),
-(14, 'Camp John Hay', 'Former US base turned recreation area', 'Camp John Hay, Baguio', 7800, 4.00, 11, 0.00, 0.00),
-(15, 'Session Road', 'Famous commercial and cultural hub', 'Session Road, Baguio', 5400, 4.00, 11, 0.00, 0.00),
-(16, 'Botanical Garden', 'Gardens with indigenous huts', 'Leonard Wood Rd, Baguio', 6200, 5.00, 11, 0.00, 0.00),
-(17, 'The Mansion', 'Official summer palace of Philippine president', 'Leonard Wood Rd, Baguio', 4900, 5.00, 11, 0.00, 0.00),
-(18, 'Wright Park', 'Park with horseback riding', 'Wright Park, Baguio', 4400, 4.00, 11, 0.00, 0.00),
-(19, 'Bell Church', 'Taoist temple with dragon gate', 'Bell Church Rd, Baguio', 3700, 5.00, 11, 0.00, 0.00),
-(20, 'Tam-Awan Village', 'Artist village with native huts', 'Tam-Awan, Baguio', 2900, 5.00, 11, 0.00, 0.00);
+(1, 'Rizal Park', 'Historic park with monuments and gardens', 'Ermita, Manila', 12500, 0.00, 1, 0.00, 0.00),
+(2, 'Intramuros', 'Historic walled city from Spanish era', 'Intramuros, Manila', 9800, 0.00, 1, 0.00, 0.00),
+(3, 'National Museum of Fine Arts', 'Classical and modern Filipino art', 'Padre Burgos Ave, Ermita, Manila', 7200, 0.00, 1, 0.00, 0.00),
+(4, 'San Agustin Church', 'Baroque UNESCO world heritage church', 'Gen Luna St, Intramuros, Manila', 5600, 0.00, 1, 0.00, 0.00),
+(5, 'Manila Ocean Park', 'Marine park with oceanarium and shows', 'Ermita, Manila', 8901, 0.00, 1, 0.00, 0.00),
+(6, 'Fort Santiago', 'Citadel inside Intramuros', 'Santa Clara St, Intramuros, Manila', 6700, 0.00, 1, 0.00, 0.00),
+(7, 'Binondo Church', 'Historic church in Chinatown', 'Binondo, Manila', 4300, 0.00, 1, 0.00, 0.00),
+(8, 'Manila Baywalk', 'Scenic baywalk with sunset views', 'Roxas Blvd, Manila', 10400, 0.00, 1, 0.00, 0.00),
+(9, 'Casa Manila', 'Colonial lifestyle museum', 'Plaza San Luis Complex, Intramuros', 3900, 0.00, 1, 0.00, 0.00),
+(10, 'San Sebastian Church', 'All-steel Gothic church', 'Pasaje del Carmen, Manila', 3100, 0.00, 1, 0.00, 0.00),
+(11, 'Burnham Park', 'Central park with lake and gardens', 'Burnham Park, Baguio', 11000, 0.00, 11, 0.00, 0.00),
+(12, 'Mines View Park', 'Scenic overlook of former gold mines', 'Dominican Hill, Baguio', 9300, 0.00, 11, 0.00, 0.00),
+(13, 'Baguio Cathedral', 'Iconic church with twin spires', 'Cathedral Loop, Baguio', 6700, 0.00, 11, 0.00, 0.00),
+(14, 'Camp John Hay', 'Former US base turned recreation area', 'Camp John Hay, Baguio', 7800, 0.00, 11, 0.00, 0.00),
+(15, 'Session Road', 'Famous commercial and cultural hub', 'Session Road, Baguio', 5400, 0.00, 11, 0.00, 0.00),
+(16, 'Botanical Garden', 'Gardens with indigenous huts', 'Leonard Wood Rd, Baguio', 6200, 0.00, 11, 0.00, 0.00),
+(17, 'The Mansion', 'Official summer palace of Philippine president', 'Leonard Wood Rd, Baguio', 4900, 0.00, 11, 0.00, 0.00),
+(18, 'Wright Park', 'Park with horseback riding', 'Wright Park, Baguio', 4400, 0.00, 11, 0.00, 0.00),
+(19, 'Bell Church', 'Taoist temple with dragon gate', 'Bell Church Rd, Baguio', 3700, 0.00, 11, 0.00, 0.00),
+(20, 'Tam-Awan Village', 'Artist village with native huts', 'Tam-Awan, Baguio', 2900, 0.00, 11, 0.00, 0.00);
 
 -- --------------------------------------------------------
 
@@ -241,50 +241,49 @@ CREATE TABLE `gallery` (
 --
 
 INSERT INTO `gallery` (`image_id`, `image_url`, `is_official`, `upload_date`, `attraction_id`, `user_id`) VALUES
-(1, 'images/mop-1.jpg', 1, '2026-04-10 09:30:19', 5, 51),
-(2, 'images/mop-2.jpg', 1, '2026-04-10 09:30:19', 5, 51),
-(3, 'images/mop-3.jpg', 1, '2026-04-10 09:30:19', 5, 51),
-(4, 'images/mop-4.webp', 1, '2026-04-10 09:30:19', 5, 51),
-(5, 'images/mop-5.avif', 1, '2026-04-10 09:30:19', 5, 51),
-(6, 'images/mop-6.jpg', 1, '2026-04-10 09:30:19', 5, 51),
-(7, 'images/mop-vg-1.jpg', 0, '2026-04-10 09:30:19', 5, 12),
-(8, 'images/mop-vg-2.jpg', 0, '2026-04-10 09:30:19', 5, 37),
-(9, 'images/mop-vg-3.avif', 0, '2026-04-10 09:30:19', 5, 8),
-(10, 'images/mop-vg-4.jpg', 0, '2026-04-10 09:30:19', 5, 25),
-(11, 'images/mop-vg-5.jpg', 0, '2026-04-10 09:30:19', 5, 44),
-(12, 'images/mop-vg-6.png', 0, '2026-04-10 09:30:19', 5, 19),
-(13, 'images/mop-vg-7.jpg', 0, '2026-04-10 09:30:19', 5, 3),
-(14, 'images/mop-vg-8.png', 0, '2026-04-10 09:30:19', 5, 29),
-(15, 'images/mop-vg-9.jpg', 0, '2026-04-10 09:30:19', 5, 46),
-(16, 'images/mop-vg-10.png', 0, '2026-04-10 09:30:19', 5, 7),
-(17, 'images/mop-vg-11.webp', 0, '2026-04-10 09:30:19', 5, 33),
-(18, 'images/mop-vg-12.jpg', 0, '2026-04-10 09:30:19', 5, 21),
-(19, 'images/Baguio-Cathedral-1.jpg', 1, '2026-04-10 10:20:00', 13, 51),
-(20, 'images/baywalk-1.jpg', 1, '2026-04-10 10:20:00', 8, 51),
-(21, 'images/bell-church-1.jpg', 1, '2026-04-10 10:20:00', 19, 51),
-(22, 'images/binondo-church-1.jpg', 1, '2026-04-10 10:20:00', 7, 51),
-(23, 'images/botanical-garden-1.jpg', 1, '2026-04-10 10:20:00', 16, 51),
-(24, 'images/burnham-park-1.jpg', 1, '2026-04-10 10:20:00', 11, 51),
-(25, 'images/camp-john-hay-1.webp', 1, '2026-04-10 10:20:00', 14, 51),
-(26, 'images/casa-manila-1.jpg', 1, '2026-04-10 10:20:00', 9, 51),
-(27, 'images/fort-santiago-1.jpg', 1, '2026-04-10 10:20:00', 6, 51),
-(28, 'images/home-mg-1.jpg', 1, '2026-04-10 10:20:00', 10, 51),
-(29, 'images/home-mg-2.jpg', 1, '2026-04-10 10:29:04', 5, 51),
-(30, 'images/home-mg-3.jpg', 1, '2026-04-10 10:29:04', 8, 51),
-(31, 'images/home-mg-4.jpg', 1, '2026-04-10 10:29:04', 13, 51),
-(32, 'images/home-mg-5.jpg', 1, '2026-04-10 10:29:04', 20, 51),
-(33, 'images/home-mg-6.jpg', 1, '2026-04-10 10:29:04', 19, 51),
-(34, 'images/home-mg-7.jpg', 1, '2026-04-10 10:29:04', 15, 51),
-(35, 'images/home-mg-8.jpg', 1, '2026-04-10 10:29:04', 9, 51),
-(36, 'images/intramuros-1.jpg', 1, '2026-04-10 10:29:04', 2, 51),
-(37, 'images/mines-view-1.jpg', 1, '2026-04-10 10:29:04', 12, 51),
-(38, 'images/NMFA-1.avif', 1, '2026-04-10 10:29:04', 3, 51),
-(39, 'images/Rizal-Park.jpg', 1, '2026-04-10 10:29:04', 1, 51),
-(40, 'images/san-sebastian-church-1.jpg', 1, '2026-04-10 10:30:44', 10, 51),
-(41, 'images/session-road-1.jpg', 1, '2026-04-10 10:30:44', 15, 51),
-(42, 'images/the-mansion-1.jpeg', 1, '2026-04-10 10:30:44', 17, 51),
-(43, 'images/wright-park-1.jpg', 1, '2026-04-10 10:30:44', 18, 51),
-(44, 'images/san-agustin-1.jpg', 1, '2026-04-10 13:31:29', 4, 51);
+(1, 'images/mop-1.jpg', 1, '2026-04-10 01:30:19', 5, 51),
+(2, 'images/mop-2.jpg', 1, '2026-04-10 01:30:19', 5, 51),
+(3, 'images/mop-3.jpg', 1, '2026-04-10 01:30:19', 5, 51),
+(4, 'images/mop-4.webp', 1, '2026-04-10 01:30:19', 5, 51),
+(5, 'images/mop-5.avif', 1, '2026-04-10 01:30:19', 5, 51),
+(6, 'images/mop-6.jpg', 1, '2026-04-10 01:30:19', 5, 51),
+(7, 'images/mop-vg-1.jpg', 0, '2026-04-10 01:30:19', 5, 12),
+(8, 'images/mop-vg-2.jpg', 0, '2026-04-10 01:30:19', 5, 37),
+(9, 'images/mop-vg-3.avif', 0, '2026-04-10 01:30:19', 5, 8),
+(10, 'images/mop-vg-4.jpg', 0, '2026-04-10 01:30:19', 5, 25),
+(11, 'images/mop-vg-5.jpg', 0, '2026-04-10 01:30:19', 5, 44),
+(12, 'images/mop-vg-6.png', 0, '2026-04-10 01:30:19', 5, 19),
+(13, 'images/mop-vg-7.jpg', 0, '2026-04-10 01:30:19', 5, 3),
+(14, 'images/mop-vg-8.png', 0, '2026-04-10 01:30:19', 5, 29),
+(15, 'images/mop-vg-9.jpg', 0, '2026-04-10 01:30:19', 5, 46),
+(16, 'images/mop-vg-10.png', 0, '2026-04-10 01:30:19', 5, 7),
+(17, 'images/mop-vg-11.webp', 0, '2026-04-10 01:30:19', 5, 33),
+(18, 'images/mop-vg-12.jpg', 0, '2026-04-10 01:30:19', 5, 21),
+(19, 'images/Baguio-Cathedral-1.jpg', 1, '2026-04-10 02:20:00', 13, 51),
+(20, 'images/baywalk-1.jpg', 1, '2026-04-10 02:20:00', 8, 51),
+(21, 'images/bell-church-1.jpg', 1, '2026-04-10 02:20:00', 19, 51),
+(22, 'images/binondo-church-1.jpg', 1, '2026-04-10 02:20:00', 7, 51),
+(23, 'images/botanical-garden-1.jpg', 1, '2026-04-10 02:20:00', 16, 51),
+(24, 'images/burnham-park-1.jpg', 1, '2026-04-10 02:20:00', 11, 51),
+(25, 'images/camp-john-hay-1.webp', 1, '2026-04-10 02:20:00', 14, 51),
+(26, 'images/casa-manila-1.jpg', 1, '2026-04-10 02:20:00', 9, 51),
+(27, 'images/fort-santiago-1.jpg', 1, '2026-04-10 02:20:00', 6, 51),
+(28, 'images/home-mg-1.jpg', 1, '2026-04-10 02:20:00', 10, 51),
+(29, 'images/home-mg-2.jpg', 1, '2026-04-10 02:29:04', 5, 51),
+(30, 'images/home-mg-3.jpg', 1, '2026-04-10 02:29:04', 8, 51),
+(31, 'images/home-mg-4.jpg', 1, '2026-04-10 02:29:04', 13, 51),
+(32, 'images/home-mg-5.jpg', 1, '2026-04-10 02:29:04', 20, 51),
+(33, 'images/home-mg-6.jpg', 1, '2026-04-10 02:29:04', 19, 51),
+(34, 'images/home-mg-7.jpg', 1, '2026-04-10 02:29:04', 15, 51),
+(35, 'images/home-mg-8.jpg', 1, '2026-04-10 02:29:04', 9, 51),
+(36, 'images/intramuros-1.jpg', 1, '2026-04-10 02:29:04', 2, 51),
+(37, 'images/mines-view-1.jpg', 1, '2026-04-10 02:29:04', 12, 51),
+(38, 'images/NMFA-1.avif', 1, '2026-04-10 02:29:04', 3, 51),
+(39, 'images/Rizal-Park.jpg', 1, '2026-04-10 02:29:04', 1, 51),
+(40, 'images/san-sebastian-church-1.jpg', 1, '2026-04-10 02:30:44', 10, 51),
+(41, 'images/session-road-1.jpg', 1, '2026-04-10 02:30:44', 15, 51),
+(42, 'images/the-mansion-1.jpeg', 1, '2026-04-10 02:30:44', 17, 51),
+(43, 'images/wright-park-1.jpg', 1, '2026-04-10 02:30:44', 18, 51);
 
 -- --------------------------------------------------------
 
@@ -299,174 +298,6 @@ CREATE TABLE `ratings` (
   `rating` int(11) DEFAULT NULL CHECK (`rating` between 1 and 5),
   `created_at` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `ratings`
---
-
-INSERT INTO `ratings` (`rating_id`, `user_id`, `attraction_id`, `rating`, `created_at`) VALUES
-(1, 1, 1, 5, '2026-04-10 09:51:35'),
-(2, 1, 2, 4, '2026-04-10 09:51:35'),
-(3, 1, 3, 5, '2026-04-10 09:51:35'),
-(4, 1, 4, 4, '2026-04-10 09:51:35'),
-(5, 1, 5, 3, '2026-04-10 09:51:35'),
-(6, 2, 1, 4, '2026-04-10 09:51:35'),
-(7, 2, 6, 5, '2026-04-10 09:51:35'),
-(8, 2, 7, 4, '2026-04-10 09:51:35'),
-(9, 2, 8, 3, '2026-04-10 09:51:35'),
-(10, 3, 2, 5, '2026-04-10 09:51:35'),
-(11, 3, 4, 5, '2026-04-10 09:51:35'),
-(12, 3, 6, 4, '2026-04-10 09:51:35'),
-(13, 4, 2, 4, '2026-04-10 09:51:35'),
-(14, 4, 4, 5, '2026-04-10 09:51:35'),
-(15, 4, 6, 4, '2026-04-10 09:51:35'),
-(16, 5, 1, 5, '2026-04-10 09:51:35'),
-(17, 5, 3, 4, '2026-04-10 09:51:35'),
-(18, 5, 5, 3, '2026-04-10 09:51:35'),
-(19, 6, 11, 5, '2026-04-10 09:51:35'),
-(20, 6, 12, 4, '2026-04-10 09:51:35'),
-(21, 6, 13, 5, '2026-04-10 09:51:35'),
-(22, 6, 14, 4, '2026-04-10 09:51:35'),
-(23, 7, 1, 4, '2026-04-10 09:51:35'),
-(24, 7, 11, 5, '2026-04-10 09:51:35'),
-(25, 7, 15, 3, '2026-04-10 09:51:35'),
-(26, 8, 1, 5, '2026-04-10 09:51:35'),
-(27, 8, 6, 4, '2026-04-10 09:51:35'),
-(28, 8, 11, 5, '2026-04-10 09:51:35'),
-(29, 9, 3, 5, '2026-04-10 09:51:35'),
-(30, 9, 4, 5, '2026-04-10 09:51:35'),
-(31, 9, 7, 4, '2026-04-10 09:51:35'),
-(32, 9, 13, 5, '2026-04-10 09:51:35'),
-(33, 10, 5, 4, '2026-04-10 09:51:35'),
-(34, 10, 12, 5, '2026-04-10 09:51:35'),
-(35, 10, 16, 4, '2026-04-10 09:51:35'),
-(36, 11, 11, 5, '2026-04-10 09:51:35'),
-(37, 11, 14, 4, '2026-04-10 09:51:35'),
-(38, 11, 17, 5, '2026-04-10 09:51:35'),
-(39, 11, 18, 4, '2026-04-10 09:51:35'),
-(40, 12, 2, 3, '2026-04-10 09:51:35'),
-(41, 12, 8, 4, '2026-04-10 09:51:35'),
-(42, 12, 15, 4, '2026-04-10 09:51:35'),
-(43, 12, 19, 5, '2026-04-10 09:51:35'),
-(44, 13, 4, 5, '2026-04-10 09:51:35'),
-(45, 13, 8, 4, '2026-04-10 09:51:35'),
-(46, 13, 13, 5, '2026-04-10 09:51:35'),
-(47, 13, 19, 4, '2026-04-10 09:51:35'),
-(48, 14, 1, 4, '2026-04-10 09:51:35'),
-(49, 14, 11, 5, '2026-04-10 09:51:35'),
-(50, 14, 20, 4, '2026-04-10 09:51:35'),
-(51, 15, 3, 5, '2026-04-10 09:51:35'),
-(52, 15, 6, 4, '2026-04-10 09:51:35'),
-(53, 15, 9, 4, '2026-04-10 09:51:35'),
-(54, 15, 16, 5, '2026-04-10 09:51:35'),
-(55, 16, 1, 4, '2026-04-10 09:51:35'),
-(56, 16, 6, 5, '2026-04-10 09:51:35'),
-(57, 16, 11, 4, '2026-04-10 09:51:35'),
-(58, 16, 18, 3, '2026-04-10 09:51:35'),
-(59, 17, 5, 3, '2026-04-10 09:51:35'),
-(60, 17, 12, 4, '2026-04-10 09:51:35'),
-(61, 17, 20, 5, '2026-04-10 09:51:35'),
-(62, 18, 2, 5, '2026-04-10 09:51:35'),
-(63, 18, 7, 4, '2026-04-10 09:51:35'),
-(64, 18, 14, 5, '2026-04-10 09:51:35'),
-(65, 19, 4, 4, '2026-04-10 09:51:35'),
-(66, 19, 9, 3, '2026-04-10 09:51:35'),
-(67, 19, 15, 4, '2026-04-10 09:51:35'),
-(68, 20, 1, 5, '2026-04-10 09:51:35'),
-(69, 20, 10, 4, '2026-04-10 09:51:35'),
-(70, 20, 13, 5, '2026-04-10 09:51:35'),
-(71, 21, 6, 4, '2026-04-10 09:51:35'),
-(72, 21, 11, 5, '2026-04-10 09:51:35'),
-(73, 21, 16, 4, '2026-04-10 09:51:35'),
-(74, 22, 3, 5, '2026-04-10 09:51:35'),
-(75, 22, 8, 4, '2026-04-10 09:51:35'),
-(76, 22, 17, 5, '2026-04-10 09:51:35'),
-(77, 23, 2, 4, '2026-04-10 09:51:35'),
-(78, 23, 5, 3, '2026-04-10 09:51:35'),
-(79, 23, 12, 5, '2026-04-10 09:51:35'),
-(80, 24, 1, 5, '2026-04-10 09:51:35'),
-(81, 24, 7, 4, '2026-04-10 09:51:35'),
-(82, 24, 14, 4, '2026-04-10 09:51:35'),
-(83, 25, 4, 4, '2026-04-10 09:51:35'),
-(84, 25, 9, 5, '2026-04-10 09:51:35'),
-(85, 25, 18, 3, '2026-04-10 09:51:35'),
-(86, 26, 6, 5, '2026-04-10 09:51:35'),
-(87, 26, 10, 4, '2026-04-10 09:51:35'),
-(88, 26, 19, 4, '2026-04-10 09:51:35'),
-(89, 27, 3, 4, '2026-04-10 09:51:35'),
-(90, 27, 11, 5, '2026-04-10 09:51:35'),
-(91, 27, 20, 4, '2026-04-10 09:51:35'),
-(92, 28, 2, 5, '2026-04-10 09:51:35'),
-(93, 28, 8, 4, '2026-04-10 09:51:35'),
-(94, 28, 15, 4, '2026-04-10 09:51:35'),
-(95, 29, 5, 3, '2026-04-10 09:51:35'),
-(96, 29, 12, 5, '2026-04-10 09:51:35'),
-(97, 29, 16, 4, '2026-04-10 09:51:35'),
-(98, 30, 1, 4, '2026-04-10 09:51:35'),
-(99, 30, 9, 5, '2026-04-10 09:51:35'),
-(100, 30, 17, 4, '2026-04-10 09:51:35'),
-(101, 31, 7, 4, '2026-04-10 09:51:35'),
-(102, 31, 13, 5, '2026-04-10 09:51:35'),
-(103, 31, 18, 3, '2026-04-10 09:51:35'),
-(104, 32, 4, 5, '2026-04-10 09:51:35'),
-(105, 32, 10, 4, '2026-04-10 09:51:35'),
-(106, 32, 19, 4, '2026-04-10 09:51:35'),
-(107, 33, 1, 5, '2026-04-10 09:51:35'),
-(108, 33, 2, 4, '2026-04-10 09:51:35'),
-(109, 33, 3, 5, '2026-04-10 09:51:35'),
-(110, 33, 4, 4, '2026-04-10 09:51:35'),
-(111, 33, 5, 5, '2026-04-10 09:51:35'),
-(112, 34, 6, 4, '2026-04-10 09:51:35'),
-(113, 34, 11, 5, '2026-04-10 09:51:35'),
-(114, 34, 16, 4, '2026-04-10 09:51:35'),
-(115, 35, 2, 5, '2026-04-10 09:51:35'),
-(116, 35, 7, 4, '2026-04-10 09:51:35'),
-(117, 35, 12, 4, '2026-04-10 09:51:35'),
-(118, 36, 1, 4, '2026-04-10 09:51:35'),
-(119, 36, 4, 5, '2026-04-10 09:51:35'),
-(120, 36, 8, 3, '2026-04-10 09:51:35'),
-(121, 37, 3, 5, '2026-04-10 09:51:35'),
-(122, 37, 9, 4, '2026-04-10 09:51:35'),
-(123, 37, 14, 5, '2026-04-10 09:51:35'),
-(124, 38, 5, 4, '2026-04-10 09:51:35'),
-(125, 38, 10, 5, '2026-04-10 09:51:35'),
-(126, 38, 15, 4, '2026-04-10 09:51:35'),
-(127, 39, 2, 4, '2026-04-10 09:51:35'),
-(128, 39, 11, 5, '2026-04-10 09:51:35'),
-(129, 39, 20, 4, '2026-04-10 09:51:35'),
-(130, 40, 1, 5, '2026-04-10 09:51:35'),
-(131, 40, 6, 4, '2026-04-10 09:51:35'),
-(132, 40, 13, 5, '2026-04-10 09:51:35'),
-(133, 41, 7, 4, '2026-04-10 09:51:35'),
-(134, 41, 12, 5, '2026-04-10 09:51:35'),
-(135, 41, 17, 4, '2026-04-10 09:51:35'),
-(136, 42, 3, 5, '2026-04-10 09:51:35'),
-(137, 42, 8, 4, '2026-04-10 09:51:35'),
-(138, 42, 18, 3, '2026-04-10 09:51:35'),
-(139, 43, 4, 4, '2026-04-10 09:51:35'),
-(140, 43, 9, 5, '2026-04-10 09:51:35'),
-(141, 43, 19, 4, '2026-04-10 09:51:35'),
-(142, 44, 1, 5, '2026-04-10 09:51:35'),
-(143, 44, 5, 4, '2026-04-10 09:51:35'),
-(144, 44, 14, 5, '2026-04-10 09:51:35'),
-(145, 45, 6, 4, '2026-04-10 09:51:35'),
-(146, 45, 10, 5, '2026-04-10 09:51:35'),
-(147, 45, 16, 4, '2026-04-10 09:51:35'),
-(148, 46, 2, 5, '2026-04-10 09:51:35'),
-(149, 46, 11, 4, '2026-04-10 09:51:35'),
-(150, 46, 20, 5, '2026-04-10 09:51:35'),
-(151, 47, 3, 4, '2026-04-10 09:51:35'),
-(152, 47, 7, 5, '2026-04-10 09:51:35'),
-(153, 47, 15, 4, '2026-04-10 09:51:35'),
-(154, 48, 4, 5, '2026-04-10 09:51:35'),
-(155, 48, 8, 4, '2026-04-10 09:51:35'),
-(156, 48, 17, 5, '2026-04-10 09:51:35'),
-(157, 49, 5, 4, '2026-04-10 09:51:35'),
-(158, 49, 9, 5, '2026-04-10 09:51:35'),
-(159, 49, 18, 4, '2026-04-10 09:51:35'),
-(160, 50, 1, 5, '2026-04-10 09:51:35'),
-(161, 50, 6, 4, '2026-04-10 09:51:35'),
-(162, 50, 12, 5, '2026-04-10 09:51:35');
 
 -- --------------------------------------------------------
 
@@ -540,8 +371,7 @@ INSERT INTO `user` (`user_id`, `name`, `username`, `password`, `email`, `city_id
 (49, 'Dennis Uy', 'dennisuy', '$2y$10$CHWmeXH6.kNYM5MsO6q4ku3pJI0fo1EehTAfX1NDvge2MA1qAYN/2', 'dennisuy@email.com', 47, 'user'),
 (50, 'Manny Villar', 'mannyvillar', '$2y$10$tpDifVztzBCVP20kGYFcQuEqDCqisqEE48wnMZJj7JeITVrw7Y.bq', 'mannyvillar@email.com', 15, 'user'),
 (51, 'admin', 'admin', '$2y$10$cywT2Ndy1ERy.rA..ty3XuaWy9513XP4tLrhJCzUW0hB6pr5EJblG', 'admin@gmail.com', 1, 'admin'),
-(53, 'Faith Francisco', 'faithtravels', '$2y$10$qe5vDIA9N.CF75zHwGukU.uQUKOrnu51P4JSogzofleqIsw4BsQQS', 'faith.francisco2006@gmail', 1, 'user'),
-(54, 'Jairus Theo Villafranca', 'pogi123', '$2y$10$C8/Zw3I3UuxVBchyvegrJeiMGNXW8liuUnGJXQt.AEUvUn5DVdlyC', 'theoukz321@gmail.com', 12, 'user');
+(53, 'Faith Francisco', 'faithtravels', '$2y$10$qe5vDIA9N.CF75zHwGukU.uQUKOrnu51P4JSogzofleqIsw4BsQQS', 'faith.francisco2006@gmail', 1, 'user');
 
 -- --------------------------------------------------------
 
@@ -720,7 +550,8 @@ INSERT INTO `visits` (`user_id`, `attraction_id`) VALUES
 (49, 18),
 (50, 1),
 (50, 6),
-(50, 12);
+(50, 12),
+(53, 5);
 
 --
 -- Indexes for dumped tables
@@ -766,6 +597,7 @@ ALTER TABLE `gallery`
 ALTER TABLE `ratings`
   ADD PRIMARY KEY (`rating_id`),
   ADD UNIQUE KEY `user_id` (`user_id`,`attraction_id`),
+  ADD UNIQUE KEY `unique_user_attraction` (`user_id`,`attraction_id`),
   ADD KEY `attraction_id` (`attraction_id`);
 
 --
@@ -779,6 +611,7 @@ ALTER TABLE `user`
 -- Indexes for table `visits`
 --
 ALTER TABLE `visits`
+  ADD UNIQUE KEY `unique_user_visit` (`user_id`,`attraction_id`),
   ADD KEY `user_id` (`user_id`),
   ADD KEY `attraction_id` (`attraction_id`);
 
@@ -808,19 +641,19 @@ ALTER TABLE `city`
 -- AUTO_INCREMENT for table `gallery`
 --
 ALTER TABLE `gallery`
-  MODIFY `image_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=77;
+  MODIFY `image_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
 
 --
 -- AUTO_INCREMENT for table `ratings`
 --
 ALTER TABLE `ratings`
-  MODIFY `rating_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=163;
+  MODIFY `rating_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=55;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=54;
 
 --
 -- Constraints for dumped tables
