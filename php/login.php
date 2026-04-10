@@ -11,7 +11,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         "SELECT user_id, username, password FROM user WHERE username = '$username'");
 
     if ($row = mysqli_fetch_assoc($result)) {
-        if (password_verify($password, $row['password'])) {
+            if (md5($password) == $row['password'])  {
             $_SESSION['user_id']  = $row['user_id'];
             $_SESSION['username'] = $row['username'];
             header("Location: attraction.php");

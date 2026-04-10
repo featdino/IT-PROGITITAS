@@ -650,6 +650,9 @@ COMMIT;
 -- allow user table to accept NULL city value
 ALTER TABLE `user` CHANGE `city_id` `city_id` INT(11) NULL;
 
+-- This will hash all plain text passwords in your user table
+UPDATE `user` SET `password` = MD5(`password`);
+
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
