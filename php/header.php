@@ -30,7 +30,10 @@
             <div class = "logo">
                 <a href = "home.php"><img src = "../images/logo.png"></a>
             </div>
- 
+
+            <!-- php logic here : if may nakalogin, add this part of the code -->
+            <button class = "logout-btn">Log Out</button>
+            
             <input id = "toggle" type = "checkbox">
             <label class = "dropdown" for = "toggle">
                 <i class = "fa-solid fa-bars"></i>
