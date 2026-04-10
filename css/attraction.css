@@ -605,3 +605,21 @@ body, html {
     background-color: #789f72;
     transition: all 0.3s ease-in-out;
 }
+
+
+
+
+
+/* messages */
+
+.not-logged-in, .must-visit-first {
+    text-align: center;
+}
+
+.not-logged-in {
+    color: #cb4c4e;
+}
+
+.must-visit-first {
+    color: #ce7576;
+}
