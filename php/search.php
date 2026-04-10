@@ -28,4 +28,8 @@ if ($query !== '') {
         }
     }
 }
+
+$pageTitle = "Search";
+$pageStyle = "search.css";
+include('header.php'); 
 ?>
