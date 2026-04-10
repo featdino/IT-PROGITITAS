@@ -3,10 +3,10 @@
 session_start(); 
 require 'db.php'; 
 
-// if($_SESSION['role'] != 'admin') {
-//     header("Location: login.php");
-//     exit();
-// }
+/*if($_SESSION['role'] != 'admin') {
+    header("Location: login.php");
+    exit();
+}*/
 
 $read = $conn->query("SELECT * FROM attraction");
 
@@ -16,52 +16,87 @@ $read = $conn->query("SELECT * FROM attraction");
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>View Attractions</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>View Database - Attractions</title>
+    <link rel="stylesheet" href="../css/admin_dashboard.css" />
 </head>
 <body>
-    <header>
-        <nav>
-            <ul>
-            <li><a href="create_attraction.php">Create Attractions</a></li>
-            <li><a href="read_attraction.php">View Attractions</a></li>
-            <li><a href="logout.php">Logout</a></li>
-            </ul>
-        </nav>
-    </header>
-    <h2>View Attractions</h2>
-    
-    <table>
-        <tr>
-            <th>Attraction ID</th>
-            <th>Name</th>
-            <th>Image</th>
-        </tr>
-        <?php 
-            while ($row = $read->fetch_assoc()):
-                
-                $img_query = "SELECT image_url FROM gallery WHERE attraction_id = '{$row['attraction_id']}' LIMIT 1";
-                $img_result = $conn->query($img_query);
-                $image = $img_result->fetch_assoc();
-        ?>
-        <tr>
-            <td><?= htmlspecialchars($row['attraction_id']) ?></td>
-            <td><a href="attraction_details.php?attraction_id=<?= $row['attraction_id'] ?>"><?= htmlspecialchars($row['name']) ?></a></td>
-            <td>
-                <?php if($image && $image['image_url']): ?>
-                    <img src="../<?= htmlspecialchars($image['image_url']) ?>" width="50" height="50">
-                <?php else: ?>
-                    No image
-                <?php endif; ?>
-            </td>
-        </tr>
-        <?php 
-            endwhile;
-        ?>
-    </table>
-    
-    <br>
+    <div class="page-overlay"></div>
 
+    <input type="checkbox" id="menu-toggle" class="menu-toggle">
+    <label for="menu-toggle" class="menu-backdrop"></label>
+
+    <header class="topbar">
+        <div class="brand">
+            <div class="logo-circle">
+                <img src="../images/logo-icon.png" alt="Off-Radar logo" />
+            </div>
+            <h1>off-radar.</h1>
+        </div>
+
+        <div class="top-actions">
+            <label for="menu-toggle" class="menu-btn" aria-label="Open menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </label>
+        </div>
+    </header>
+
+    <nav class="side-menu">
+        <a href="read_attraction.php">Dashboard</a>
+        <a href="read_attraction.php">View Database</a>
+        <a href="generate_report.php">Generate Reports</a>
+        <a href="create_attraction.php">Create Attraction</a>
+        <a href="create_user.php">Create User</a>
+        <a href="create_city.php">Create City</a>
+        <a href="logout.php">Logout</a>
+    </nav>
+
+    <main class="dashboard-section">
+        <div class="dashboard-tabs">
+            <a href="read_attraction.php" class="tab active">View Database</a>
+            <a href="generate_report.php" class="tab">Generate Reports</a>
+        </div>
+
+        <div class="dashboard-shell">
+            <div class="database-switch-tabs">
+                <a href="read_attraction.php" class="switch-tab active">Attractions</a>
+                <a href="read_user.php" class="switch-tab">Users</a>
+                <a href="read_city.php" class="switch-tab">Cities</a>
+            </div>
+
+            <section class="database-view" style="display:block;">
+                <div class="card-board">
+                    <?php 
+                    while ($row = $read->fetch_assoc()):
+                        $img_query = "SELECT image_url FROM gallery WHERE attraction_id = '{$row['attraction_id']}' LIMIT 1";
+                        $img_result = $conn->query($img_query);
+                        $image = $img_result->fetch_assoc();
+                    ?>
+                        <a href="attraction_details.php?attraction_id=<?= $row['attraction_id'] ?>" class="attraction-card">
+                            <div class="card-image">
+                                <?php if($image && $image['image_url']): ?>
+                                    <img src="../<?= htmlspecialchars($image['image_url']) ?>" width="50" height="50">
+                                <?php else: ?>
+                                    No image
+                                <?php endif; ?>
+                            </div>
+                    
+                            <div class="card-content">
+                                <h2><?= htmlspecialchars($row['name']) ?></h2>
+                                <p class="id">ID <?= htmlspecialchars($row['attraction_id']) ?></p>
+                            </div>
+                    
+                            <span class="card-corner-btn" aria-hidden="true">
+                                <span></span><span></span><span></span>
+                            </span>
+                        </a>
+                    <?php endwhile; ?>
+                </div>
+            </section>
+        </div>
+    </main>
 </body>
 </html>
