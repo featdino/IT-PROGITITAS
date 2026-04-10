@@ -53,6 +53,26 @@ body {
     transition: all 0.3s ease-in-out;
 }
 
+.logout-btn {
+    margin-left: auto;
+    margin-right: 20px;
+    margin-bottom: 5px;
+    height: 28px;
+    width: 80px;
+    border: none;
+    border-radius: 28px;
+    background-color: #3d405b;
+    font-family: 'Montserrat';
+    font-weight: 500;
+    color: white;
+    cursor: pointer;  
+}
+
+.logout-btn:hover {
+    transform: scale(1.05);
+    transition: all 0.3s ease-in-out;
+}
+
 .dropdown {
     font-size: 30px;
     line-height: 50px;
