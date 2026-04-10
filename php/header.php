@@ -1,16 +1,3 @@
-<?php
-session_start();
-require 'db.php';
-
-
-if (isset($_SESSION['user_id'])) {
-    header("Location:logout.php");
-    exit();
-}else{
-    header("Location:login.php");
-    exit();
-}
-?>
 
 <!DOCTYPE html>
 
@@ -46,7 +33,10 @@ if (isset($_SESSION['user_id'])) {
             </div>
 
             <!-- php logic here : if may nakalogin, add this part of the code -->
-            <button class = "logout-btn">Log Out</button>
+             <?php if(isset($_SESSION['user_id'])): ?>
+                <a href="logout.php"><button class = "logout-btn">Log Out</button></a>
+             <?php endif?>
+            
             
             <input id = "toggle" type = "checkbox">
             <label class = "dropdown" for = "toggle">
