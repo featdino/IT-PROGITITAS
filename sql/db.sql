@@ -65,6 +65,66 @@ INSERT INTO `attraction` (`attraction_id`, `name`, `description`, `street_addres
 (19, 'Bell Church', 'Taoist temple with dragon gate', 'Bell Church Rd, Baguio', 3700, 4.00, 11, 4.00, 1.80),
 (20, 'Tam-Awan Village', 'Artist village with native huts', 'Tam-Awan, Baguio', 2900, 4.08, 11, 4.20, 1.78);
 
+UPDATE `attraction` SET `description` = 'Expansive historic park with monuments, gardens, and cultural events honoring national hero José Rizal'
+WHERE `attraction_id` = 1;
+
+UPDATE `attraction` SET `description` = 'Walled Spanish-era city with cobblestone streets, colonial churches, and museums showcasing Manila’s past'
+WHERE `attraction_id` = 2;
+
+UPDATE `attraction` SET `description` = 'Showcases classical and modern Filipino art, including masterpieces by Juan Luna and Félix Resurrección Hidalgo'
+WHERE `attraction_id` = 3;
+
+UPDATE `attraction` SET `description` = 'UNESCO-listed Baroque church with ornate interiors, centuries-old relics, and a museum of religious artifacts'
+WHERE `attraction_id` = 4;
+
+UPDATE `attraction` SET `description` = 'Modern marine park with oceanarium tunnels, interactive exhibits, sea lion shows, and family-friendly attractions'
+WHERE `attraction_id` = 5;
+
+UPDATE `attraction` SET `description` = 'Historic citadel inside Intramuros featuring dungeons, gardens, and exhibits on José Rizal’s imprisonment'
+WHERE `attraction_id` = 6;
+
+UPDATE `attraction` SET `description` = 'Centuries-old church in Chinatown blending Spanish and Chinese influences, known for its ornate altar'
+WHERE `attraction_id` = 7;
+
+UPDATE `attraction` SET `description` = 'Scenic promenade along Roxas Boulevard, famous for breathtaking sunset views and lively street performances'
+WHERE `attraction_id` = 8;
+
+UPDATE `attraction` SET `description` = 'Museum recreating colonial Filipino lifestyle with period furniture, courtyards, and Spanish-inspired architecture'
+WHERE `attraction_id` = 9;
+
+UPDATE `attraction` SET `description` = 'Unique all-steel Gothic church with stained glass windows and twin spires, a marvel of 19th-century engineering'
+WHERE `attraction_id` = 10;
+
+UPDATE `attraction` SET `description` = 'Central Baguio park with boating lake, flower gardens, playgrounds, and open spaces for leisure and festivals'
+WHERE `attraction_id` = 11;
+
+UPDATE `attraction` SET `description` = 'Popular viewpoint overlooking Benguet’s old mines and mountains, with souvenir shops and native crafts'
+WHERE `attraction_id` = 12;
+
+UPDATE `attraction` SET `description` = 'Iconic neo-Gothic church with twin spires, colorful stained glass, and panoramic views of the city center'
+WHERE `attraction_id` = 13;
+
+UPDATE `attraction` SET `description` = 'Former US military base turned resort with golf courses, pine forests, and heritage structures'
+WHERE `attraction_id` = 14;
+
+UPDATE `attraction` SET `description` = 'Bustling commercial hub lined with shops, cafés, and restaurants, serving as Baguio’s cultural heartbeat'
+WHERE `attraction_id` = 15;
+
+UPDATE `attraction` SET `description` = 'Garden showcasing native plants, artist workshops, and traditional Cordillera huts amidst lush greenery'
+WHERE `attraction_id` = 16;
+
+UPDATE `attraction` SET `description` = 'Official summer residence of the Philippine president, featuring stately architecture and landscaped grounds'
+WHERE `attraction_id` = 17;
+
+UPDATE `attraction` SET `description` = 'Park known for horseback riding, pine-lined walkways, and the Pool of Pines reflecting tranquil scenery'
+WHERE `attraction_id` = 18;
+
+UPDATE `attraction` SET `description` = 'Taoist temple with ornate dragon gate, pagodas, and gardens symbolizing harmony and spiritual reflection'
+WHERE `attraction_id` = 19;
+
+UPDATE `attraction` SET `description` = 'Artist village with reconstructed native huts, art exhibits, and cultural workshops celebrating Cordillera heritage'
+WHERE `attraction_id` = 20;
+
 -- --------------------------------------------------------
 
 --
