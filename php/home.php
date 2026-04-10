@@ -1,7 +1,18 @@
 <?php 
-  $pageTitle = "Home";
-  $pageStyle = "home.css";
-  include('header.php'); 
+// Fetch 8 official images for the home masonry grid
+session_start();
+require 'db.php';
+
+$images_result = mysqli_query($conn, "
+    SELECT image_url, attraction_id 
+    FROM gallery 
+    WHERE is_official = 1 
+    LIMIT 8
+");
+
+$pageTitle = "Home";
+$pageStyle = "home.css";
+include('header.php'); 
 ?>
 
         <section class = "hero-section">
@@ -22,9 +33,30 @@
                 infrastructures, and the increase of single-use plastics in tourist destinations can 
                 often lead to littering, affecting the health of the residents and wildlife in the area.
             </p>
-            <div class = "masonry-container">
+
+            <div class="masonry-container">
+                <div id="grid" class="masonry-grid">
+                    <?php if ($images_result && mysqli_num_rows($images_result) > 0): ?>
+                        <?php while ($img = mysqli_fetch_assoc($images_result)): ?>
+                            <?php 
+                                // prepend ../ because home.php is inside php folder
+                                $image_url = "../" . $img['image_url']; 
+                            ?>
+                            <div class="grid-item">
+                                <a href="attraction.php?id=<?php echo $img['attraction_id']; ?>">
+                                    <img src="<?php echo htmlspecialchars($image_url); ?>">
+                                </a>
+                            </div>
+                        <?php endwhile; ?>
+                    <?php else: ?>
+                        <p>No images available.</p>
+                    <?php endif; ?>
+                </div>
+            </div>
+
+            <!-- <div class = "masonry-container">
                 <div id = "grid" class = "masonry-grid">
-                    <!-- supply yung links to each attraction na nasa picture (i based off sa mga nasa db)-->
+                    
                     <div class = "grid-item">
                         <a href = ""><img src = "../images/home-mg-1.jpg"></a>
                     </div>
@@ -50,7 +82,7 @@
                         <a href = ""><img src = "../images/home-mg-8.jpg"></a>
                     </div>
                 </div>
-            </div>
+            </div> -->
         </section>
 
         <footer class = "footer">
