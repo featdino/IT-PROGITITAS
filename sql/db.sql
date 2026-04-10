@@ -502,6 +502,269 @@ INSERT INTO `visits` (`user_id`, `attraction_id`) VALUES
 (50, 6),
 (50, 12);
 
+-- Populate ratings table
+INSERT INTO `ratings` (`user_id`, `attraction_id`, `rating`) VALUES
+-- User 1 (Juan Dela Cruz) ratings
+(1, 1, 5),
+(1, 2, 4),
+(1, 3, 5),
+(1, 4, 4),
+(1, 5, 3),
+
+-- User 2 (Maria Santos) ratings
+(2, 1, 4),
+(2, 6, 5),
+(2, 7, 4),
+(2, 8, 3),
+
+-- User 3 (Jose Rizal) ratings
+(3, 2, 5),
+(3, 4, 5),
+(3, 6, 4),
+
+-- User 4 (Andres Bonifacio) ratings
+(4, 2, 4),
+(4, 4, 5),
+(4, 6, 4),
+
+-- User 5 (Antonio Luna) ratings
+(5, 1, 5),
+(5, 3, 4),
+(5, 5, 3),
+
+-- User 6 (Gabriela Silang) ratings
+(6, 11, 5),
+(6, 12, 4),
+(6, 13, 5),
+(6, 14, 4),
+
+-- User 7 (Emilio Aguinaldo) ratings
+(7, 1, 4),
+(7, 11, 5),
+(7, 15, 3),
+
+-- User 8 (Manny Pacquiao) ratings
+(8, 1, 5),
+(8, 6, 4),
+(8, 11, 5),
+
+-- User 9 (Lea Salonga) ratings
+(9, 3, 5),
+(9, 4, 5),
+(9, 7, 4),
+(9, 13, 5),
+
+-- User 10 (Catriona Gray) ratings
+(10, 5, 4),
+(10, 12, 5),
+(10, 16, 4),
+
+-- User 11 (Grace Poe) ratings
+(11, 11, 5),
+(11, 14, 4),
+(11, 17, 5),
+(11, 18, 4),
+
+-- User 12 (Bong Go) ratings
+(12, 2, 3),
+(12, 8, 4),
+(12, 15, 4),
+(12, 19, 5),
+
+-- User 13 (Robin Padilla) ratings
+(13, 4, 5),
+(13, 8, 4),
+(13, 13, 5),
+(13, 19, 4),
+
+-- User 14 (Lapu-Lapu) ratings
+(14, 1, 4),
+(14, 11, 5),
+(14, 20, 4),
+
+-- User 15 (Gwen Garcia) ratings
+(15, 3, 5),
+(15, 6, 4),
+(15, 9, 4),
+(15, 16, 5),
+
+-- User 16 (Michael Rama) ratings
+(16, 1, 4),
+(16, 6, 5),
+(16, 11, 4),
+(16, 18, 3),
+
+-- User 17 (Rodrigo Duterte) ratings
+(17, 5, 3),
+(17, 12, 4),
+(17, 20, 5),
+
+-- User 18 (Sara Duterte) ratings
+(18, 2, 5),
+(18, 7, 4),
+(18, 14, 5),
+
+-- User 19 (Paolo Duterte) ratings
+(19, 4, 4),
+(19, 9, 3),
+(19, 15, 4),
+
+-- User 20 (Katherine Bernardo) ratings
+(20, 1, 5),
+(20, 10, 4),
+(20, 13, 5),
+
+-- User 21 (Alden Richards) ratings
+(21, 6, 4),
+(21, 11, 5),
+(21, 16, 4),
+
+-- User 22 (Maine Mendoza) ratings
+(22, 3, 5),
+(22, 8, 4),
+(22, 17, 5),
+
+-- User 23 (Vice Ganda) ratings
+(23, 2, 4),
+(23, 5, 3),
+(23, 12, 5),
+
+-- User 24 (Anne Curtis) ratings
+(24, 1, 5),
+(24, 7, 4),
+(24, 14, 4),
+
+-- User 25 (Marlon Villar) ratings
+(25, 4, 4),
+(25, 9, 5),
+(25, 18, 3),
+
+-- User 26 (Cynthia Villar) ratings
+(26, 6, 5),
+(26, 10, 4),
+(26, 19, 4),
+
+-- User 27 (Chiz Escudero) ratings
+(27, 3, 4),
+(27, 11, 5),
+(27, 20, 4),
+
+-- User 28 (Pia Cayetano) ratings
+(28, 2, 5),
+(28, 8, 4),
+(28, 15, 4),
+
+-- User 29 (Alan Cayetano) ratings
+(29, 5, 3),
+(29, 12, 5),
+(29, 16, 4),
+
+-- User 30 (Lito Lapid) ratings
+(30, 1, 4),
+(30, 9, 5),
+(30, 17, 4),
+
+-- User 31 (Bato dela Rosa) ratings
+(31, 7, 4),
+(31, 13, 5),
+(31, 18, 3),
+
+-- User 32 (Christopher Go) ratings
+(32, 4, 5),
+(32, 10, 4),
+(32, 19, 4),
+
+-- User 33 (Isko Moreno) ratings
+(33, 1, 5),
+(33, 2, 4),
+(33, 3, 5),
+(33, 4, 4),
+(33, 5, 5),
+
+-- User 34 (Vico Sotto) ratings
+(34, 6, 4),
+(34, 11, 5),
+(34, 16, 4),
+
+-- User 35 (Joy Belmonte) ratings
+(35, 2, 5),
+(35, 7, 4),
+(35, 12, 4),
+
+-- User 36 (Honey Lacuna) ratings
+(36, 1, 4),
+(36, 4, 5),
+(36, 8, 3),
+
+-- User 37 (Abby Binay) ratings
+(37, 3, 5),
+(37, 9, 4),
+(37, 14, 5),
+
+-- User 38 (Inday Sara) ratings
+(38, 5, 4),
+(38, 10, 5),
+(38, 15, 4),
+
+-- User 39 (Sebastian Duterte) ratings
+(39, 2, 4),
+(39, 11, 5),
+(39, 20, 4),
+
+-- User 40 (Ramon Ang) ratings
+(40, 1, 5),
+(40, 6, 4),
+(40, 13, 5),
+
+-- User 41 (Tony Tan Caktiong) ratings
+(41, 7, 4),
+(41, 12, 5),
+(41, 17, 4),
+
+-- User 42 (Henry Sy Jr.) ratings
+(42, 3, 5),
+(42, 8, 4),
+(42, 18, 3),
+
+-- User 43 (John Gokongwei) ratings
+(43, 4, 4),
+(43, 9, 5),
+(43, 19, 4),
+
+-- User 44 (Lucio Tan) ratings
+(44, 1, 5),
+(44, 5, 4),
+(44, 14, 5),
+
+-- User 45 (Andrew Tan) ratings
+(45, 6, 4),
+(45, 10, 5),
+(45, 16, 4),
+
+-- User 46 (Manuel Pangilinan) ratings
+(46, 2, 5),
+(46, 11, 4),
+(46, 20, 5),
+
+-- User 47 (Jaime Zobel) ratings
+(47, 3, 4),
+(47, 7, 5),
+(47, 15, 4),
+
+-- User 48 (Enrique Razon) ratings
+(48, 4, 5),
+(48, 8, 4),
+(48, 17, 5),
+
+-- User 49 (Dennis Uy) ratings
+(49, 5, 4),
+(49, 9, 5),
+(49, 18, 4),
+
+-- User 50 (Manny Villar) ratings
+(50, 1, 5),
+(50, 6, 4),
+(50, 12, 5);
 --
 -- Indexes for dumped tables
 --
@@ -650,8 +913,6 @@ COMMIT;
 -- allow user table to accept NULL city value
 ALTER TABLE `user` CHANGE `city_id` `city_id` INT(11) NULL;
 
--- This will hash all plain text passwords in your user table
-UPDATE `user` SET `password` = MD5(`password`);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
