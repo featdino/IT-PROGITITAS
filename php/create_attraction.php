@@ -8,7 +8,6 @@ if($_SESSION['role'] != 'admin') {
     exit();
 }
 
-// Fetch all cities for dropdown
 $cities_query = "SELECT city_id, city_name FROM city ORDER BY city_name";
 $cities_result = mysqli_query($conn, $cities_query);
 
@@ -54,63 +53,127 @@ if (isset($_POST['submit'])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Create Attractions</title>
+    <title>Create Attraction</title>
+    <link rel="stylesheet" href="../css/create_record.css">
 </head>
 <body>
-    <header>
-        <nav>
-            <ul>
-            <li><a href="create_attraction.php">Create Attractions</a></li>
-            <li><a href="read_attraction.php">View Attractions</a></li>
-            <li><a href="logout.php">Logout</a></li>
-            </ul>
-        </nav>
+    <div class="page-overlay"></div>
+
+    <input type="checkbox" id="menu-toggle" class="menu-toggle">
+    <label for="menu-toggle" class="menu-backdrop"></label>
+
+    <header class="topbar">
+        <div class="brand">
+            <div class="logo-circle">
+                <img src="../images/logo-icon.png" alt="Off-Radar logo" />
+            </div>
+            <h1>off-radar.</h1>
+        </div>
+
+        <div class="top-actions">
+            <label for="menu-toggle" class="menu-btn" aria-label="Open menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </label>
+        </div>
     </header>
 
-       <h2>New Attractions</h2>
-    <form method="POST" action="">    
-    <label for="name"><strong>Name:</strong></label><br>
-        <input type="text" name="name" id="name" required><br><br>
-    <label for="description"><strong>Description:</strong></label><br>
-        <input type="text" name="description" id="description" required><br><br>
-    <label for="street_address"><strong>Street Address:</strong></label><br>
-        <input type="text" name="street_address" id="street_address" required><br><br>
-    <label for="total_visits"><strong>Total Visits:</strong></label><br>
-        <input type="text" name="total_visits" id="total_visits" required><br><br>
-    <label for="avg_rating"><strong>Average Rating:</strong></label><br>
-        <input type="number" step="0.01" name="avg_rating" id="avg_rating" ><br><br>
+        <nav class="side-menu">
+        <a href="read_attraction.php">Dashboard</a>
+        <a href="read_attraction.php">View Database</a>
+        <a href="generate_report.php">Generate Reports</a>
+        <a href="create_attraction.php">Create Attraction</a>
+        <a href="create_user.php">Create User</a>
+        <a href="create_city.php">Create City</a>
+        <a href="logout.php">Logout</a>
+    </nav>
 
-    
-    <label for="city_id"><strong>City:</strong></label><br>
-        <select id="city_id" name="city_id" required>
-            <option value="">-- Select City --</option>
-            <?php while($row = mysqli_fetch_assoc($cities_result)): ?>
-                <option value="<?php echo $row['city_id']; ?>"><?php echo $row['city_name']; ?></option>
-            <?php endwhile; ?>
-        </select><br><br>
+    <main class="create-section">
+        <div class="create-shell">
+            <div class="create-header">
+                <h2>Create Attraction</h2>
+                <p>Add a new attraction record to the database.</p>
+            </div>
+            <div class="record-switch-tabs">
+                <a href="create_attraction.php" class="switch-tab active">Attraction</a>
+                <a href="create_user.php" class="switch-tab">User</a>
+                <a href="create_city.php" class="switch-tab">City</a>
+            </div>
 
-    <label for="local_rating"><strong>Local Rating:</strong></label><br>
-        <input type="number" step="0.01" name="local_rating" id="local_rating" ><br><br>
-    <label for="gem_score"><strong>Gem Score:</strong></label><br>
-        <input type="number" step="0.01" name="gem_score" id="gem_score" ><br><br>
+            <section class="record-panel attraction-panel" style="display:block; height:100%;">
+                <form class="record-form" method="POST" action="">
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="name">Attraction Name</label>
+                            <input type="text" id="name" name="name" placeholder="Enter attraction name" required>
+                        </div>
 
-    <label>Categories:</strong></label><br>
-        <?php 
-        $current_main_class = '';
-        mysqli_data_seek($categories_result, 0);
-        while($category = mysqli_fetch_assoc($categories_result)): 
-            if ($current_main_class != $category['main_class']):
-                $current_main_class = $category['main_class'];
-                echo "<strong>" . htmlspecialchars($current_main_class) . "</strong><br>";
-            endif;
-        ?>
-            <input type="checkbox" name="categories[]" value="<?= $category['category_id'] ?>">
-            <label><?= htmlspecialchars($category['category']) ?></label><br>
-        <?php endwhile; ?>
+                        <div class="form-group">
+                            <label for="city_id">City</label>
+                            <select id="city_id" name="city_id" required>
+                                <option value="">Select city</option>
+                                <?php while($row = mysqli_fetch_assoc($cities_result)): ?>
+                                    <option value="<?php echo $row['city_id']; ?>">
+                                        <?php echo htmlspecialchars($row['city_name']); ?>
+                                    </option>
+                                <?php endwhile; ?>
+                            </select>
+                        </div>
 
-        <br>
+                        <div class="form-group full-width">
+                            <label for="street_address">Street Address</label>
+                            <input type="text" id="street_address" name="street_address" placeholder="Enter street address" required>
+                        </div>
 
-    <input type="submit" name="submit" value="Submit">
-    </form>
+                        <div class="form-group full-width">
+                            <label for="description">Description</label>
+                            <textarea id="description" name="description" rows="5" placeholder="Enter attraction description" required></textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="total_visits">Total Visits</label>
+                            <input type="number" id="total_visits" name="total_visits" value="0" min="0" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="avg_rating">Average Rating</label>
+                            <input type="number" step="0.01" id="avg_rating" name="avg_rating" placeholder="Enter average rating">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="local_rating">Local Rating</label>
+                            <input type="number" step="0.01" id="local_rating" name="local_rating" placeholder="Enter local rating">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="gem_score">Gem Score</label>
+                            <input type="number" step="0.01" id="gem_score" name="gem_score" placeholder="Enter gem score">
+                        </div>
+
+                        <div class="form-group full-width">
+                            <p class="form-label">Categories</p>
+                            <div class="checkbox-group">
+                                <?php
+                                $current_main_class = '';
+                                mysqli_data_seek($categories_result, 0);
+                                while($category = mysqli_fetch_assoc($categories_result)):
+                                ?>
+                                    <label class="checkbox-item">
+                                        <span><?php echo htmlspecialchars($category['category']); ?></span>
+                                        <input type="checkbox" name="categories[]" value="<?php echo $category['category_id']; ?>">
+                                    </label>
+                                <?php endwhile; ?>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-actions">
+                        <button type="submit" name="submit" class="primary-btn">Create Attraction</button>
+                    </div>
+                </form>
+            </section>
+        </div>
+    </main>
 </body>
 </html>

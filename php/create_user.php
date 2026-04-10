@@ -1,5 +1,4 @@
 <?php
-//admin side
 session_start(); 
 require 'db.php'; 
 
@@ -8,7 +7,6 @@ if($_SESSION['role'] != 'admin') {
     exit();
 }
 
-// Fetch all cities for dropdown
 $cities_query = "SELECT city_id, city_name FROM city ORDER BY city_name";
 $cities_result = mysqli_query($conn, $cities_query);
 
@@ -42,41 +40,96 @@ if(isset($_POST['submit'])){
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Create User</title>
+    <link rel="stylesheet" href="../css/create_record.css">
 </head>
 <body>
-    <header>
-        <nav>
-            <ul>
-            <li><a href="create_user.php">New User</a></li>
-            <li><a href="read_user.php">All Users</a></li>
-            <li><a href="logout.php">Logout</a></li>
-            </ul>
-        </nav>
+    <div class="page-overlay"></div>
+
+    <input type="checkbox" id="menu-toggle" class="menu-toggle">
+    <label for="menu-toggle" class="menu-backdrop"></label>
+
+    <header class="topbar">
+        <div class="brand">
+            <div class="logo-circle">
+                <img src="../images/logo-icon.png" alt="Off-Radar logo" />
+            </div>
+            <h1>off-radar.</h1>
+        </div>
+
+        <div class="top-actions">
+            <label for="menu-toggle" class="menu-btn" aria-label="Open menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </label>
+        </div>
     </header>
-    <h2>Create User</h2>
 
-    <form method="post" action="">
-        <label for="name"><strong>Name:</strong></label>
-        <input type="text" id="name" name="name" required><br><br>
+        <nav class="side-menu">
+        <a href="read_attraction.php">Dashboard</a>
+        <a href="read_attraction.php">View Database</a>
+        <a href="generate_report.php">Generate Reports</a>
+        <a href="create_attraction.php">Create Attraction</a>
+        <a href="create_user.php">Create User</a>
+        <a href="create_city.php">Create City</a>
+        <a href="logout.php">Logout</a>
+    </nav>
 
-        <label for="username"><strong>Username:</strong></label>
-        <input type="text" id="username" name="username" required><br><br>
-        
-        <label for="password"><strong>Password:</strong></label>
-        <input type="password" id="password" name="password" required><br><br>
+    <main class="create-section">
+        <div class="create-shell">
+            <div class="create-header">
+                <h2>Create User</h2>
+                <p>Add a new user record to the database.</p>
+            </div>
 
-        <label for="email"><strong>Email:</strong></label>
-        <input type="email" id="email" name="email" required><br><br>
-        
-        <label for="city_id"><strong>City</strong></label>
-        <select id="city_id" name="city_id" required>
-            <option value="">-- Select City --</option>
-            <?php while($row = mysqli_fetch_assoc($cities_result)): ?>
-                <option value="<?php echo $row['city_id']; ?>"><?php echo $row['city_name']; ?></option>
-            <?php endwhile; ?>
-        </select><br><br>
-        
-        <input type="submit" name="submit" value="Submit">
-    </form>
+            <div class="record-switch-tabs">
+                <a href="create_attraction.php" class="switch-tab">Attraction</a>
+                <a href="create_user.php" class="switch-tab active">User</a>
+                <a href="create_city.php" class="switch-tab">City</a>
+            </div>
+
+            <section class="record-panel user-panel" style="display:block; height:100%;">
+                <form class="record-form" method="POST" action="">
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="name">Full Name</label>
+                            <input type="text" id="name" name="name" placeholder="Enter full name" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="username">Username</label>
+                            <input type="text" id="username" name="username" placeholder="Enter username" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" placeholder="Enter email" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="city_id">City</label>
+                            <select id="city_id" name="city_id" required>
+                                <option value="">Select city</option>
+                                <?php while($row = mysqli_fetch_assoc($cities_result)): ?>
+                                    <option value="<?php echo $row['city_id']; ?>">
+                                        <?php echo htmlspecialchars($row['city_name']); ?>
+                                    </option>
+                                <?php endwhile; ?>
+                            </select>
+                        </div>
+
+                        <div class="form-group full-width">
+                            <label for="password">Password</label>
+                            <input type="password" id="password" name="password" placeholder="Enter password" required>
+                        </div>
+                    </div>
+
+                    <div class="form-actions">
+                        <button type="submit" name="submit" class="primary-btn">Create User</button>
+                    </div>
+                </form>
+            </section>
+        </div>
+    </main>
 </body>
 </html>
