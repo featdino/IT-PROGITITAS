@@ -48,7 +48,7 @@ if ($city_id > 0) {
     $conditions[] = "a.city_id = $city_id";
 }
 if ($topRated) {
-    $conditions[] = "a.gem_score >= 4.0";
+    $conditions[] = "a.gem_score >= 1.9";
 }
 
 if (!empty($conditions)) {
