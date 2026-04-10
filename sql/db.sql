@@ -2,8 +2,8 @@
 -- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Apr 10, 2026 at 11:51 AM
+-- Host: 127.0.0.1:3308
+-- Generation Time: Apr 10, 2026 at 12:31 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -276,7 +276,46 @@ INSERT INTO `gallery` (`image_id`, `image_url`, `is_official`, `upload_date`, `a
 (33, 'images/mop-vg-11.webp', 0, '2026-04-10 09:30:19', 5, 33),
 (34, 'images/mop-vg-11.webp', 0, '2026-04-10 09:30:19', 5, 33),
 (35, 'images/mop-vg-12.jpg', 0, '2026-04-10 09:30:19', 5, 21),
-(36, 'images/mop-vg-12.jpg', 0, '2026-04-10 09:30:19', 5, 21);
+(36, 'images/mop-vg-12.jpg', 0, '2026-04-10 09:30:19', 5, 21),
+(37, 'images/Baguio-Cathedral-1.jpg', 1, '2026-04-10 10:20:00', 13, 51),
+(38, 'images/baywalk-1.jpg', 1, '2026-04-10 10:20:00', 8, 51),
+(39, 'images/bell-church-1.jpg', 1, '2026-04-10 10:20:00', 19, 51),
+(40, 'images/binondo-church-1.jpg', 1, '2026-04-10 10:20:00', 7, 51),
+(41, 'images/botanical-garden-1.jpg', 1, '2026-04-10 10:20:00', 16, 51),
+(42, 'images/burnham-park-1.jpg', 1, '2026-04-10 10:20:00', 11, 51),
+(43, 'images/camp-john-hay-1.webp', 1, '2026-04-10 10:20:00', 14, 51),
+(44, 'images/casa-manila-1.jpg', 1, '2026-04-10 10:20:00', 9, 51),
+(45, 'images/fort-santiago-1.jpg', 1, '2026-04-10 10:20:00', 6, 51),
+(46, 'images/home-mg-1.jpg', 1, '2026-04-10 10:20:00', 10, 51),
+(47, 'images/home-mg-2.jpg', 1, '2026-04-10 10:29:04', 5, 51),
+(48, 'images/home-mg-3.jpg', 1, '2026-04-10 10:29:04', 8, 51),
+(49, 'images/home-mg-4.jpg', 1, '2026-04-10 10:29:04', 13, 51),
+(50, 'images/home-mg-5.jpg', 1, '2026-04-10 10:29:04', 20, 51),
+(51, 'images/home-mg-6.jpg', 1, '2026-04-10 10:29:04', 19, 51),
+(52, 'images/home-mg-7.jpg', 1, '2026-04-10 10:29:04', 15, 51),
+(53, 'images/home-mg-8.jpg', 1, '2026-04-10 10:29:04', 9, 51),
+(54, 'images/intramuros-1.jpg', 1, '2026-04-10 10:29:04', 2, 51),
+(55, 'images/mines-view-1.jpg', 1, '2026-04-10 10:29:04', 12, 51),
+(56, 'images/NMFA-1.avif', 1, '2026-04-10 10:29:04', 3, 51),
+(57, 'images/Rizal-Park.jpg', 1, '2026-04-10 10:29:04', 1, 51),
+(58, 'images/Rizal-Park.jpg', 1, '2026-04-10 10:29:04', 1, 51),
+(59, 'images/home-mg-8.jpg', 1, '2026-04-10 10:29:04', 9, 51),
+(60, 'images/home-mg-2.jpg', 1, '2026-04-10 10:30:44', 5, 51),
+(61, 'images/home-mg-3.jpg', 1, '2026-04-10 10:30:44', 8, 51),
+(62, 'images/home-mg-4.jpg', 1, '2026-04-10 10:30:44', 13, 51),
+(63, 'images/home-mg-5.jpg', 1, '2026-04-10 10:30:44', 20, 51),
+(64, 'images/home-mg-6.jpg', 1, '2026-04-10 10:30:44', 19, 51),
+(65, 'images/home-mg-7.jpg', 1, '2026-04-10 10:30:44', 15, 51),
+(66, 'images/home-mg-8.jpg', 1, '2026-04-10 10:30:44', 9, 51),
+(67, 'images/intramuros-1.jpg', 1, '2026-04-10 10:30:44', 2, 51),
+(68, 'images/mines-view-1.jpg', 1, '2026-04-10 10:30:44', 12, 51),
+(69, 'images/NMFA-1.avif', 1, '2026-04-10 10:30:44', 3, 51),
+(70, 'images/Rizal-Park.jpg', 1, '2026-04-10 10:30:44', 1, 51),
+(71, 'images/san-sebastian-church-1.jpg', 1, '2026-04-10 10:30:44', 10, 51),
+(72, 'images/session-road-1.jpg', 1, '2026-04-10 10:30:44', 15, 51),
+(73, 'images/san-sebastian-church-1.jpg', 1, '2026-04-10 10:30:44', 10, 51),
+(74, 'images/the-mansion-1.jpeg', 1, '2026-04-10 10:30:44', 17, 51),
+(75, 'images/wright-park-1.jpg', 1, '2026-04-10 10:30:44', 18, 51);
 
 -- --------------------------------------------------------
 
@@ -793,13 +832,13 @@ ALTER TABLE `category`
 -- AUTO_INCREMENT for table `city`
 --
 ALTER TABLE `city`
-  MODIFY `city_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=56;
+  MODIFY `city_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=57;
 
 --
 -- AUTO_INCREMENT for table `gallery`
 --
 ALTER TABLE `gallery`
-  MODIFY `image_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
+  MODIFY `image_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=76;
 
 --
 -- AUTO_INCREMENT for table `ratings`
