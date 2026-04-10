@@ -1,0 +1,133 @@
+
+.reports-view {
+  width: 100%;
+  height: 100%;
+}
+
+.reports-panel {
+  height: 100%;
+  background: #f7f0e9;
+  border-radius: 30px;
+  padding: 18px 22px 24px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.reports-header {
+  text-align: center;
+  margin-bottom: 18px;
+}
+
+.reports-header h2 {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #4b4f73;
+  margin-bottom: 6px;
+}
+
+.reports-header p {
+  font-size: 0.98rem;
+  color: #5a6b4a;
+}
+
+.report-controls {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  gap: 16px;
+  margin-bottom: 22px;
+  flex-wrap: wrap;
+}
+
+.report-field {
+  display: flex;
+  flex-direction: column;
+  min-width: 260px;
+}
+
+.report-field label {
+  font-family: 'Lora', serif;
+  font-style: oblique;
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: #5b7440;
+  margin-bottom: 8px;
+  text-align: center;
+}
+
+.report-field select {
+  font-family: 'Raleway', sans-serif;
+  width: 100%;
+  border: 2px solid #d8d2c8;
+  border-radius: 18px;
+  padding: 12px 14px;
+  background: #fcfcfc;
+  font-size: 1rem;
+  color: #4b4f73;
+}
+
+.report-generate-btn {
+  border: none;
+  background: #ece6dc;
+  color: #4b4f73;
+  font-size: 1rem;
+  padding: 12px 28px;
+  border-radius: 18px;
+  cursor: pointer;
+  height: fit-content;
+}
+
+.report-table-wrap {
+  flex: 1;
+  background: #f7f7f7;
+  border-radius: 28px;
+  padding: 22px;
+  overflow: auto;
+}
+
+.report-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: #ffffff;
+  overflow: hidden;
+  border-radius: 20px;
+}
+
+.report-table thead th {
+  font-family: 'Raleway', sans-serif;
+  background: #ece6dc;
+  color: #4b4f73;
+  font-size: 1rem;
+  text-align: left;
+  padding: 14px 16px;
+  border-bottom: 2px solid #d8d2c8;
+}
+
+.report-table tbody td {
+  font-family: 'Raleway', sans-serif;
+  padding: 14px 16px;
+  border-bottom: 1px solid #e6e0d7;
+  color: #5a6b4a;
+  font-size: 0.98rem;
+}
+
+.report-table tbody tr:last-child td { border-bottom: none; }
+.report-table tbody tr:hover { background: #faf8f4; }
+
+@media (max-width: 768px) {
+  .report-controls {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .report-field {
+    min-width: unset;
+    width: 100%;
+  }
+
+  .report-generate-btn {
+    width: 100%;
+  }
+}
