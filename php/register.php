@@ -34,7 +34,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $error = "Email already registered.";
         }
         else {
-            $hashed = md5($password);
+            $hashed = password_hash($password, PASSWORD_DEFAULT);
             $sql = "INSERT INTO user (name, username, email, password, city_id) 
                     VALUES ('$name', '$username', '$email', '$hashed', '$city_id')";
             if (mysqli_query($conn, $sql)) {
