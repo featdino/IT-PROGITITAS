@@ -19,10 +19,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     } 
     else {
         $usernameCheck = mysqli_query($conn,
-            "SELECT id FROM user WHERE username = '$username'");
+            "SELECT user_id FROM user WHERE username = '$username'");
 
         $emailCheck = mysqli_query($conn,
-            "SELECT id FROM user WHERE email = '$email'");
+            "SELECT user_id FROM user WHERE email = '$email'");
 
         if (mysqli_num_rows($usernameCheck) > 0 && mysqli_num_rows($emailCheck) > 0) {
             $error = "Username and email already in use.";
