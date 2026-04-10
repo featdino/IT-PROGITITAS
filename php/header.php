@@ -8,14 +8,19 @@
 
         <link rel = "icon" type = "image/png" href = "../images/logo-icon.png">
 
+        <!-- fonts -->
         <link rel = "stylesheet" href = "https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap">
         <link rel = "stylesheet" href = "https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&display=swap">
         <link rel = "stylesheet" href = "https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap">
         
+        <!-- icons -->
         <link rel = "stylesheet" href = "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+        <link rel = "stylesheet" href = "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     
+        <!-- style for each page -->
         <link rel = "stylesheet" type = "text/css" href = "../css/<?php echo $pageStyle; ?>">
 
+        <!-- CDN for masonry -->
         <script src = "https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js"></script>
         <script src = "https://unpkg.com/imagesloaded@5/imagesloaded.pkgd.min.js"></script>
     </head>
