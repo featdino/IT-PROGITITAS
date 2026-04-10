@@ -114,13 +114,24 @@ include('header.php');
 						$image_url = $row['image_url'] ? "../" . $row['image_url'] : "../images/default.jpg";
 						$category_name = $row['category'] ? $row['category'] : "Uncategorized";
 						$city_name = $row['city_name'] ? $row['city_name'] : "Unknown City";
+						
+						$gem_score = $row['gem_score'];
+						if ($gem_score < 1.0) {
+							$rating_class = "listing-rating bad";
+						} elseif ($gem_score >= 1.0 && $gem_score <= 1.7) {
+							$rating_class = "listing-rating avg";
+						} else {
+							$rating_class = "listing-rating good";
+						}
 						?>
 						<div class="listing-card">
 							<img src="<?php echo htmlspecialchars($image_url); ?>" class="listing-image">
 							<div class="listing-content">
 								<div class="listing-top">
 									<h2 class="listing-title"><?php echo htmlspecialchars($row['name']); ?></h2>
-									<span class="listing-rating"><?php echo number_format($row['gem_score'], 1); ?> ★</span>
+									<span class="<?php echo $rating_class; ?>">
+										<?php echo number_format($gem_score, 1); ?> ★
+									</span>
 								</div>
 								<p class="listing-location"><?php echo htmlspecialchars($city_name); ?></p>
 								<p class="listing-description"><?php echo htmlspecialchars($row['description']); ?></p>
