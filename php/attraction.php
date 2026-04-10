@@ -67,46 +67,11 @@ if ($is_logged_in) {
     }
 }
 
+$pageTitle = $attraction['name'];
+$pageStyle = "attraction.css";
+include('header.php'); 
+
 ?>
-
-<!DOCTYPE html>
-
-<html>
-
-    <head>
-        <title>Off-Radar | <?php echo $attraction['name']; ?></title> 
-
-        <link rel = "icon" type = "image/png" href = "../images/logo-icon.png">
-
-        <link rel = "stylesheet" href = "https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap">
-        <link rel = "stylesheet" href = "https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&display=swap">
-        <link rel = "stylesheet" href = "https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap">
-        
-        <link rel = "stylesheet" href = "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-        <link rel = "stylesheet" href = "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
-        <link rel = "stylesheet" type = "text/css" href = "../css/attraction.css">
-    </head>
-
-    <body>
-        <header class = "header">
-            <div class = "logo">
-                <a href = "home.html"><img src = "../images/logo.png"></a>
-            </div>
- 
-            <input id = "toggle" type = "checkbox">
-            <label class = "dropdown" for = "toggle">
-                <i class = "fa-solid fa-bars"></i>
-            </label>
-        
-            <div class = "menu">
-                <!-- replace links later with .php once done -->
-                <a class = "link" href = "home.html">Home</a>
-                <a class = "link" href = "search.html">Search Attractions</a>
-                <a class = "link" href = "about.html">About Us</a>
-                <a class = "link" href = "faqs.html">FAQs</a>
-            </div>
-        </header>
 
         <!-- image srcs in this section to be replaced by first three official pics from db for each attraction -->
         <section class = "atr-spotlight-pictures">
@@ -248,12 +213,12 @@ if ($is_logged_in) {
                 <!-- pakiapply nalang yung styling  -->
                 <!-- users can only leave a rating IF they are logged in and have marked as visited -->
                 <?php if (!$is_logged_in): ?>
-                    <p style="text-align:center;">
+                    <p class = "not-logged-in">
                         <a href="login.php">Login</a> to leave a rating.
                     </p>
 
                 <?php elseif (!$has_visited): ?>
-                    <p style="text-align:center;">
+                    <p class = "must-visit-first">
                         You must mark this attraction as visited before rating.
                     </p>
 
@@ -294,12 +259,12 @@ if ($is_logged_in) {
                 <!-- pakiapply nalang yung styling  -->
                 <!-- users can only upload images IF they are logged in and have marked as visited -->
                 <?php if (!$is_logged_in): ?>
-                    <p style="text-align:center;">
+                    <p class = "not-logged-in">
                         <a href="login.php">Login</a> to upload images.
                     </p>
 
                 <?php elseif (!$has_visited): ?>
-                    <p style="text-align:center;">
+                    <p class = "must-visit-first">
                         You must mark this attraction as visited before uploading.
                     </p>
 
