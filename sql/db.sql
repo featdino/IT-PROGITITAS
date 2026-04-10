@@ -284,7 +284,7 @@ INSERT INTO `gallery` (`image_id`, `image_url`, `is_official`, `upload_date`, `a
 (41, 'images/session-road-1.jpg', 1, '2026-04-10 10:30:44', 15, 51),
 (42, 'images/the-mansion-1.jpeg', 1, '2026-04-10 10:30:44', 17, 51),
 (43, 'images/wright-park-1.jpg', 1, '2026-04-10 10:30:44', 18, 51),
-(44, 'san-agustin-1.jpg', 1, '2026-04-10 13:31:29', 4, 51);
+(44, 'images/san-agustin-1.jpg', 1, '2026-04-10 13:31:29', 4, 51);
 
 -- --------------------------------------------------------
 
