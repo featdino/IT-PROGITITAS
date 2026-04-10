@@ -4,10 +4,11 @@
 session_start(); 
 require 'db.php'; 
 
-// if(!isset($_SESSION['user_id'])) {
-//     header("Location: login.php");
-//     exit();
-// }
+// If admin is logged in, redirect to admin view of attractions
+if (isset($_SESSION['role']) && $_SESSION['role'] === 'admin') {
+    header("Location: read_attraction.php");
+    exit();
+}
 
 // sa search results, when attraction is clicked, the id should be passed in the url via attraction.php?id=<?php echo $attraction_id; /?/>
 $attraction_id = $_GET['id'];
