@@ -6,7 +6,7 @@ require 'db.php';
 
 // If admin is logged in, redirect to admin view of attractions
 if (isset($_SESSION['role']) && $_SESSION['role'] === 'admin') {
-    header("Location: read_attraction.php?id=" . $attraction_id);
+    header("Location: read_attraction.php");
     exit();
 }
 
