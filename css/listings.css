@@ -231,8 +231,7 @@ body {
 }
 
 .listing-rating {
-  background: #dbe7d3;
-  color: #355e3b;
+  color: #dbe7d3;
   font-size: 0.85rem;
   font-weight: 700;
   padding: 6px 12px;
@@ -240,10 +239,22 @@ body {
   white-space: nowrap;
 }
 
+.good {
+  background: #56965f;
+}
+
+.avg {
+  background: #ada531;
+}
+
+.bad{
+  background: #9c3737;
+}
+
 .listing-location {
   font-family: 'Raleway', sans-serif;
   font-size: 0.95rem;
-  color: #6b7280;
+  color: #806f6b;
   margin-bottom: 12px;
 }
 
