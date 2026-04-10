@@ -20,26 +20,29 @@ if ($query !== '') {
     }
 }
 
-// base query with joins
+// base query
 $sql = "
-	SELECT DISTINCT a.attraction_id, a.name, a.description, a.gem_score,
-       ci.city_name,
-       (SELECT c.category 
-        FROM category c 
-        JOIN attraction_category ac ON c.category_id = ac.category_id 
-        WHERE ac.attraction_id = a.attraction_id LIMIT 1) AS category,
-       (SELECT g.image_url 
-        FROM gallery g 
-        WHERE g.attraction_id = a.attraction_id AND g.is_official = 1 LIMIT 1) AS image_url
-	FROM attraction a
-	LEFT JOIN city ci ON a.city_id = ci.city_id
+    SELECT a.attraction_id, a.name, a.description, a.gem_score,
+           ci.city_name,
+           (SELECT c.category 
+            FROM category c 
+            JOIN attraction_category ac ON c.category_id = ac.category_id 
+            WHERE ac.attraction_id = a.attraction_id LIMIT 1) AS category,
+           (SELECT g.image_url 
+            FROM gallery g 
+            WHERE g.attraction_id = a.attraction_id AND g.is_official = 1 LIMIT 1) AS image_url
+    FROM attraction a
+    LEFT JOIN city ci ON a.city_id = ci.city_id
+    WHERE 1=1
 ";
 
-// add conditions based on search, category, city, and top rated filters
-
-// apply filters
+// filters
 if ($category_id > 0) {
-    $conditions[] = "ac.category_id = $category_id";
+    $conditions[] = "EXISTS (
+        SELECT 1 FROM attraction_category ac
+        WHERE ac.attraction_id = a.attraction_id
+        AND ac.category_id = $category_id
+    )";
 }
 if ($city_id > 0) {
     $conditions[] = "a.city_id = $city_id";
@@ -49,13 +52,13 @@ if ($topRated) {
 }
 
 if (!empty($conditions)) {
-    $sql .= " WHERE " . implode(" AND ", $conditions);
+    $sql .= " AND " . implode(" AND ", $conditions);
 }
 
 $sql .= " ORDER BY a.gem_score DESC";
 
 $result = mysqli_query($conn, $sql);
-$num_attractions = mysqli_num_rows($result);
+$num_attractions = $result ? mysqli_num_rows($result) : 0;
 
 $pageTitle = "Discover";
 $pageStyle = "listings.css";
@@ -108,7 +111,7 @@ include('header.php');
 				<?php if ($result && mysqli_num_rows($result) > 0): ?>
 					<?php while ($row = mysqli_fetch_assoc($result)): ?>
 						<?php
-						$image_url = $row['image_url'] ? $row['image_url'] : "../images/default.jpg";
+						$image_url = $row['image_url'] ? "../" . $row['image_url'] : "../images/default.jpg";
 						$category_name = $row['category'] ? $row['category'] : "Uncategorized";
 						$city_name = $row['city_name'] ? $row['city_name'] : "Unknown City";
 						?>
