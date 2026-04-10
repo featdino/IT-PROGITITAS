@@ -2,15 +2,15 @@
 session_start(); 
 require 'db.php'; 
 
-// if($_SESSION['role'] != 'admin') {
-//     header("Location: login.php");
-//     exit();
-// }
+if($_SESSION['role'] != 'admin') {
+    header("Location: login.php");
+    exit();
+}
 
 $admin_user_id = $_SESSION['user_id'];
 
 $attractions_query = "SELECT attraction_id, name FROM attraction ORDER BY name";
-$attraction_result = mysqli_query($conn, $attractions_query);
+$attractions_result = mysqli_query($conn, $attractions_query);
 
 if (isset($_POST['submit'])) {
     $image_url = $_POST['image_url'];
