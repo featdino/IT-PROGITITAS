@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>Off-Radar | <?php echo $pageTitle; ?></title> 
+
+        <meta charset = "UTF-8">
+
+        <link rel = "icon" type = "image/png" href = "../images/logo-icon.png">
+
+        <link rel = "stylesheet" href = "https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap">
+        <link rel = "stylesheet" href = "https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&display=swap">
+        <link rel = "stylesheet" href = "https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap">
+        
+        <link rel = "stylesheet" href = "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+        <link rel = "stylesheet" type = "text/css" href = "../css/<?php echo $pageStyle; ?>">
+
+        <script src = "https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js"></script>
+        <script src = "https://unpkg.com/imagesloaded@5/imagesloaded.pkgd.min.js"></script>
+    </head>
+
+    <body>
+        <header class = "header">
+            <div class = "logo">
+                <a href = "home.php"><img src = "../images/logo.png"></a>
+            </div>
+ 
+            <input id = "toggle" type = "checkbox">
+            <label class = "dropdown" for = "toggle">
+                <i class = "fa-solid fa-bars"></i>
+            </label>
+        
+            <div class = "menu">
+                <a class = "link" href = "home.php">Home</a>
+                <a class = "link" href = "search.php">Search Attractions</a>
+                <a class = "link" href = "about.php">About Us</a>
+                <a class = "link" href = "faqs.php">FAQs</a>
+            </div>
+        </header>
