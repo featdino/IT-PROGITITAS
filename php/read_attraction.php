@@ -3,10 +3,10 @@
 session_start(); 
 require 'db.php'; 
 
-if($_SESSION['role'] != 'admin') {
-    header("Location: login.php");
-    exit();
-}
+// if($_SESSION['role'] != 'admin') {
+//     header("Location: login.php");
+//     exit();
+// }
 
 $read = $conn->query("SELECT * FROM attraction");
 
@@ -50,7 +50,7 @@ $read = $conn->query("SELECT * FROM attraction");
             <td><a href="attraction_details.php?attraction_id=<?= $row['attraction_id'] ?>"><?= htmlspecialchars($row['name']) ?></a></td>
             <td>
                 <?php if($image && $image['image_url']): ?>
-                    <img src="<?= htmlspecialchars($image['image_url']) ?>" width="50" height="50">
+                    <img src="../<?= htmlspecialchars($image['image_url']) ?>" width="50" height="50">
                 <?php else: ?>
                     No image
                 <?php endif; ?>

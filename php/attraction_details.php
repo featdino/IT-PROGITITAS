@@ -54,7 +54,7 @@ $official_image = $img_result->fetch_assoc();
     <h2><?= htmlspecialchars($attraction['name']) ?></h2>
     
     <?php if($official_image && $official_image['image_url']): ?>
-        <img src="<?= htmlspecialchars($official_image['image_url']) ?>" width="300" height="200">
+        <img src="../<?= htmlspecialchars($image['image_url']) ?>" width="300" height="200">
     <?php else: ?>
         <p>No official image available.</p>
     <?php endif; ?>
