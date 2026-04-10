@@ -218,7 +218,7 @@ INSERT INTO `city` (`city_id`, `city_name`, `province`) VALUES
 (52, 'Marawi', 'Lanao del Sur'),
 (53, 'Tagum', 'Davao del Norte'),
 (54, 'Pagadian', 'Zamboanga del Sur'),
-(55, 'Surigao City', 'Surigao del Norte');
+(55, 'Surigao City', 'Surigao del Norte'),
 (56, 'Outside Philippines', 'International');
 
 -- --------------------------------------------------------
