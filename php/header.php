@@ -1,11 +1,14 @@
 <?php
+session_start();
+require 'db.php';
 
-$user_id = $_SESSION['user_id'];
 
 if (isset($_SESSION['user_id'])) {
     header("Location:logout.php");
+    exit();
 }else{
     header("Location:login.php");
+    exit();
 }
 ?>
 
