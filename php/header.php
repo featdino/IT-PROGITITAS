@@ -33,9 +33,10 @@
             </div>
 
             <!-- php logic here : if may nakalogin, add this part of the code -->
-             <?php if(isset($_SESSION['user_id'])): ?>
-                <a href="logout.php"><button class = "logout-btn">Log Out</button></a>
-             <?php endif?>
+             <?php if(isset($_SESSION['user_id'])) {
+                echo '<a href="logout.php"><button class = "logout-btn">Log Out</button></a>';
+             }
+             ?>
             
             
             <input id = "toggle" type = "checkbox">
