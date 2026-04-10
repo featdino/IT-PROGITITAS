@@ -13,7 +13,7 @@ $cities_result = mysqli_query($conn, $cities_query);
 if(isset($_POST['submit'])){
     $name = trim($_POST['name']);
     $username = trim($_POST['username']);
-    $password = password_hash($_POST['password'], PASSWORD_DEFAULT); // Hash the password
+    $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
     $email = trim($_POST['email']);
     $city_id = $_POST['city_id'];
 
@@ -40,7 +40,8 @@ if(isset($_POST['submit'])){
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Create User</title>
-    <link rel="stylesheet" href="../css/create_record.css">
+    <link rel="stylesheet" href="../css/admin_base.css" />
+    <link rel="stylesheet" href="../css/create_record.css" />
 </head>
 <body>
     <div class="page-overlay"></div>
@@ -72,6 +73,7 @@ if(isset($_POST['submit'])){
         <a href="create_attraction.php">Create Attraction</a>
         <a href="create_user.php">Create User</a>
         <a href="create_city.php">Create City</a>
+        <a href="create_gallery.php">Add Image</a>
         <a href="logout.php">Logout</a>
     </nav>
 
@@ -86,6 +88,7 @@ if(isset($_POST['submit'])){
                 <a href="create_attraction.php" class="switch-tab">Attraction</a>
                 <a href="create_user.php" class="switch-tab active">User</a>
                 <a href="create_city.php" class="switch-tab">City</a>
+                <a href="create_gallery.php" class="switch-tab">Gallery</a>
             </div>
 
             <section class="record-panel user-panel" style="display:block; height:100%;">

@@ -34,7 +34,8 @@ $province = trim($_POST['province']);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Create City</title>
-    <link rel="stylesheet" href="../css/create_record.css">
+    <link rel="stylesheet" href="../css/admin_base.css" />
+    <link rel="stylesheet" href="../css/create_record.css" />
 </head>
 <body>
     <div class="page-overlay"></div>
@@ -66,6 +67,7 @@ $province = trim($_POST['province']);
         <a href="create_attraction.php">Create Attraction</a>
         <a href="create_user.php">Create User</a>
         <a href="create_city.php">Create City</a>
+        <a href="create_gallery.php">Add Image</a>
         <a href="logout.php">Logout</a>
     </nav>
 
@@ -80,6 +82,7 @@ $province = trim($_POST['province']);
                 <a href="create_attraction.php" class="switch-tab">Attraction</a>
                 <a href="create_user.php" class="switch-tab">User</a>
                 <a href="create_city.php" class="switch-tab active">City</a>
+                <a href="create_gallery.php" class="switch-tab">Gallery</a>
             </div>
 
             <section class="record-panel" style="display:block; height:100%;">

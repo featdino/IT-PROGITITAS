@@ -27,7 +27,7 @@ if (isset($_POST['submit'])) {
     $categories = isset($_POST['categories']) ? $_POST['categories'] : [];
 
     $insert = "INSERT INTO attraction (name, description, street_address ,total_visits, avg_rating, city_id, local_rating, gem_score) 
-    VALUES ('$name', '$description', '$street_address', '$total_visits', '$avg_rating', '$city_id', '$local_rating', '$gem_score')";
+    VALUES ('$name', '$description', '$street_address', '$city_id')";
 
     if (mysqli_query($conn, $insert)) {
         $attraction_id = mysqli_insert_id($conn);
@@ -54,7 +54,8 @@ if (isset($_POST['submit'])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Create Attraction</title>
-    <link rel="stylesheet" href="../css/create_record.css">
+    <link rel="stylesheet" href="../css/admin_base.css" />
+    <link rel="stylesheet" href="../css/create_record.css" />
 </head>
 <body>
     <div class="page-overlay"></div>
@@ -86,6 +87,7 @@ if (isset($_POST['submit'])) {
         <a href="create_attraction.php">Create Attraction</a>
         <a href="create_user.php">Create User</a>
         <a href="create_city.php">Create City</a>
+        <a href="create_gallery.php">Add Image</a>
         <a href="logout.php">Logout</a>
     </nav>
 
@@ -99,6 +101,7 @@ if (isset($_POST['submit'])) {
                 <a href="create_attraction.php" class="switch-tab active">Attraction</a>
                 <a href="create_user.php" class="switch-tab">User</a>
                 <a href="create_city.php" class="switch-tab">City</a>
+                <a href="create_gallery.php" class="switch-tab">Gallery</a>
             </div>
 
             <section class="record-panel attraction-panel" style="display:block; height:100%;">
@@ -129,26 +132,6 @@ if (isset($_POST['submit'])) {
                         <div class="form-group full-width">
                             <label for="description">Description</label>
                             <textarea id="description" name="description" rows="5" placeholder="Enter attraction description" required></textarea>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="total_visits">Total Visits</label>
-                            <input type="number" id="total_visits" name="total_visits" value="0" min="0" required>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="avg_rating">Average Rating</label>
-                            <input type="number" step="0.01" id="avg_rating" name="avg_rating" placeholder="Enter average rating">
-                        </div>
-
-                        <div class="form-group">
-                            <label for="local_rating">Local Rating</label>
-                            <input type="number" step="0.01" id="local_rating" name="local_rating" placeholder="Enter local rating">
-                        </div>
-
-                        <div class="form-group">
-                            <label for="gem_score">Gem Score</label>
-                            <input type="number" step="0.01" id="gem_score" name="gem_score" placeholder="Enter gem score">
                         </div>
 
                         <div class="form-group full-width">

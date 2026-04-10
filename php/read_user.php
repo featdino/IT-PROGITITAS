@@ -11,61 +11,94 @@ $read = $conn->query("SELECT u.user_id, u.name, u.username, u.password, u.email,
           FROM user u 
           LEFT JOIN city c ON u.city_id = c.city_id 
           ORDER BY u.user_id");
-
-$result = mysqli_query($conn, $read);
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Read Users</title>
+    <title>View Database - Users</title>
+    <link rel="stylesheet" href="../css/admin_base.css" />
+    <link rel="stylesheet" href="../css/update_forms.css" />
 </head>
 <body>
-    <header>
-        <nav>
-            <ul>
-            <li><a href="create_user.php">New User</a></li>
-            <li><a href="read_user.php">All Users</a></li>
-            <li><a href="logout.php">Logout</a></li>
-            </ul>
-        </nav>
+    <div class="page-overlay"></div>
+    <input type="checkbox" id="menu-toggle" class="menu-toggle">
+    <label for="menu-toggle" class="menu-backdrop"></label>
+
+    <header class="topbar">
+        <div class="brand">
+            <div class="logo-circle">
+                <img src="../images/logo-icon.png" alt="Off-Radar logo" />
+            </div>
+            <h1>off-radar.</h1>
+        </div>
+        <div class="top-actions">
+            <label for="menu-toggle" class="menu-btn" aria-label="Open menu">
+                <span></span><span></span><span></span>
+            </label>
+        </div>
     </header>
-    <h2>All Users</h2>
 
-    <table>
-            <tr>
-                <th>User ID</th>
-                <th>Name</th>
-                <th>Username</th>
-                <th>Password</th>
-                <th>Email</th>
-                <th>City</th>
-                <th>Province</th>
-                <th>Role</th>
-            </tr>
+    <nav class="side-menu">
+        <a href="read_attraction.php">Dashboard</a>
+        <a href="read_attraction.php">View Database</a>
+        <a href="generate_report.php">Generate Reports</a>
+        <a href="create_attraction.php">Create Attraction</a>
+        <a href="create_user.php">Create User</a>
+        <a href="create_city.php">Create City</a>
+        <a href="logout.php">Logout</a>
+    </nav>
 
-            <?php 
-                while ($row = $read->fetch_assoc()):
-            ?>
-                <tr>
-                    <td><?php echo $row['user_id']; ?></td>
-                    <td><?php echo htmlspecialchars($row['name']); ?></td>
-                    <td><?php echo htmlspecialchars($row['username']); ?></td>
-                    <td><?php echo htmlspecialchars($row['password']); ?></td>
-                    <td><?php echo htmlspecialchars($row['email']); ?></td>
-                    <td><?php echo htmlspecialchars($row['city_name']); ?></td>
-                    <td><?php echo htmlspecialchars($row['province']); ?></td>
-                    <td><?php echo htmlspecialchars($row['role']); ?></td>
-                    <td>
-                        <a href="update_user.php?user_id=<?= $row['user_id']?>">Update</a>
-                        <a href="delete_user.php?user_id=<?= $row['user_id']?>"onclick= "return confirm('Are you Sure')">Delete</a>
-                    </td>
-                </tr>
-        <?php 
-            endwhile;
-         ?>
-    </table>
+    <div class="dashboard-section">
+        <div class="dashboard-tabs">
+            <a href="read_attraction.php" class="tab active">View Database</a>
+            <a href="generate_report.php" class="tab">Generate Reports</a>
+        </div>
+
+        <div class="dashboard-shell">
+            <div class="database-switch-tabs">
+                <a href="read_attraction.php" class="switch-tab">Attractions</a>
+                <a href="read_user.php" class="switch-tab active">Users</a>
+                <a href="read_city.php" class="switch-tab">Cities</a>
+                <a href="read_gallery.php" class="switch-tab">Gallery</a>
+                <a href="create_user.php" class="modal-btn" style="margin-left:auto; text-decoration:none;">+ Create User</a>
+            </div>
+
+            <div class="report-table-wrap" style="height: calc(100% - 70px);">
+                <table class="report-table">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Name</th>
+                            <th>Username</th>
+                            <th>Email</th>
+                            <th>City</th>
+                            <th>Province</th>
+                            <th>Role</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php while ($row = $read->fetch_assoc()): ?>
+                            <tr>
+                                <td><?= htmlspecialchars($row['user_id']) ?></td>
+                                <td><?= htmlspecialchars($row['name']) ?></td>
+                                <td><?= htmlspecialchars($row['username']) ?></td>
+                                <td><?= htmlspecialchars($row['email']) ?></td>
+                                <td><?= htmlspecialchars($row['city_name'] ?? '') ?></td>
+                                <td><?= htmlspecialchars($row['province'] ?? '') ?></td>
+                                <td><?= htmlspecialchars($row['role']) ?></td>
+                                <td>
+                                    <a href="update_user.php?user_id=<?= $row['user_id'] ?>" class="modal-btn update-btn" style="padding:10px 16px; text-decoration:none;">Update</a>
+                                    <a href="delete_user.php?user_id=<?= $row['user_id'] ?>" class="modal-btn delete-btn" style="padding:10px 16px; text-decoration:none;" onclick="return confirm('Are you sure you want to delete this user?')">Delete</a>
+                                </td>
+                            </tr>
+                        <?php endwhile; ?>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
 </body>
 </html>
