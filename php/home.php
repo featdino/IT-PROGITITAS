@@ -8,7 +8,7 @@
             <h1 class = "home-title">Travel without the toll.</h1>
             <h2 class = "home-subtitle">Enjoy authentic experiences curated by locals, not algorithms—<br>
                 all while preserving the world you came to see.</h2>
-            <button class = "search-redirect" onclick = "window.location.href='search.html'">Discover hidden gems</button>
+            <button class = "search-redirect" onclick = "window.location.href='search.php'">Discover hidden gems</button>
             <h6 class = "home-below">or browse some of our favorites below</h6>
         </section>
 
