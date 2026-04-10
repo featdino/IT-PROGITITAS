@@ -14,7 +14,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             if (md5($password) == $row['password'])  {
             $_SESSION['user_id']  = $row['user_id'];
             $_SESSION['username'] = $row['username'];
-            header("Location: attraction.php");
+            header("Location: home.php");
             exit();
         }
     }

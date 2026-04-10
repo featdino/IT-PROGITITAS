@@ -169,3 +169,17 @@ button:hover {
     background-color: #7c7d7a;
     transition: all 0.3s ease-in-out;
 }
+ 
+
+
+
+
+/* messages */ 
+
+.error {
+    color: #cb4c4e;
+}
+
+.success {
+    color: #789f72;
+}
