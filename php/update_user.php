@@ -2,10 +2,10 @@
 session_start(); 
 require 'db.php'; 
 
-/*if($_SESSION['role'] != 'admin') {
+if($_SESSION['role'] != 'admin') {
     header("Location: login.php");
     exit();
-}*/
+}
 
 $cities_query = "SELECT city_id, city_name FROM city ORDER BY city_name";
 $cities_result = mysqli_query($conn, $cities_query);
@@ -45,7 +45,7 @@ if (isset($_POST['submit'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Update User</title>
     <link rel="stylesheet" href="../css/admin_base.css" />
-    <link rel="stylesheet" href="../css/read_user.css" />
+    <link rel="stylesheet" href="../css/update_forms.css" />
 </head>
 <body>
     <div class="page-overlay"></div>
